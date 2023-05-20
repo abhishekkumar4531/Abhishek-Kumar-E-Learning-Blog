@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User | Login{% endblock %}
+
+{% block body %}
+<div class = "d-flex justify-content-center p-3">
+  <div class = "w-75">
+    <form action="/login" method="post">
+      <h1>User Login-Page</h1>
+      <dl>
+        <div>
+          <dt>Select login option</dt>
+          <dd>
+            <select name="loginOption" id="loginOption" class = "form-select"
+            onchange = "selectLoginOption()">
+              <option value="loginwithemail">Login with User-Email</option>
+              <option value="loginwithname">Login with User-Name</option>
+            </select>
+          </dd>
+        </div>
+
+        <div id = "loginField">
+          <dt id = "loginLable">Enter ypur email</dt>
+          <dd>
+            <input type="text" name="user_value" id="" placeholder="Enter according to your choice"
+            required class = "form-control"
+            value = "{% if userValue is defined %}{{ userValue }}{% endif %}">
+          </dd>
+          <dd class="error-msg">
+            {% if invalidValue is defined %}{{ invalidValue }}{% endif %}
+          </dd>
+        </div>
+
+        <dt>Enter User-Password</dt>
+        <dd>
+          <input type="password" name="user_password" id="pwd" placeholder="Password format should be Abc@12"
+          required onblur="checkPasswordStatus()" class = "form-control"
+          value = "{% if userPassword is defined %}{{ userPassword }}{% endif %}"
+          >
+        </dd>
+        <dd id="pwd_success" class="success-msg"></dd>
+        <dd id="pwd_status" class="error-msg"></dd>
+        <dd class="error-msg">
+          {% if invalidPassword is defined %}{{ invalidPassword }}{% endif %}
+        </dd>
+        <dd>
+          <a href="/reset">Reset password!</a>
+        </dd>
+
+        <dd>
+          <button name="submitLogin" id="submitBtn" class = "btn btn-primary w-100">
+            Login
+          </button>
+        </dd>
+        <dd>
+          <a href="/register">New user?</a>
+        </dd>
+      </dl>
+    </form>
+  </div>
+</div>
+{% endblock %}

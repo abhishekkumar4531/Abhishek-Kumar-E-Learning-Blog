@@ -1,0 +1,263 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User | Registration{% endblock %}
+
+{% block body %}
+<div class = "d-flex justify-content-center p-3">
+  <div class = "w-75">
+    <form action="/register" method="post" enctype="multipart/form-data">
+      <h1>Registration page</h1>
+      <dl>
+        <dt><label for="user_name">Enter userName</label></dt>
+        <dd>
+          <input type="text" name="user_name" id="user_name" required onblur=""
+          placeholder="User name should be unique" class = "form-control"
+          value="{% if userData is defined %}{{ userData.user_name }}{% endif %}"
+          >
+        </dd>
+        <dd id="invalid_uname" class="error-msg">
+          {% if InvalidUserName is defined %} {{ InvalidUserName }} {% endif %}
+        </dd>
+
+        <div class = "d-flex justify-content-between">
+          <div>
+            <dt><label for="first_name">Enter your first name</label></dt>
+            <dd>
+              <input type="text" name="first_name" id="first_name" required onblur="checkFname()"
+              placeholder="Enter only alphabet" class = "form-control"
+              value="{% if userData is defined %}{{ userData.first_name }}{% endif %}"
+              >
+            </dd>
+            <dd id="invalid_fname" class="error-msg"></dd>
+            <dd class="error-msg"></dd>
+          </div>
+
+          <div>
+            <dt><label for="middle_name">Enter your middle name</label></dt>
+            <dd>
+              <input type="text" name="middle_name" id="middle_name" onblur="checkMname()"
+              placeholder="Middle name is optional" class = "form-control"
+              value="{% if userData is defined %}{{ userData.middle_name }}{% endif %}"
+              >
+            </dd>
+            <dd id="invalid_mname" class="error-msg"></dd>
+            <dd class="error-msg"></dd>
+          </div>
+
+          <div>
+            <dt><label for="last_name">Enter your last name</label></dt>
+            <dd>
+              <input type="text" name="last_name" id="last_name" required onblur="checkLname()"
+              placeholder="Enter only alphabet" class = "form-control"
+              value="{% if userData is defined %}{{ userData.last_name }}{% endif %}"
+              >
+            </dd>
+            <dd id="invalid_lname" class="error-msg"></dd>
+            <dd class="error-msg"></dd>
+          </div>
+        </div>
+
+        <dt><label for="pwd">Enter your password</label></dt>
+        <dd>
+          <input type="password" name="user_password" id="pwd" required onblur="checkPasswordStatus()"
+          placeholder="Password format should be Abc@45" class = "form-control"
+          value="{% if userData is defined %}{{ userData.user_password }}{% endif %}"
+          >
+        </dd>
+        <dd id="pwd_success" class="success-msg"></dd>
+        <dd id="pwd_status" class="error-msg"></dd>
+        <dd class="error-msg"></dd>
+
+        <dt>Confirm Your Password</dt>
+        <dd>
+          <input type="password" name="cnf_password" id="cnfPwd" required class = "form-control"
+          onblur="confirmPassword()" placeholder="Confirm Password"
+          value="{% if userData.cnf_password is defined %}{{ userData.cnf_password }}{% endif %}"
+          >
+        </dd>
+        <dd id="cnfPwd_status" class="error-msg"></dd>
+        <dd class="error-msg">
+          {% if invalidPassword is defined %}{{ invalidPassword }}{% endif %}
+        </dd>
+        {# <dt><label for="pwd">Confirm your password</label></dt>
+        <dd>
+          <input type="password" name="cnf_password" id="pwd" required onblur="checkPasswordStatus()"
+          placeholder="Confirm your password" class = "form-control"
+          value="{% if cnfPassword is defined %}{{ cnfPassword }}{% endif %}"
+          >
+        </dd>
+        <dd id="pwd_success" class="success-msg"></dd>
+        <dd id="pwd_status" class="error-msg"></dd>
+        <dd class="error-msg"></dd> #}
+
+        <dt><label for="email">Enter your email</label></dt>
+        <dd>
+          <input type="text" name="user_email" id="email" required onblur="checkEmailStatus()"
+          placeholder="Enter your email" class = "form-control"
+          value="{% if userData is defined %}{{ userData.user_email }}{% endif %}"
+          >
+        </dd>
+        <dd id="email_success" class="success-msg"></dd>
+        <dd id="email_status" class="error-msg"></dd>
+        <dd class="error-msg">
+          {% if emailError is defined %}{{ emailError }}{% endif %}
+        </dd>
+
+        <dt><label for="mobile">Enter your mobile</label></dt>
+        <dd>
+          <input type="text" name="user_mobile" id="mobile" required onblur="checkPhoneNo()"
+          placeholder="Mobile number should start from +91" class = "form-control"
+          value="{% if userData is defined %}{{ userData.user_mobile }}{% endif %}"
+          >
+        </dd>
+        <dd id="invalid_mobile" class="error-msg"></dd>
+        <dd class="error-msg">
+          {% if mobileError is defined %}{{ mobileError }}{% endif %}
+        </dd>
+
+        <div class = "d-flex justify-content-between">
+          <div>
+            <dt><label for="gender">Select your gender</label></dt>
+            <dd>
+              <select name="user_gender" id="gender" class = "form-select">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </dd>
+            <dd class="error-msg">
+              {% if genderError is defined %}{{ genderError }}{% endif %}
+            </dd>
+          </div>
+
+          <div>
+            <dt><label for="age">Enter your age</label></dt>
+            <dd>
+              <input type="text" name="user_age" id="age" required onblur="checkAge()"
+              placeholder="Enter age in numberic" class = "form-control"
+              value="{% if userData is defined %}{{ userData.user_age }}{% endif %}"
+              >
+            </dd>
+            <dd id="invalid_age" class="error-msg"></dd>
+            <dd class="error-msg">
+              {% if invalidAge is defined %}{{ invalidAge }}{% endif %}
+            </dd>
+          </div>
+        </div>
+
+        <div class = "d-flex justify-content-between">
+          <div>
+            <dt><label for="city">Enter your city</label></dt>
+            <dd>
+              <input type="text" name="user_city" id="city" required onblur=""
+              placeholder="Your current city" class = "form-control"
+              value="{% if userData is defined %}{{ userData.user_city }}{% endif %}"
+              >
+            </dd>
+            <dd id="invalid_city" class="error-msg"></dd>
+            <dd class="error-msg">
+              {% if cityError is defined %}{{ cityError }}{% endif %}
+            </dd>
+          </div>
+
+          <div>
+            <dt><label for="country">Enter your country</label></dt>
+            <dd>
+              <input type="text" name="user_country" id="country" required onblur=""
+              placeholder="Your current country" class = "form-control"
+              value="{% if userData is defined %}{{ userData.user_country }}{% endif %}"
+              >
+            </dd>
+            <dd id="invalid_country" class="error-msg"></dd>
+            <dd class="error-msg">
+              {% if countryError is defined %}{{ countryError }}{% endif %}
+            </dd>
+          </div>
+        </div>
+
+        <dt>Upload your img</dt>
+        <dd>
+          <input type="file" name="user_img" id="user_img" required
+          class = "form-control">
+        </dd>
+        <dd class = "error-msg">
+          {% if InvalidImg is defined %} {{ InvalidImg }} {% endif %}
+        </dd>
+
+        {# <dt><label for="subject">Select subject</label></dt>
+        <dd>
+          <select name="user_subject" id="subject" class = "form-select">
+            <option value="c">C</option>
+            <option value="c++">C++</option>
+            <option value="c#">C#</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+          </select>
+        </dd> #}
+
+        <dt>Select subject(s) according to your interest</dt>
+        <dd class="input-group">
+          <span class="pe-3 ps-2 input-group-item">
+            <input type="checkbox" class="form-check-input p-1" name="c" id="sub1"
+            value="C">
+          </span>
+          <span class = "text-bold input-group-item">C language</span>
+        </dd>
+        <dd class="input-group">
+          <span class="pe-3 ps-2 input-group-item">
+            <input type="checkbox" class="form-check-input p-1" name="c++" id="sub2"
+            value="C++">
+          </span>
+          <span class = "text-bold input-group-item">C++ language</span>
+        </dd>
+        <dd class="input-group">
+          <span class="pe-3 ps-2 input-group-item">
+            <input type="checkbox" class="form-check-input p-1" name="c#" id="sub3"
+            value="C#">
+          </span>
+          <span class = "text-bold input-group-item">C#</span>
+        </dd>
+        <dd class="input-group">
+          <span class="pe-3 ps-2 input-group-item">
+            <input type="checkbox" class="form-check-input p-1" name="python" id="sub4"
+            value="Python">
+          </span>
+          <span class = "text-bold input-group-item">Python</span>
+        </dd>
+        <dd class="input-group">
+          <span class="pe-3 ps-2 input-group-item">
+            <input type="checkbox" class="form-check-input p-1" name="java" id="sub5"
+            value="Java">
+          </span>
+          <span class = "text-bold input-group-item">Java</span>
+        </dd>
+        <dd class="input-group">
+          <span class="pe-3 ps-2 input-group-item">
+            <input type="checkbox" class="form-check-input p-1" name="javascript" id="sub6"
+            value="JavaScript">
+          </span>
+          <span class = "text-bold input-group-item">JavaScript</span>
+        </dd>
+        <dd class="input-group">
+          <span class="pe-3 ps-2 input-group-item">
+            <input type="checkbox" class="form-check-input p-1" name="tyoescript" id="sub7"
+            value="TypeScript">
+          </span>
+          <span class = "text-bold input-group-item">TypeScript</span>
+        </dd>
+
+        <dd>
+          <button name="submitRegistration" id="submitBtn" onclick="checkSub()" class = "btn btn-primary w-100 p-1">
+            Register
+          </button>
+        </dd>
+        <dd>
+          <a href="/login">Exiting user?</a>
+        </dd>
+      </dl>
+    </form>
+  </div>
+</div>
+{% endblock %}
