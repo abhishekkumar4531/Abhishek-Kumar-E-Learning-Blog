@@ -1,7 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Courses{% endblock %}
+{% block title %}C | Language{% endblock %}
 
 {% block body %}
   <h1>Welcome to the C roadmap</h1>
+
+  <div>
+    {% if decription is defined %}
+      {{ decription }}
+    {% endif %}
+  </div>
+
+  <div>
+    {% if courseBlogging is defined %}
+      {% for details in courseBlogging %}
+        <ul>
+          <li>{{details.contentDesc}}</li>
+          <li><a href="{{details.contentLink}}">Use fulll link</a></li>
+          <li>Author of this blog : {{details.authorName}}</li>
+          <li>
+            {% if details.fileType is same as("video/mp4") %}
+              <video width="30%" height="300%" controls>
+                <source src="{{details.contentFile}}" type="video/mp4">
+              </video>
+            {% endif %}
+
+            {% if details.fileType is same as("audio/mpeg") %}
+              <audio controls autoplay muted>
+                <source src="{{details.contentFile}}" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            {% endif %}
+
+            {# <img src="details.contentFile" alt="" width = "30%"> #}
+
+          </li>
+
+        </ul>
+      {% endfor %}
+    {% endif %}
+  </div>
 {% endblock %}

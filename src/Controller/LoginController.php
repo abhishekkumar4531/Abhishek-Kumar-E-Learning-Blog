@@ -65,7 +65,7 @@ class LoginController extends AbstractController
             ]);
           }
         }
-        else {
+        else if($loginOption === "loginwithename") {
           $userName = $loginData['user_value'];
           $userPassword = $loginData['user_password'];
           $fetchCredentials = $this->userRepo->findOneBy([ 'userName' => $userName ]);
@@ -73,7 +73,8 @@ class LoginController extends AbstractController
             $validatePassword = $fetchCredentials->getUserPassword();
             if($validatePassword === $userPassword) {
               $session = $request->getSession();
-              $session->set('userLoggedIn', $userName);
+              $userEmail = $fetchCredentials->getUserEmail();
+              $session->set('userLoggedIn', $userEmail);
               $session->set('loggedImage', $fetchCredentials->getUserImage());
               $session->set('loggedName', $fetchCredentials->getUserFirstName());
               return $this->redirectToRoute('app_home');
@@ -102,6 +103,84 @@ class LoginController extends AbstractController
             ]);
           }
         }
+        else {
+          $adminEmail = $loginData['user_value'];
+          $adminPassword = $loginData['user_password'];
+          //$fetchCredentials = $this->userRepo->findOneBy([ 'userEmail' => $userEmail ]);
+          if($adminEmail === "abhikrjha45@gmail.com") {
+            //$validatePassword = $fetchCredentials->getUserPassword();
+            if($adminPassword === "abhi45@AK") {
+              $session = $request->getSession();
+              $session->set('userLoggedIn', $adminEmail);
+              $session->set('adminLoggedIn', TRUE);
+              $session->set('loggedName', "Abhishek");
+              //$session->set('loggedImage', $fetchCredentials->getUserImage());
+              //$session->set('loggedName', $fetchCredentials->getUserFirstName());
+              return $this->redirectToRoute('app_profile');
+            }
+            else {
+              return $this->render('login/index.html.twig', [
+                'userValue' => $adminEmail,
+                'userPassword' => $adminPassword,
+                'invalidPassword' => "Please enter valid password",
+                'loginUrl' => "login",
+                'loginValue' => "Join now",
+                'regUrl' => "/register",
+                'regValue' => "Sign up"
+              ]);
+            }
+          }
+          else {
+            return $this->render('login/index.html.twig', [
+              'userValue' => $adminEmail,
+              'userPassword' => $adminPassword,
+              'invalidValue' => "Please enter valid email",
+              'loginUrl' => "login",
+              'loginValue' => "Join now",
+              'regUrl' => "/register",
+              'regValue' => "Sign up"
+            ]);
+          }
+        }
+        /*else {
+          $adminEmail = $loginData['user_value'];
+          $adminPassword = $loginData['user_password'];
+          //$fetchCredentials = $this->userRepo->findOneBy([ 'userEmail' => $userEmail ]);
+          if($adminEmail === "abhikrjha45@gmail.com") {
+            //$validatePassword = $fetchCredentials->getUserPassword();
+            if($adminPassword === "abhi45@KU") {
+              $session = $request->getSession();
+              $session->set('userLoggedIn', $adminEmail);
+              $session->set('bloggedLoggedIn', TRUE);
+              $session->set('loggedName', "Abhishek");
+              //$session->set('loggedImage', $fetchCredentials->getUserImage());
+              //$session->set('loggedName', $fetchCredentials->getUserFirstName());
+              return $this->redirectToRoute('app_profile');
+            }
+            else {
+              return $this->render('login/index.html.twig', [
+                'userValue' => $adminEmail,
+                'userPassword' => $adminPassword,
+                'invalidPassword' => "Please enter valid password",
+                'loginUrl' => "login",
+                'loginValue' => "Join now",
+                'regUrl' => "/register",
+                'regValue' => "Sign up"
+              ]);
+            }
+          }
+          else {
+            return $this->render('login/index.html.twig', [
+              'userValue' => $adminEmail,
+              'userPassword' => $adminPassword,
+              'invalidValue' => "Please enter valid email",
+              'loginUrl' => "login",
+              'loginValue' => "Join now",
+              'regUrl' => "/register",
+              'regValue' => "Sign up"
+            ]);
+          }
+        }*/
       }
       else {
         return $this->render('login/index.html.twig', [

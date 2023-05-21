@@ -38,7 +38,7 @@ class RegisterController extends AbstractController
           if($userAge >= 15 && $userAge <= 100) {
             if($imgType == "image/png" || $imgType == "image/jpeg" || $imgType == "image/jpg") {
               move_uploaded_file($imgTmp, "assets/images/" . $imgName);
-              $targetMusicImage = "assets/images/" . $imgName;
+              $targetImage = "assets/images/" . $imgName;
 
               if(!empty($newUserData['c'])) {
                 $userInterest['c'] = $newUserData['c'];
@@ -74,7 +74,7 @@ class RegisterController extends AbstractController
               $this->user->setUserCountry($newUserData['user_country']);
               $this->user->setUserSubject("========");
               $this->user->setUserPassword($newUserData['user_password']);
-              $this->user->setUserImage($targetMusicImage);
+              $this->user->setUserImage($targetImage);
               $this->user->setUserInterests($userInterest);
 
               $this->entityManager->persist($this->user);

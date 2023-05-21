@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Courses{% endblock %}
+
+{% block body %}
+<div class = "d-flex justify-content-center p-3">
+  <div class = "w-75">
+    <form action="/profile" method="post" enctype="multipart/form-data">
+      <h1>Welcome back admin</h1>
+      <h5>You are assign as admin of this site, you can add subjects or write blog for our users.</h5>
+      <dl>
+        <dt>Please select one option</dt>
+       <dd>
+          <select name="adminChoice" id="choice" class = "form-select">
+            <option value="">Select one from the following list</option>
+            <option value="addSub">You want to add subjects</option>
+            <option value="writtingBlog">You want to write blog</option>
+          </select>
+        </dd>
+        <dd class = "error-msg"></dd>
+
+        <dd>
+          <button name="submitChoice" id="submitBtn" onclick="confirmChoice()" class = "btn btn-primary w-100 p-1">
+            Submit your choice
+          </button>
+        </dd>
+      </dl>
+    </form>
+  </div>
+</div>
+{% endblock %}

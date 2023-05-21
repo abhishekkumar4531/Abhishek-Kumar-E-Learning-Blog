@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Write | Blog{% endblock %}
+
+{% block body %}
+<div class = "d-flex justify-content-center p-3">
+  <div class = "w-75">
+    <form action="/profile" method="post" enctype="multipart/form-data">
+      <h1>You can write blog here</h1>
+      <dl>
+        <dt>Currently available slot for blogging</dt>
+       <dd>
+          <select name="courseName" id="name" class = "form-select">
+            {# <option value="">Select one from the following list</option> #}
+            <option value="c">C</option>
+            <option value="c++">C++</option>
+            <option value="c#">C#</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+          </select>
+        </dd>
+
+        <dt>Write your blog in details</dt>
+        <dd>
+          <textarea name="courseDesc" id="desc" cols="30" rows="10" required class = "form-control"></textarea>
+        </dd>
+        <dd class = "error-msg"></dd>
+
+        <dt>If you have file then upload</dt>
+        <dd>
+          <input type="file" name="courseFile" id="file"
+          class = "form-control">
+        </dd>
+        <dd class = "error-msg">
+          {% if InvalidFile is defined %} {{ InvalidFile }} {% endif %}
+        </dd>
+
+        <dt>If you want to share links then share below</dt>
+        <dd>
+          <textarea name="courseLink" id="desc" cols="30" rows="5" class = "form-control"></textarea>
+        </dd>
+        <dd class = "error-msg"></dd>
+
+        <dt>Enter your name which will be display as author</dt>
+        <dd>
+          <input type="text" name = "authorName" id = "author" class = "form-control" required>
+        </dd>
+        <dd class = "error-msg"></dd>
+
+        <dd>
+          <button name="submitBlog" id="submitBtn" onclick="confirmAdmin()" class = "btn btn-primary w-100 p-1">
+            Upload your blog
+          </button>
+        </dd>
+      </dl>
+    </form>
+  </div>
+</div>
+{% endblock %}

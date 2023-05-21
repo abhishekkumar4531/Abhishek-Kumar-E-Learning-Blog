@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\C;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,6 +10,13 @@ use App\Entity\UserDetails;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\FetchData;
+use App\Entity\CourseDB;
+use App\Entity\Cplus;
+use App\Entity\Csharp;
+use App\Entity\Java;
+use App\Entity\Js;
+use App\Entity\Python;
+use App\Entity\Ts;
 
 /**
  * EditController
@@ -21,11 +29,30 @@ class ProfileController extends AbstractController {
   public $entityManager;
   public $userRepo;
   public $userData;
+  public $courseRepo;
+  public $course;
+
+  public $cDB;
+  public $cPlus;
+  public $cSharp;
+  public $javaDB;
+  public $pythonDB;
+  public $jsDB;
+  public $tsDB;
 
   public function __construct(EntityManagerInterface $entityManager) {
     $this->user = new UserDetails();
+    $this->course = new CourseDB();
     $this->entityManager = $entityManager;
     $this->userRepo = $entityManager->getRepository(UserDetails::class);
+    $this->courseRepo = $entityManager->getRepository(CourseDB::class);
+    $this->cDB = new C();
+    $this->cPlus = new Cplus();
+    $this->cSharp= new Csharp();
+    $this->javaDB = new Java();
+    $this->pythonDB = new Python();
+    $this->jsDB = new Js();
+    $this->tsDB = new Ts();
   }
 
   #[Route('/profile', name: 'app_profile')]
@@ -76,7 +103,7 @@ class ProfileController extends AbstractController {
           $userData = $userProfile;
           return $this->render('profile/index.html.twig', [
             'userData' => $this->userData,
-            'imageTypeError' => "Please select valid image",
+            'imageTypeError' => "Please select valid image[png, jpg, jpeg]",
             'loginUrl' => "logout",
             'loginValue' => "Logout",
             'regUrl' => "/profile",
@@ -170,9 +197,168 @@ class ProfileController extends AbstractController {
         return $this->redirectToRoute('app_home');
       }
     }
+    else if(isset($_POST['submitChoice'])) {
+      $session = $request->getSession();
+      if($_POST['adminChoice'] === "addSub") {
+        return $this->render('profile/add.html.twig', [
+          'loginUrl' => "logout",
+          'loginValue' => "Logout",
+          'regUrl' => "/profile",
+          'regValue' => $session->get('loggedName')
+        ]);
+      }
+      else {
+        return $this->render('profile/blog.html.twig', [
+          'loginUrl' => "logout",
+          'loginValue' => "Logout",
+          'regUrl' => "/profile",
+          'regValue' => $session->get('loggedName')
+        ]);
+      }
+    }
+    else if(isset($_POST['submitCourse'])) {
+      $session = $request->getSession();
+      $courseData = $request->request->all();
+      if($courseData) {
+        $imgName = $_FILES['courseImage']['name'];
+        $imgTmp = $_FILES['courseImage']['tmp_name'];
+        $imgType = $_FILES['courseImage']['type'];
+        if($imgType == "image/png" || $imgType == "image/jpeg" || $imgType == "image/jpg") {
+          move_uploaded_file($imgTmp, "assets/courses/" . $imgName);
+          $targetCourseImage = "assets/courses/" . $imgName;
+          $this->course->setCourceName($courseData['courseName']);
+          $this->course->setCourceDes($courseData['courseDesc']);
+          $this->course->setCourceReach($courseData['courseSlots']);
+          $this->course->setCourceDuration($courseData['courseDuration']);
+          $this->course->setCourceImage($targetCourseImage);
+          $this->course->setCourceAdmin($courseData['adminName']);
+          $this->course->setCourceRated("15");
+
+          $this->entityManager->persist($this->course);
+          $this->entityManager->flush();
+
+          return $this->redirectToRoute('app_course');
+        }
+        else {
+          return $this->render('profile/add.html.twig', [
+            'loginUrl' => "logout",
+            'loginValue' => "Logout",
+            'regUrl' => "/profile",
+            'regValue' => $session->get('loggedName'),
+            'imageTypeError' => "Please select valid image[png, jpg, jpeg]"
+          ]);
+        }
+      }
+      else {
+        return $this->render('profile/add.html.twig', [
+          'loginUrl' => "logout",
+          'loginValue' => "Logout",
+          'regUrl' => "/profile",
+          'regValue' => $session->get('loggedName')
+        ]);
+      }
+    }
+    else if(isset($_POST['submitBlog'])) {
+      $session = $request->getSession();
+      $courseData = $request->request->all();
+      if($courseData) {
+        $fileName = $_FILES['courseFile']['name'];
+        $fileTmp = $_FILES['courseFile']['tmp_name'];
+        $fileType = $_FILES['courseFile']['type'];
+
+        move_uploaded_file($fileTmp, "assets/courses/" . $fileName);
+        $targetCourseFile = "assets/courses/" . $fileName;
+        $subName = $courseData['courseName'];
+        if($subName === "c") {
+          $this->cDB->setContentDesc($courseData['courseDesc']);
+          $this->cDB->setContentLink($courseData['courseLink']);
+          $this->cDB->setAuthorName($courseData['authorName']);
+          $this->cDB->setContentFile($targetCourseFile);
+          $this->cDB->setFileType($fileType);
+          $this->entityManager->persist($this->cDB);
+        }
+        else if($subName === "java") {
+          $this->javaDB->setContentDesc($courseData['courseDesc']);
+          $this->javaDB->setContentLink($courseData['courseLink']);
+          $this->javaDB->setAuthorName($courseData['authorName']);
+          $this->javaDB->setContentFile($targetCourseFile);
+          $this->javaDB->setFileType($fileType);
+          $this->entityManager->persist($this->javaDB);
+        }
+        else if($subName === "c++") {
+          $this->cPlus->setContentDesc($courseData['courseDesc']);
+          $this->cPlus->setContentLink($courseData['courseLink']);
+          $this->cPlus->setAuthorName($courseData['authorName']);
+          $this->cPlus->setContentFile($targetCourseFile);
+          $this->cPlus->setFileType($fileType);
+          $this->entityManager->persist($this->cPlus);
+        }
+        else if($subName === "c#") {
+          $this->cSharp->setContentDesc($courseData['courseDesc']);
+          $this->cSharp->setContentLink($courseData['courseLink']);
+          $this->cSharp->setAuthorName($courseData['authorName']);
+          $this->cSharp->setContentFile($targetCourseFile);
+          $this->cSharp->setFileType($fileType);
+          $this->entityManager->persist($this->cSharp);
+        }
+        else if($subName === "python") {
+          $this->pythonDB->setContentDesc($courseData['courseDesc']);
+          $this->pythonDB->setContentLink($courseData['courseLink']);
+          $this->pythonDB->setAuthorName($courseData['authorName']);
+          $this->pythonDB->setContentFile($targetCourseFile);
+          $this->pythonDB->setFileType($fileType);
+          $this->entityManager->persist($this->pythonDB);
+        }
+        else if($subName === "javascript") {
+          $this->jsDB->setContentDesc($courseData['courseDesc']);
+          $this->jsDB->setContentLink($courseData['courseLink']);
+          $this->jsDB->setAuthorName($courseData['authorName']);
+          $this->jsDB->setContentFile($targetCourseFile);
+          $this->jsDB->setFileType($fileType);
+          $this->entityManager->persist($this->jsDB);
+        }
+        else if($subName === "typescript") {
+          $this->tsDB->setContentDesc($courseData['courseDesc']);
+          $this->tsDB->setContentLink($courseData['courseLink']);
+          $this->tsDB->setAuthorName($courseData['authorName']);
+          $this->tsDB->setContentFile($targetCourseFile);
+          $this->tsDB->setFileType($fileType);
+          $this->entityManager->persist($this->tsDB);
+        }
+        $this->entityManager->flush();
+
+        return $this->redirectToRoute('app_course');
+      }
+      else {
+        return $this->render('profile/add.html.twig', [
+          'loginUrl' => "logout",
+          'loginValue' => "Logout",
+          'regUrl' => "/profile",
+          'regValue' => $session->get('loggedName')
+        ]);
+      }
+    }
     else {
       $session = $request->getSession();
-      if($session->get('userLoggedIn')) {
+      if($session->get('userLoggedIn') && $session->get('adminLoggedIn')) {
+        $adminEmail = $session->get('userLoggedIn');
+        return $this->render('profile/admin.html.twig', [
+          'loginUrl' => "logout",
+          'loginValue' => "Logout",
+          'regUrl' => "/profile",
+          'regValue' => $session->get('loggedName')
+        ]);
+      }
+      /*else if($session->get('userLoggedIn') && $session->get('bloggedLoggedIn')) {
+        $adminEmail = $session->get('userLoggedIn');
+        return $this->render('profile/blog.html.twig', [
+          'loginUrl' => "logout",
+          'loginValue' => "Logout",
+          'regUrl' => "/profile",
+          'regValue' => $session->get('loggedName')
+        ]);
+      }*/
+      else if($session->get('userLoggedIn')) {
         $userEmail = $session->get('userLoggedIn');
         $userData = $getUserData->fetchUserProfile($this->userRepo, $request, $userEmail);
         return $this->render('profile/index.html.twig', [

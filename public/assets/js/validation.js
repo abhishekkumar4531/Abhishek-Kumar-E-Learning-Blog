@@ -98,6 +98,21 @@ function checkEmailStatus() {
   }
 }
 
+function checkOldPasswordStatus() {
+  var userPwd = document.getElementById('oldPwd').value;
+  var status = regObj.checkPasswords(userPwd);
+  if(status) {
+    document.getElementById("oldPwd_success").innerText = ``;
+    document.getElementById("oldPwd_status").innerText = `Enter valid password`;
+    document.getElementById("submitBtn").disabled = true;
+  }
+  else {
+    document.getElementById("oldPwd_status").innerText = ``;
+    document.getElementById("oldPwd_success").innerText = `Valid password`;
+    document.getElementById("submitBtn").disabled = false;
+  }
+}
+
 /**
  * checkPasswordStatus is responsible for checking the validations of user's password feild.
  * When user entered their password then onblur this function will be execute.
@@ -117,6 +132,20 @@ function checkPasswordStatus() {
     document.getElementById("pwd_status").innerText = ``;
     document.getElementById("pwd_success").innerText = `Valid password`;
     document.getElementById("submitBtn").disabled = false;
+  }
+}
+
+function checkPasswordDiff(){
+  var oldPwd = document.getElementById('oldPwd').value;
+  var newPwd = document.getElementById('pwd').value;
+  var status = regObj.diffPasswords(oldPwd, newPwd);
+  if(status) {
+    document.getElementById("pwd_status").innerText = ``;
+    document.getElementById("submitBtn").disabled = false;
+  }
+  else {
+    document.getElementById("pwd_status").innerText = `Please enter different password`;
+    document.getElementById("submitBtn").disabled = true;
   }
 }
 

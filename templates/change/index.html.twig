@@ -10,26 +10,28 @@
       <dl>
         <dt>Enter your old Password</dt>
         <dd>
-          <input type="password" name="oldPassword" id="pwd" required class = "form-control"
-          onblur="checkPasswordStatus()" placeholder=""
+          <input type="password" name="oldPassword" id="oldPwd" required class = "form-control"
+          onblur="checkOldPasswordStatus()" placeholder="Please enter correct password"
           value="{% if userData.oldPassword is defined %}{{ userData.oldPassword }}{% endif %}"
           >
         </dd>
-        <dd id="pwd_success" class="success-msg"></dd>
-        <dd id="pwd_status" class="error-msg"></dd>
+        <dd id="oldPwd_success" class="success-msg"></dd>
+        <dd id="oldPwd_status" class="error-msg"></dd>
+
         <dt>Enter New Password</dt>
         <dd>
           <input type="password" name="newPassword" id="pwd" required class = "form-control"
-          onblur="checkPasswordStatus()" placeholder=""
+          onblur="checkPasswordStatus();checkPasswordDiff();" placeholder="New password should be different"
           value="{% if userData.newPassword is defined %}{{ userData.newPassword }}{% endif %}"
           >
         </dd>
         <dd id="pwd_success" class="success-msg"></dd>
         <dd id="pwd_status" class="error-msg"></dd>
+
         <dt>Confirm Your Password</dt>
         <dd>
           <input type="password" name="cnfPassword" id="cnfPwd" required class = "form-control"
-          onblur="confirmPassword()" placeholder=""
+          onblur="confirmPassword()" placeholder="Confirm password should be same with new password"
           value="{% if userData.cnfPassword is defined %}{{ userData.cnfPassword }}{% endif %}"
           >
         </dd>
