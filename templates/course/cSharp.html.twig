@@ -1,27 +1,455 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}C# | Language{% endblock %}
+{% block title %}C# | Programming
+{% endblock %}
 
 {% block body %}
-  <h1>Welcome to the C# roadmap</h1>
+	<div class="subLinks">
+		<ul>
+			<li><a href="#subContent">Material</a></li>
+			<li><a href="#blogContent">Blogs</a></li>
+			<li><a href="#faqContent">FAQ</a></li>
+		</ul>
+	</div>
+	<div class="blogContent" id="blogContent">
+		<div class="m-5 mb-1 w-75">
+			<h1>Welcome to the C# programming</h1>
+			<div class="">
+				{% if decription is defined %}
+					{{ decription }}
+				{% endif %}
+			</div>
+		</div>
+		<div class="m-5 mt-3 mb-1 w-75 pb-1">
+			{% if courseBlogging is defined %}
+				<h5 class="text-primary p-1">
+					<span class="bi bi-pen"></span>
+					Latest blog on C# language</h5>
+				{% for details in courseBlogging %}
+					<div class="blogInfo mb-3 pb-2">
+						<div class="blogContent">
+							<div class="contentDesc">
+								{{details.contentDesc}}
+							</div>
+							<h6 class="pt-2">Author of this blog :
+								{{details.authorName}}</h6>
+						</div>
 
-  <div>
-    {% if decription is defined %}
-      {{ decription }}
-    {% endif %}
-  </div>
+						<div class="blogFile">
+							<div>
+								{% if details.fileType is same as("video/mp4") %}
+									<video width="100%" height="200" controls>
+										<source src="/{{details.contentFile}}" type="video/mp4">
+									</video>
 
-  <div>
-    {% if courseBlogging is defined %}
-      {% for details in courseBlogging %}
-        <ul>
-          <li>{{details.contentDesc}}</li>
-          <li>
-            <a href="{{details.contentLink}}">Use fulll link</a>
-          </li>
-          <li>Author of this blog : {{details.authorName}}</li>
-        </ul>
-      {% endfor %}
-    {% endif %}
-  </div>
-{% endblock %}
+								{% elseif details.fileType is same as("audio/mpeg") %}
+									<audio controls>
+										<source src="/{{details.contentFile}}" type="audio/mpeg">
+										Your browser does not support the audio element.
+									</audio>
+
+								{% else %}
+									<img src="/{{details.contentFile}}" alt="" width="300" height="200">
+
+								{% endif %}
+							</div>
+							<div>
+								<a href="{{details.contentLink}}">Use fulll link</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+	<div class="subContent m-3" id="subContent">
+		<div>
+			<div class="contentData m-3 ms-5 w-75">
+				<h5 class="p-1">
+					<span class="bi bi-book"></span>
+					You can find below basic and important notes</h5>
+				<div class="onlycontent">
+
+
+					<div class="onlycontentinner">
+						<div id="city">
+							<table>
+								<tbody>
+									<tr>
+										<td>
+											<h3 class="text-primary">C# Tutorial</h3>
+											<img src="https://static.javatpoint.com/csharp/images/c-sharp.png" alt="C Sharp Tutorial" style="float:right;margin-left:20px">
+											<p>C# tutorial provides basic and advanced concepts of C#. Our C# tutorial is designed for beginners and professionals.</p>
+											<p>C# is a programming language of .Net Framework.</p>
+											<p>Our C# tutorial includes all topics of C# such as first example, control statements, objects and classes, inheritance, constructor, destructor, this, static, sealed, polymorphism, abstraction, abstract class, interface, namespace, encapsulation, properties, indexer, arrays, strings, regex, exception handling, multithreading, File IO, Collections etc.</p>
+											<h3 class="text-primary">What is C#</h3>
+											<p>C# is pronounced as "C-Sharp". It is an object-oriented programming language provided by Microsoft that runs on .Net Framework.</p>
+											<p>By the help of C# programming language, we can develop different types of secured and robust applications:</p>
+											<ul class="points">
+												<li>Window applications</li>
+												<li>Web applications</li>
+												<li>Distributed applications</li>
+												<li>Web service applications</li>
+												<li>Database applications etc.</li>
+											</ul>
+											<p>C# is approved as a standard by ECMA and ISO. C# is designed for CLI (Common Language Infrastructure). CLI is a specification that describes executable code and runtime environment.</p>
+											<p>C# programming language is influenced by C++, Java, Eiffel, Modula-3, Pascal etc. languages.</p>
+											<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+										</td>
+									</tr>
+								</tbody>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="city">
+					<table>
+						<tbody>
+							<tr>
+								<td>
+
+									<h3 class="text-primary">Java vs C#</h3>
+									<p>There are many differences and similarities between Java and C#. A list of top differences between Java and C# are given below:</p>
+									<table class="alt">
+										<tbody>
+											<tr>
+												<th>No.</th>
+												<th>Java</th>
+												<th>C#</th>
+											</tr>
+											<tr>
+												<td>1)</td>
+												<td>Java is a
+													<strong>high level, robust, secured and object-oriented programming</strong>
+													language developed by Oracle.</td>
+												<td>C# is an
+													<strong>object-oriented programming</strong>
+													language developed by Microsoft that runs on .Net Framework.</td>
+											</tr>
+											<tr>
+												<td>2)</td>
+												<td>Java programming language is designed to be run on a Java platform, by the help of
+													<strong>Java Runtime Environment (JRE).</strong>
+												</td>
+												<td>C# programming language is designed to be run on the
+													<strong>Common Language Runtime (CLR).</strong>
+												</td>
+											</tr>
+											<tr>
+												<td>3)</td>
+												<td>Java type safety is safe.</td>
+												<td>C# type safety is unsafe.</td>
+											</tr>
+											<tr>
+												<td>4)</td>
+												<td>In java, built-in data types that are passed by value are called
+													<strong>primitive types.</strong>
+												</td>
+												<td>In C#, built-in data types that are passed by value are called
+													<strong>simple types.</strong>
+												</td>
+											</tr>
+											<tr>
+												<td>5)</td>
+												<td>Arrays in Java are direct specialization of
+													<strong>Object.</strong>
+												</td>
+												<td>Arrays in C# are specialization of
+													<strong>System.</strong>
+												</td>
+											</tr>
+											<tr>
+												<td>6)</td>
+												<td>Java does not support
+													<strong>conditional compilation.</strong>
+												</td>
+												<td>C# supports conditional compilation using preprocessor directives.</td>
+											</tr>
+											<tr>
+												<td>7)</td>
+												<td>Java doesn't support goto statement.</td>
+												<td>C# supports goto statement.</td>
+											</tr>
+											<tr>
+												<td>8)</td>
+												<td>Java doesn't support
+													<strong>structures and unions.</strong>
+												</td>
+												<td>C# supports structures and unions.</td>
+											</tr>
+											<tr>
+												<td>9)</td>
+												<td>Java supports checked exception and unchecked exception.</td>
+												<td>C# supports unchecked exception.</td>
+											</tr>
+										</tbody>
+									</table>
+									<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+									<br><br>
+
+									<br><br></td>
+							</tr>
+						</tbody>
+					</div>
+				</div>
+			</div>
+		</td>
+	</tr>
+</tbody></table></div><div id="city"><table>
+<tbody>
+	<tr>
+		<td style="margin-top: 0px; margin-bottom: 0px;">
+			<h1 class="h1">C# Data Types</h1>
+			<p>A data type specifies the type of data that a variable can store such as integer, floating, character etc.</p>
+			<img src="https://static.javatpoint.com/csharp/images/csharp-data-type1.png" alt="CSHRAP Data types 1">
+			<p>There are 3 types of data types in C# language.</p>
+			<table class="alt">
+				<tbody>
+					<tr>
+						<th>Types</th>
+						<th>Data Types</th>
+					</tr>
+					<tr>
+						<td>Value Data Type</td>
+						<td>short, int, char, float, double etc</td>
+					</tr>
+					<tr>
+						<td>Reference Data Type</td>
+						<td>String, Class, Object and Interface</td>
+					</tr>
+					<tr>
+						<td>Pointer Data Type</td>
+						<td>Pointers</td>
+					</tr>
+				</tbody>
+			</table>
+			<hr>
+			<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+			<h2 class="h2">Value Data Type</h2>
+			<p>The value data types are integer-based and floating-point based. C# language supports both signed and unsigned literals.</p>
+			<p>There are 2 types of value data type in C# language.</p>
+			<p>
+				<strong>1) Predefined Data Types</strong>
+				- such as Integer, Boolean, Float, etc.</p>
+			<p>
+				<strong>2) User defined Data Types</strong>
+				- such as Structure, Enumerations, etc.</p>
+			<p>The memory size of data types may change according to 32 or 64 bit operating system.</p>
+			<p>Let's see the value data types. It size is given according to 32 bit OS.</p>
+			<table class="alt">
+				<tbody>
+					<tr>
+						<th>Data Types</th>
+						<th>Memory Size</th>
+						<th>Range</th>
+					</tr>
+					<tr>
+						<td>char</td>
+						<td>1 byte</td>
+						<td>-128 to 127</td>
+					</tr>
+					<tr>
+						<td>signed char</td>
+						<td>1 byte</td>
+						<td>-128 to 127</td>
+					</tr>
+					<tr>
+						<td>unsigned char</td>
+						<td>1 byte</td>
+						<td>0 to 127</td>
+					</tr>
+					<tr>
+						<td>short</td>
+						<td>2 byte</td>
+						<td>-32,768 to 32,767</td>
+					</tr>
+					<tr>
+						<td>signed short</td>
+						<td>2 byte</td>
+						<td>-32,768 to 32,767</td>
+					</tr>
+					<tr>
+						<td>unsigned short</td>
+						<td>2 byte</td>
+						<td>0 to 65,535</td>
+					</tr>
+					<tr>
+						<td>int</td>
+						<td>4 byte</td>
+						<td>-2,147,483,648 to -2,147,483,647</td>
+					</tr>
+					<tr>
+						<td>signed int</td>
+						<td>4 byte</td>
+						<td>-2,147,483,648 to -2,147,483,647</td>
+					</tr>
+					<tr>
+						<td>unsigned int</td>
+						<td>4 byte</td>
+						<td>0 to 4,294,967,295</td>
+					</tr>
+					<tr>
+						<td>long</td>
+						<td>8 byte</td>
+						<td>?9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</td>
+					</tr>
+					<tr>
+						<td>signed long</td>
+						<td>8 byte</td>
+						<td>?9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</td>
+					</tr>
+					<tr>
+						<td>unsigned long</td>
+						<td>8 byte</td>
+						<td>0 - 18,446,744,073,709,551,615</td>
+					</tr>
+					<tr>
+						<td>float</td>
+						<td>4 byte</td>
+						<td>1.5 * 10<sup>-45</sup>
+							- 3.4 * 10<sup>38</sup>, 7-digit precision</td>
+					</tr>
+					<tr>
+						<td>double</td>
+						<td>8 byte</td>
+						<td>5.0 * 10<sup>-324</sup>
+							- 1.7 * 10<sup>308</sup>, 15-digit precision</td>
+					</tr>
+					<tr>
+						<td>decimal</td>
+						<td>16 byte</td>
+						<td>at least -7.9 * 10<sup>?28</sup>
+							- 7.9 * 10<sup>28</sup>, with at least 28-digit precision</td>
+					</tr>
+				</tbody>
+			</table>
+			<hr>
+			<h2 class="h2">Reference Data Type</h2>
+			<p>The reference data types do not contain the actual data stored in a variable, but they contain a reference to the variables.</p>
+			<p>If the data is changed by one of the variables, the other variable automatically reflects this change in value.</p>
+			<p>There are 2 types of reference data type in C# language.</p>
+			<p>
+				<strong>1) Predefined Types</strong>
+				- such as Objects, String.<div id="0a312584-43a9-4dbf-9153-d806579ea4b2" data-section="0a312584-43a9-4dbf-9153-d806579ea4b2" class="_ap_apex_ad" data-xpath="#city > table:eq(0) > tbody:eq(0) > tr:eq(0) > td:eq(0) > p:eq(11)" data-section-id="" data-ap-network="adpTags" style="display: block; clear: both; text-align: center; margin: 10px auto 20px; width: 375px; height: 250px; overflow: hidden;" data-render-time="1684907173580" data-refresh-time="1684907173742" data-timeout="554">
+					<div id="ADP_37780_728X250_0a312584-43a9-4dbf-9153-d806579ea4b2" style="text-align: center; margin: 0 auto;" data-google-query-id="CP6Y-Kygjf8CFVYetwAd9xAC1w">
+
+
+						<p>
+							<strong>2) User defined Types</strong>
+							- such as Classes, Interface.</p>
+						<hr>
+						<h2 class="h2">Pointer Data Type</h2>
+						<p>The pointer in C# language is a variable, it is also known as locator or indicator that points to an address of a value.</p>
+						<img src="https://static.javatpoint.com/csharp/images/csharp-data-type2.png" alt="CSHRAP Data types 2">
+						<hr>
+						<h2 class="h2">Symbols used in pointer</h2>
+						<table class="alt">
+							<tbody>
+								<tr>
+									<th>Symbol</th>
+									<th>Name</th>
+									<th>Description</th>
+								</tr>
+								<tr>
+									<td>&amp; (ampersand sign)</td>
+									<td>Address operator</td>
+									<td>Determine the address of a variable.</td>
+								</tr>
+								<tr>
+									<td>* (asterisk sign)</td>
+									<td>Indirection operator</td>
+									<td>Access the value of an address.</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr>
+						<h2 class="h2">Declaring a pointer</h2>
+						<p>The pointer in C# language can be declared using * (asterisk symbol).</p>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-c">
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;*&nbsp;a;&nbsp;&nbsp;</span>
+											<span class="comment">//pointer&nbsp;to&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">char</span>
+											<span>&nbsp;*&nbsp;c;&nbsp;</span>
+											<span class="comment">//pointer&nbsp;to&nbsp;char</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="CSharp" style="display: none;">int * a;  //pointer to int
+								    char * c; //pointer to char
+							</textarea>
+						</div>
+						<div class="nexttopicdiv">
+							<span class="nexttopictext">Next Topic</span>
+							<span class="nexttopiclink">
+								<a href="csharp-operators">C# Operators</a>
+							</span>
+						</div>
+
+						<br><br>
+					</div>
+				</div>
+			</p>
+		</td>
+	</tr>
+</tbody></div></td></tr></tbody></table></div></div><div class="contentLink"></div></div></div>{# <div class = "blogContent" id = "blogContent">
+	    <div class = "m-5">
+	      {% if courseBlogging is defined %}
+	        {% for details in courseBlogging %}
+	          <div class = "blogInfo mb-5">
+	            <div class = "blogContent">
+	              <div class = "contentDesc">
+	                {{details.contentDesc}}
+	              </div>
+	             <h6 class = "pt-2">Author of this blog : {{details.authorName}}</h6>
+	            </div>
+
+	            <div class = "blogFile">
+	              <div>
+	                {% if details.fileType is same as("video/mp4") %}
+	                <video width="100%%" height="200" controls>
+	                  <source src="/{{details.contentFile}}" type="video/mp4">
+	                </video>
+
+	                {% elseif details.fileType is same as("audio/mpeg") %}
+	                  <audio controls>
+	                    <source src="/{{details.contentFile}}" type="audio/mpeg">
+	                      Your browser does not support the audio element.
+	                  </audio>
+
+	                {% else %}
+	                  <img src="{{details.contentFile}}" alt="" width = "100%" height = "200">
+
+	                {% endif %}
+	              </div>
+	              <div>
+	                <a href="{{details.contentLink}}">Use fulll link</a>
+	              </div>
+	            </div>
+	          </div>
+	        {% endfor %}
+	      {% endif %}
+	    </div>
+	  </div> #}<div><div class="faqContent" id="faqContent"></div></div> {% endblock %}

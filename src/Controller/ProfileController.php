@@ -17,6 +17,7 @@ use App\Entity\Java;
 use App\Entity\Js;
 use App\Entity\Python;
 use App\Entity\Ts;
+use App\Service\UpdateSlot;
 
 /**
  * EditController
@@ -31,6 +32,7 @@ class ProfileController extends AbstractController {
   public $userData;
   public $courseRepo;
   public $course;
+  public $countSlot;
 
   public $cDB;
   public $cPlus;
@@ -46,6 +48,7 @@ class ProfileController extends AbstractController {
     $this->entityManager = $entityManager;
     $this->userRepo = $entityManager->getRepository(UserDetails::class);
     $this->courseRepo = $entityManager->getRepository(CourseDB::class);
+    $this->countSlot = new UpdateSlot($entityManager);
     $this->cDB = new C();
     $this->cPlus = new Cplus();
     $this->cSharp= new Csharp();
@@ -150,24 +153,31 @@ class ProfileController extends AbstractController {
 
         if(!empty($userProfile['c'])) {
           $userInterest['c'] = $userProfile['c'];
+          $this->countSlot->updateSlotCount('c');
         }
         if(!empty($userProfile['c++'])) {
           $userInterest['c++'] = $userProfile['c++'];
+          $this->countSlot->updateSlotCount('c++');
         }
         if(!empty($userProfile['c#'])) {
           $userInterest['c#'] = $userProfile['c#'];
+          $this->countSlot->updateSlotCount('c#');
         }
         if(!empty($userProfile['python'])) {
           $userInterest['python'] = $userProfile['python'];
+          $this->countSlot->updateSlotCount('python');
         }
         if(!empty($userProfile['java'])) {
           $userInterest['java'] = $userProfile['java'];
+          $this->countSlot->updateSlotCount('java');
         }
         if(!empty($userProfile['javascript'])) {
           $userInterest['javascript'] = $userProfile['javascript'];
+          $this->countSlot->updateSlotCount('javascript');
         }
         if(!empty($userProfile['typescript'])) {
           $userInterest['typescript'] = $userProfile['typescript'];
+          $this->countSlot->updateSlotCount('typescript');
         }
 
         $fetchData->setUserName($userProfile['user_name']);
@@ -190,7 +200,7 @@ class ProfileController extends AbstractController {
           'loginUrl' => "logout",
           'loginValue' => "Logout",
           'regUrl' => "/profile",
-          'regValue' => "userName"
+          'regValue' => $session->get('loggedName')
         ]);
       }
       else {
@@ -219,33 +229,44 @@ class ProfileController extends AbstractController {
     else if(isset($_POST['submitCourse'])) {
       $session = $request->getSession();
       $courseData = $request->request->all();
-      if($courseData) {
-        $imgName = $_FILES['courseImage']['name'];
-        $imgTmp = $_FILES['courseImage']['tmp_name'];
-        $imgType = $_FILES['courseImage']['type'];
-        if($imgType == "image/png" || $imgType == "image/jpeg" || $imgType == "image/jpg") {
-          move_uploaded_file($imgTmp, "assets/courses/" . $imgName);
-          $targetCourseImage = "assets/courses/" . $imgName;
-          $this->course->setCourceName($courseData['courseName']);
-          $this->course->setCourceDes($courseData['courseDesc']);
-          $this->course->setCourceReach($courseData['courseSlots']);
-          $this->course->setCourceDuration($courseData['courseDuration']);
-          $this->course->setCourceImage($targetCourseImage);
-          $this->course->setCourceAdmin($courseData['adminName']);
-          $this->course->setCourceRated("15");
+      $fetchExistSub = $this->courseRepo->findOneBy([ 'courceName' => $courseData['courseName'] ]);
+      if(!$fetchExistSub) {
+        if($courseData) {
+          $imgName = $_FILES['courseImage']['name'];
+          $imgTmp = $_FILES['courseImage']['tmp_name'];
+          $imgType = $_FILES['courseImage']['type'];
+          if($imgType == "image/png" || $imgType == "image/jpeg" || $imgType == "image/jpg") {
+            move_uploaded_file($imgTmp, "assets/courses/" . $imgName);
+            $targetCourseImage = "assets/courses/" . $imgName;
+            $this->course->setCourceName($courseData['courseName']);
+            $this->course->setCourceDes($courseData['courseDesc']);
+            $this->course->setCourceReach($courseData['courseSlots']);
+            $this->course->setCourceDuration($courseData['courseDuration']);
+            $this->course->setCourceImage($targetCourseImage);
+            $this->course->setCourceAdmin($courseData['adminName']);
+            $this->course->setCourceRated("15");
 
-          $this->entityManager->persist($this->course);
-          $this->entityManager->flush();
+            $this->entityManager->persist($this->course);
+            $this->entityManager->flush();
 
-          return $this->redirectToRoute('app_course');
+            return $this->redirectToRoute('app_course');
+          }
+          else {
+            return $this->render('profile/add.html.twig', [
+              'loginUrl' => "logout",
+              'loginValue' => "Logout",
+              'regUrl' => "/profile",
+              'regValue' => $session->get('loggedName'),
+              'imageTypeError' => "Please select valid image[png, jpg, jpeg]"
+            ]);
+          }
         }
         else {
           return $this->render('profile/add.html.twig', [
             'loginUrl' => "logout",
             'loginValue' => "Logout",
             'regUrl' => "/profile",
-            'regValue' => $session->get('loggedName'),
-            'imageTypeError' => "Please select valid image[png, jpg, jpeg]"
+            'regValue' => $session->get('loggedName')
           ]);
         }
       }
@@ -254,7 +275,8 @@ class ProfileController extends AbstractController {
           'loginUrl' => "logout",
           'loginValue' => "Logout",
           'regUrl' => "/profile",
-          'regValue' => $session->get('loggedName')
+          'regValue' => $session->get('loggedName'),
+          'subExist' => $courseData['courseName']
         ]);
       }
     }

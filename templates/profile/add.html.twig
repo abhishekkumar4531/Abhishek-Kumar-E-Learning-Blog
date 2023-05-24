@@ -22,7 +22,9 @@
           </select>
         </dd>
         <dd class = "error-msg">
-
+          {% if subExist is defined %}
+            {{ subExist }} is already added please select another!!!
+          {% endif %}
         </dd>
 
         <dt>Enter description about this course</dt>
@@ -61,6 +63,10 @@
           <button name="submitCourse" id="submitBtn" onclick="confirmAdmin()" class = "btn btn-primary w-100 p-1">
             Add course
           </button>
+        </dd>
+
+        <dd>
+          <a href="/profile">Go back</a>
         </dd>
       </dl>
     </form>

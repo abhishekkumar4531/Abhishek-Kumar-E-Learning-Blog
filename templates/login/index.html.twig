@@ -39,13 +39,13 @@
           value = "{% if userPassword is defined %}{{ userPassword }}{% endif %}"
           >
         </dd>
-        <dd id="pwd_success" class="success-msg"></dd>
+        {# <dd id="pwd_success" class="success-msg"></dd> #}
         <dd id="pwd_status" class="error-msg"></dd>
         <dd class="error-msg">
           {% if invalidPassword is defined %}{{ invalidPassword }}{% endif %}
         </dd>
         <dd>
-          <a href="/reset">Reset password!</a>
+          <a href="/reset">Forgot password!</a>
         </dd>
 
         <dd>

@@ -1,43 +1,247 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}C | Language{% endblock %}
+{% block title %}C | Programming{% endblock %}
 
 {% block body %}
-  <h1>Welcome to the C roadmap</h1>
+  <div class = "subLinks">
+    <ul>
+      <li><a href="#subContent">Material</a></li>
+      <li><a href="#blogContent">Blogs</a></li>
+      <li><a href="#faqContent">FAQ</a></li>
+    </ul>
+  </div>
+  <div class = "blogContent" id = "blogContent">
+    <div class = "m-5 mb-1 w-75">
+      <h1>Welcome to the C programming</h1>
+      <div class = "">
+        {% if decription is defined %}
+          {{ decription }}
+        {% endif %}
+      </div>
+    </div>
+    <div class = "m-5 mt-3 mb-1 w-75 pb-1">
+      {% if courseBlogging is defined %}
+        <h5 class = "text-primary p-1"><span class = "bi bi-pen"></span> Latest blog on C language</h5>
+        {% for details in courseBlogging %}
+          <div class = "blogInfo mb-3 pb-2">
+            <div class = "blogContent">
+              <div class = "contentDesc">
+                {{details.contentDesc}}
+              </div>
+             <h6 class = "pt-2">Author of this blog : {{details.authorName}}</h6>
+            </div>
 
-  <div>
-    {% if decription is defined %}
-      {{ decription }}
-    {% endif %}
+            <div class = "blogFile">
+              <div>
+                {% if details.fileType is same as("video/mp4") %}
+                <video width="100%" height="200" controls>
+                  <source src="/{{details.contentFile}}" type="video/mp4">
+                </video>
+
+                {% elseif details.fileType is same as("audio/mpeg") %}
+                  <audio controls>
+                    <source src="/{{details.contentFile}}" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                  </audio>
+
+                {% else %}
+                  <img src="/{{details.contentFile}}" alt="" width = "300" height = "200">
+
+                {% endif %}
+              </div>
+              <div>
+                <a href="{{details.contentLink}}">Use fulll link</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  <div class = "subContent m-3 ms-5 w-75" id = "subContent">
+    <div>
+      <div class = "contentData w-75">
+        <h5 class = "p-1"><span class = "bi bi-book"></span> You can find below basic and important notes</h5>
+        <dl>
+          <dt>What is C?</dt>
+          <dd>
+            C is a general-purpose programming language created by Dennis Ritchie at the Bell Laboratories in 1972.
+
+            It is a very popular language, despite being old.
+
+            C is strongly associated with UNIX, as it was developed to write the UNIX operating system.
+          </dd>
+          <dt>Why Learn C?</dt>
+          <dd>
+            It is one of the most popular programming language in the world
+            If you know C, you will have no problem learning other popular programming languages such as Java, Python, C++, C#, etc, as the syntax is similar
+            C is very fast, compared to other programming languages, like Java and Python
+            C is very versatile; it can be used in both applications and technologies
+          </dd>
+          <dt>Difference between C and C++</dt>
+          <dd>
+            C++ was developed as an extension of C, and both languages have almost the same syntax
+            The main difference between C and C++ is that C++ support classes and objects, while C does not
+          </dd>
+          <dt>myfirstprogram.c</dt>
+          <dd>
+            <pre>
+              <stdio.h>
+              int main() {
+                printf("Hello World!");
+                return 0;
+              }
+            </pre>
+          </dd>
+          <dt></dt>
+          <dd>
+            <table class = "table table-hover text-center" border="1">
+              <thead>
+                <tr>
+                  <th>Data Type</th>
+                  <th>Size</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>int</td>
+                  <td>2 or 4 bytes</td>
+                  <td>Stores whole numbers, without decimals</td>
+                </tr>
+                <tr>
+                  <td>float</td>
+                  <td>4 bytes</td>
+                  <td>Stores fractional numbers, containing one or more decimals. Sufficient for storing 6-7 decimal digits</td>
+                </tr>
+                <tr>
+                  <td>double</td>
+                  <td>8 bytes</td>
+                  <td>Stores fractional numbers, containing one or more decimals. Sufficient for storing 15 decimal digits</td>
+                </tr>
+                <tr>
+                  <td>char</td>
+                  <td>1 byte</td>
+                  <td>Stores a single character/letter/number, or ASCII values</td>
+                </tr>
+              </tbody>
+            </table>
+          </dd>
+          <dt>C Operators</dt>
+          <dd>
+            <p>Operators are used to perform operations on variables and values.</p>
+            <p>C divides the operators into the following groups:</p>
+          </dd>
+          <dd>
+            <ul>
+              <li>Arithmetic operators</li>
+              <li>Assignment operators</li>
+              <li>Comparison operators</li>
+              <li>Logical operators</li>
+              <li>Bitwise operators</li>
+            </ul>
+          </dd>
+          <dd>
+            <table class="table table-hover" border = "1">
+              <tbody>
+                <tr>
+                  <th style="width:15%">Operator</th>
+                  <th style="width:18%">Name</th>
+                  <th style="width:40%">Description</th>
+                  <th style="width:17%;">Example</th>
+                </tr>
+                <tr>
+                  <td>+</td>
+                  <td>Addition</td>
+                  <td>Adds together two values</td>
+                  <td>x + y</td>
+                </tr>
+                <tr>
+                  <td>-</td>
+                  <td>Subtraction</td>
+                  <td>Subtracts one value from another</td>
+                  <td>x - y</td>
+                </tr>
+                <tr>
+                  <td>*</td>
+                  <td>Multiplication</td>
+                  <td>Multiplies two values</td>
+                  <td>x * y</td>
+                </tr>
+                <tr>
+                  <td>/</td>
+                  <td>Division</td>
+                  <td>Divides one value by another</td>
+                  <td>x / y</td>
+                </tr>
+                <tr>
+                  <td>%</td>
+                  <td>Modulus</td>
+                  <td>Returns the division remainder</td>
+                  <td>x % y</td>
+                </tr>
+                <tr>
+                  <td>++</td>
+                  <td>Increment</td>
+                  <td>Increases the value of a variable by 1</td>
+                  <td>++x</td>
+                </tr>
+                <tr>
+                  <td>--</td>
+                  <td>Decrement</td>
+                  <td>Decreases the value of a variable by 1</td>
+                  <td>--x</td>
+                </tr>
+              </tbody>
+            </table>
+          </dd>
+        </dl>
+      </div>
+      <div class = "contentLink"></div>
+    </div>
   </div>
 
+  {# <div class = "blogContent" id = "blogContent">
+    <div class = "m-5 w-75">
+      {% if courseBlogging is defined %}
+        {% for details in courseBlogging %}
+          <div class = "blogInfo mb-5">
+            <div class = "blogContent">
+              <div class = "contentDesc">
+                {{details.contentDesc}}
+              </div>
+             <h6 class = "pt-2">Author of this blog : {{details.authorName}}</h6>
+            </div>
+
+            <div class = "blogFile">
+              <div>
+                {% if details.fileType is same as("video/mp4") %}
+                <video width="100%" height="200" controls>
+                  <source src="/{{details.contentFile}}" type="video/mp4">
+                </video>
+
+                {% elseif details.fileType is same as("audio/mpeg") %}
+                  <audio controls>
+                    <source src="/{{details.contentFile}}" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                  </audio>
+
+                {% else %}
+                  <img src="/{{details.contentFile}}" alt="" width = "300" height = "200">
+
+                {% endif %}
+              </div>
+              <div>
+                <a href="{{details.contentLink}}">Use fulll link</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div> #}
+
   <div>
-    {% if courseBlogging is defined %}
-      {% for details in courseBlogging %}
-        <ul>
-          <li>{{details.contentDesc}}</li>
-          <li><a href="{{details.contentLink}}">Use fulll link</a></li>
-          <li>Author of this blog : {{details.authorName}}</li>
-          <li>
-            {% if details.fileType is same as("video/mp4") %}
-              <video width="30%" height="300%" controls>
-                <source src="{{details.contentFile}}" type="video/mp4">
-              </video>
-            {% endif %}
-
-            {% if details.fileType is same as("audio/mpeg") %}
-              <audio controls autoplay muted>
-                <source src="{{details.contentFile}}" type="audio/mpeg">
-                Your browser does not support the audio element.
-              </audio>
-            {% endif %}
-
-            {# <img src="details.contentFile" alt="" width = "30%"> #}
-
-          </li>
-
-        </ul>
-      {% endfor %}
-    {% endif %}
+    <div class = "faqContent" id = "faqContent"></div>
   </div>
 {% endblock %}

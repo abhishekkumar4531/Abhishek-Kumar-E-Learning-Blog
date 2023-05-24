@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\CourseDB;
+use App\Service\UpdateSlot;
 
 class RegisterController extends AbstractController
 {
@@ -15,11 +17,15 @@ class RegisterController extends AbstractController
   public $user;
   public $entityManager;
   public $userRepo;
+  public $courseRepo;
+  public $countSlot;
 
   public function __construct(EntityManagerInterface $entityManager) {
     $this->user = new UserDetails();
+    $this->countSlot = new UpdateSlot($entityManager);
     $this->entityManager = $entityManager;
     $this->userRepo = $entityManager->getRepository(UserDetails::class);
+    $this->courseRepo = $entityManager->getRepository(CourseDB::class);
   }
 
   #[Route('/register', name: 'app_register')]
@@ -42,24 +48,31 @@ class RegisterController extends AbstractController
 
               if(!empty($newUserData['c'])) {
                 $userInterest['c'] = $newUserData['c'];
+                $this->countSlot->updateSlotCount('c');
               }
               if(!empty($newUserData['c++'])) {
                 $userInterest['c++'] = $newUserData['c++'];
+                $this->countSlot->updateSlotCount('c++');
               }
               if(!empty($newUserData['c#'])) {
                 $userInterest['c#'] = $newUserData['c#'];
+                $this->countSlot->updateSlotCount('c#');
               }
               if(!empty($newUserData['python'])) {
                 $userInterest['python'] = $newUserData['python'];
+                $this->countSlot->updateSlotCount('python');
               }
               if(!empty($newUserData['java'])) {
                 $userInterest['java'] = $newUserData['java'];
+                $this->countSlot->updateSlotCount('java');
               }
               if(!empty($newUserData['javascript'])) {
                 $userInterest['javascript'] = $newUserData['javascript'];
+                $this->countSlot->updateSlotCount('javascript');
               }
               if(!empty($newUserData['typescript'])) {
                 $userInterest['typescript'] = $newUserData['typescript'];
+                $this->countSlot->updateSlotCount('typescript');
               }
 
               $this->user->setUserName($newUserData['user_name']);

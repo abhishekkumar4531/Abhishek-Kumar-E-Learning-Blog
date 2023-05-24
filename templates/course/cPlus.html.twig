@@ -1,25 +1,1197 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}C | Language{% endblock %}
+{% block title %}C++ | Programming
+{% endblock %}
 
 {% block body %}
-  <h1>Welcome to the C roadmap</h1>
+	<div class="subLinks">
+		<ul>
+			<li><a href="#blogContent">Blogs</a></li>
+			<li><a href="#subContent">Material</a></li>
+			<li><a href="#faqContent">FAQ</a></li>
+		</ul>
+	</div>
+	<div class = "blogContent" id = "blogContent">
+    <div class = "m-5 mb-1 w-75">
+      <h1>Welcome to the C++ programming</h1>
+      <div class = "">
+        {% if decription is defined %}
+          {{ decription }}
+        {% endif %}
+      </div>
+    </div>
+    <div class = "m-5 mt-3 mb-1 w-75 pb-1">
+      {% if courseBlogging is defined %}
+        <h5 class = "text-primary p-1"><span class = "bi bi-pen"></span> Latest blog on C++ language</h5>
+        {% for details in courseBlogging %}
+          <div class = "blogInfo mb-3 pb-2">
+            <div class = "blogContent">
+              <div class = "contentDesc">
+                {{details.contentDesc}}
+              </div>
+             <h6 class = "pt-2">Author of this blog : {{details.authorName}}</h6>
+            </div>
 
-  <div>
-    {% if decription is defined %}
-      {{ decription }}
-    {% endif %}
-  </div>
+            <div class = "blogFile">
+              <div>
+                {% if details.fileType is same as("video/mp4") %}
+                <video width="100%" height="200" controls>
+                  <source src="/{{details.contentFile}}" type="video/mp4">
+                </video>
 
-  <div>
-    {% if courseBlogging is defined %}
-      {% for details in courseBlogging %}
-        <ul>
-          <li>{{details.contentDesc}}</li>
-          <li><a href="{{details.contentLink}}">Use fulll link</a></li>
-          <li>Author of this blog : {{details.authorName}}</li>
-        </ul>
-      {% endfor %}
-    {% endif %}
+                {% elseif details.fileType is same as("audio/mpeg") %}
+                  <audio controls>
+                    <source src="/{{details.contentFile}}" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                  </audio>
+
+                {% else %}
+                  <img src="/{{details.contentFile}}" alt="" width = "300" height = "200">
+
+                {% endif %}
+              </div>
+              <div>
+                <a href="{{details.contentLink}}">Use fulll link</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
   </div>
+	<div class="subContent m-3 ms-5 w-75" id="subContent">
+		<div>
+			<div class="contentData">
+        <h5 class = "p-1"><span class = "bi bi-book"></span> You can find below basic and important notes</h5>
+				<dl>
+					<dt>C++ Tutorial</dt>
+					<dd>C++ is a middle-level programming language developed by Bjarne Stroustrup starting in 1979 at Bell Labs. C++ runs on a variety of platforms, such as Windows, Mac OS, and the various versions of UNIX. This C++ tutorial adopts a simple and practical approach to describe the concepts of C++ for beginners to advanced software engineers.</dd>
+					<dt>Why to Learn C++</dt>
+					<dd>C++ is a MUST for students and working professionals to become a great Software Engineer. I w¬¬ill list down some of the key advantages of learning C++:
+						<ul>
+							<li>
+								C++ is very close to hardware, so you get a chance to work at a low level which gives you lot of control in terms of memory management, better performance and finally a robust software development.
+							</li>
+							<li>
+								C++ programming gives you a clear understanding about Object Oriented Programming. You will understand low level implementation of polymorphism when you will implement virtual tables and virtual table pointers, or dynamic type identification.
+							</li>
+							<li>
+								C++ is one of the every green programming languages and loved by millions of software developers. If you are a great C++ programmer then you will never sit without work and more importantly you will get highly paid for your work.
+							</li>
+							<li>
+								C++ is the most widely used programming languages in application and system programming. So you can choose your area of interest of software development.
+							</li>
+							<li>
+								C++ really teaches you the difference between compiler, linker and loader, different data types, storage classes, variable types their scopes etc.
+							</li>
+						</ul>
+						There are 1000s of good reasons to learn C++ Programming. But one thing for sure, to learn any programming language, not only C++, you just need to code, and code and finally code until you become expert.
+					</dd>
+					<dt>Hello World using C++</dt>
+					<dd>
+						Just to give you a little excitement about C++ programming, I'm going to give you a small conventional C++ Hello World program, You can try it using Demo link
+												        C++ is a super set of C programming with additional implementation of object-oriented concepts.
+
+						<pre>
+          #include <iostream>
+          using namespace std;
+
+          // main() is where program execution begins.
+          int main() {
+            cout << "Hello World"; // prints Hello World
+            return 0;
+          }
+       </pre>
+					</dd>
+					There are many C++ compilers available which you can use to compile and run above mentioned program:
+					<ul>
+						<li>Apple C++. Xcode</li>
+						<li>Bloodshed Dev-C++</li>
+						<li>Clang C++</li>
+						<li>Cygwin (GNU C++)</li>
+						<li>Mentor Graphics</li>
+						<li>MINGW - "Minimalist GNU for Windows"</li>
+						<li>GNU CC source</li>
+						<li>IBM C++</li>
+						<li>Intel C++</li>
+						<li>Microsoft Visual C++</li>
+						<li>Oracle C++</li>
+						<li>HP C++</li>
+					</ul>
+					It is really impossible to give a complete list of all the available compilers. The C++ world is just too large and too much new is happening.
+					<dt>Applications of C++ Programming</dt>
+					<dd>As mentioned before, C++ is one of the most widely used programming languages. It has it's presence in almost every area of software development. I'm going to list few of them here:
+						<ul>
+							<li>Application Software Development - C++ programming has been used in developing almost all the major Operating Systems like Windows, Mac OSX and Linux. Apart from the operating systems, the core part of many browsers like Mozilla Firefox and Chrome have been written using C++. C++ also has been used in developing the most popular database system called MySQL.</li>
+							<li>Programming Languages Development - C++ has been used extensively in developing new programming languages like C#, Java, JavaScript, Perl, UNIX’s C Shell, PHP and Python, and Verilog etc.</li>
+							<li>Computation Programming - C++ is the best friends of scientists because of fast speed and computational efficiencies..</li>
+							<li>Games Development - C++ is extremely fast which allows programmers to do procedural programming for CPU intensive functions and provides greater control over hardware, because of which it has been widely used in development of gaming engines.</li>
+							<li>Embedded System - C++ is being heavily used in developing Medical and Engineering Applications like software’s for MRI machines, high-end CAD/CAM systems etc.</li>
+						</ul>
+						This list goes on, there are various areas where software developers are happily using C++ to provide great softwares. I highly recommend you to learn C++ and contribute great softwares to the community.
+					</dd>
+					<dt>C++ Variable</dt>
+					<dd>A variable is a name of memory location. It is used to store data. Its value can be changed and it can be reused many times.
+												        It is a way to represent memory location through symbol so that it can be easily identified.
+												        Let's see the syntax to declare a variable:
+												        1.	type variable_list;
+												        The example of declaring variable is given below:
+						<ol>
+							<li>int x;</li>
+							<li>float y;</li>
+							<li>char z;</li>
+						</ol>
+						Here, x, y, z are variables and int, float, char are data types.
+												        We can also provide values while declaring the variables as given below:
+						<ol>
+							<li>int x=5,b=10;  //declaring 2 variable of integer type</li>
+							<li>float f=30.8;</li>
+							<li>char c='A';</li>
+						</ol>
+						________________________________________
+												        Rules for defining variables
+												        A variable can have alphabets, digits and underscore.
+												        A variable name can start with alphabet and underscore only. It can't start with digit.
+												        No white space is allowed within variable name.
+												        A variable name must not be any reserved word or keyword e.g. char, float etc.
+												        Valid variable names:
+						<ol>
+							<li>int a;</li>
+							<li>int _ab;</li>
+							<li>int a_b;</li>
+						</ol>
+						Invalid variable names:
+						<ol>
+							<li>int 4;</li>
+							<li>int x y;</li>
+							<li>int double;</li>
+						</ol>
+					</dd>
+					<dt>C++ Data Types</dt>
+					<dd>
+						<table class="alt">
+							<tbody>
+								<tr>
+									<th>Types</th>
+									<th>Data Types</th>
+								</tr>
+								<tr>
+									<td>Basic Data Type</td>
+									<td>int, char, float, double, etc</td>
+								</tr>
+								<tr>
+									<td>Derived Data Type</td>
+									<td>array, pointer, etc</td>
+								</tr>
+								<tr>
+									<td>Enumeration Data Type</td>
+									<td>enum</td>
+								</tr>
+								<tr>
+									<td>User Defined Data Type</td>
+									<td>structure</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>Basic Data Types</dt>
+					<dd>The basic data types are integer-based and floating-point based. C++ language supports both signed and unsigned literals.
+
+												        The memory size of basic data types may change according to 32 or 64 bit operating system.
+
+												        Let's see the basic data types. It size is given according to 32 bit OS.
+						<table class="alt">
+							<tbody>
+								<tr>
+									<th>Data Types</th>
+									<th>Memory Size</th>
+									<th>Range</th>
+								</tr>
+								<tr>
+									<td>char</td>
+									<td>1 byte</td>
+									<td>-128 to 127</td>
+								</tr>
+								<tr>
+									<td>signed char</td>
+									<td>1 byte</td>
+									<td>-128 to 127</td>
+								</tr>
+								<tr>
+									<td>unsigned char</td>
+									<td>1 byte</td>
+									<td>0 to 127</td>
+								</tr>
+								<tr>
+									<td>short</td>
+									<td>2 byte</td>
+									<td>-32,768 to 32,767</td>
+								</tr>
+								<tr>
+									<td>signed short</td>
+									<td>2 byte</td>
+									<td>-32,768 to 32,767</td>
+								</tr>
+								<tr>
+									<td>unsigned short</td>
+									<td>2 byte</td>
+									<td>0 to 32,767</td>
+								</tr>
+								<tr>
+									<td>int</td>
+									<td>2 byte</td>
+									<td>-32,768 to 32,767</td>
+								</tr>
+								<tr>
+									<td>signed int</td>
+									<td>2 byte</td>
+									<td>-32,768 to 32,767</td>
+								</tr>
+								<tr>
+									<td>unsigned int</td>
+									<td>2 byte</td>
+									<td>0 to 32,767</td>
+								</tr>
+								<tr>
+									<td>short int</td>
+									<td>2 byte</td>
+									<td>-32,768 to 32,767</td>
+								</tr>
+								<tr>
+									<td>signed short int</td>
+									<td>2 byte</td>
+									<td>-32,768 to 32,767</td>
+								</tr>
+								<tr>
+									<td>unsigned short int</td>
+									<td>2 byte</td>
+									<td>0 to 32,767</td>
+								</tr>
+								<tr>
+									<td>long int</td>
+									<td>4 byte</td>
+								</tr>
+								<tr>
+									<td>signed long int</td>
+									<td>4 byte</td>
+								</tr>
+								<tr>
+									<td>unsigned long int</td>
+									<td>4 byte</td>
+								</tr>
+								<tr>
+									<td>float</td>
+									<td>4 byte</td>
+								</tr>
+								<tr>
+									<td>double</td>
+									<td>8 byte</td>
+								</tr>
+								<tr>
+									<td>long double</td>
+									<td>10 byte</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>C++ Operators</dt>
+					<dd>
+						<td>
+							<h1 class="h1">C++ Operators</h1>
+							<p>An operator is simply a symbol that is used to perform operations. There can be many types of operations like arithmetic, logical, bitwise etc.</p>
+							<p>There are following types of operators to perform different types of operations in C language.</p>
+							<ul class="points">
+								<li>Arithmetic Operators</li>
+								<li>Relational Operators</li>
+								<li>Logical Operators</li>
+								<li>Bitwise Operators</li>
+								<li>Assignment Operator</li>
+								<li>Unary operator</li>
+								<li>Ternary or Conditional Operator</li>
+								<li>Misc Operator</li>
+							</ul>
+							<img src="https://static.javatpoint.com/cpp/images/cpp-operaters1.png" alt="Cpp Operators 1">
+							<hr>
+							<h2 class="h2">Precedence of Operators in C++</h2>
+							<p>The precedence of operator species that which operator will be evaluated first and next. The associativity specifies the operators direction to be evaluated, it may be left to right or right to left.</p>
+							<p>Let's understand the precedence by the example given below:</p>
+							<div class="codeblock">
+								<div class="dp-highlighter">
+									<div class="bar">
+										<div class="tools">
+											<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+											<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+											<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+										</div>
+									</div>
+									<ol start="1" class="dp-cpp">
+										<li class="alt">
+											<span>
+												<span class="datatypes">int</span>
+												<span>&nbsp;data=5+10*10;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											</span>
+										</li>
+									</ol>
+								</div>
+								<textarea name="code" class="cpp" style="display: none;">int data=5+10*10;
+								</textarea>
+							</div>
+							<p>The "data" variable will contain 105 because * (multiplicative operator) is evaluated before + (additive operator).</p>
+							<p>The precedence and associativity of C++ operators is given below:</p>
+							<table class="alt">
+								<tbody>
+									<tr>
+										<th>Category</th>
+										<th>Operator</th>
+										<th>Associativity</th>
+									</tr>
+									<tr>
+										<td>Postfix</td>
+										<td>() [] -&gt; . ++ - -</td>
+										<td>Left to right</td>
+									</tr>
+									<tr>
+										<td>Unary</td>
+										<td>+ - ! ~ ++ - - (type)* &amp; sizeof</td>
+										<td>Right to left</td>
+									</tr>
+									<tr>
+										<td>Multiplicative</td>
+										<td>* / %</td>
+										<td>Left to right</td>
+									</tr>
+									<tr>
+										<td>Additive</td>
+										<td>+ -</td>
+										<td>Right to left</td>
+									</tr>
+									<tr>
+										<td>Shift</td>
+										<td>&lt;&lt; &gt;&gt;</td>
+										<td>Left to right</td>
+									</tr>
+									<tr>
+										<td>Relational</td>
+										<td>&lt; &lt;= &gt; &gt;=</td>
+										<td>Left to right</td>
+									</tr>
+									<tr>
+										<td>Equality</td>
+										<td>== !=/td&gt;
+										</td>
+										<td>Right to left</td>
+									</tr>
+									<tr>
+										<td>Bitwise AND</td>
+										<td>&amp;</td>
+										<td>Left to right</td>
+									</tr>
+									<tr>
+										<td>Bitwise XOR</td>
+										<td>^</td>
+										<td>Left to right</td>
+									</tr>
+									<tr>
+										<td>Bitwise OR</td>
+										<td>|</td>
+										<td>Right to left</td>
+									</tr>
+									<tr>
+										<td>Logical AND</td>
+										<td>&amp;&amp;</td>
+										<td>Left to right</td>
+									</tr>
+									<tr>
+										<td>Logical OR</td>
+										<td>||</td>
+										<td>Left to right</td>
+									</tr>
+									<tr>
+										<td>Conditional</td>
+										<td>?:</td>
+										<td>Right to left</td>
+									</tr>
+									<tr>
+										<td>Assignment</td>
+										<td>= += -= *= /= %=&gt;&gt;= &lt;&lt;= &amp;= ^= |=</td>
+										<td>Right to left</td>
+									</tr>
+									<tr>
+										<td>Comma</td>
+										<td>,</td>
+										<td>Left to right</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</dd>
+				</dl>
+				<h1 class="h1">C++ if-else</h1>
+				<p>In C++ programming, if statement is used to test the condition. There are various types of if statements in C++.
+				</p>
+				<ul class="points">
+					<li>if statement</li>
+					<li>if-else statement</li>
+					<li>nested if statement</li>
+					<li>if-else-if ladder</li>
+				</ul>
+				<hr>
+				<h2 class="h2">C++ IF Statement</h2>
+				<p>The C++ if statement tests the condition. It is executed if condition is true.</p>
+				<div class="codeblock">
+					<div class="dp-highlighter">
+						<div class="bar">
+							<div class="tools">
+								<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+							</div>
+						</div>
+						<ol start="1" class="dp-cpp">
+							<li class="alt">
+								<span>
+									<span class="keyword">if</span>
+									<span>(condition){&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="comment">//code&nbsp;to&nbsp;be&nbsp;executed&nbsp;&nbsp;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>}&nbsp;&nbsp;</span>
+							</li>
+						</ol>
+					</div>
+					<textarea name="code" class="Cpp" style="display: none;">if(condition){
+												//code to be executed
+												}
+					</textarea>
+				</div>
+				<img src="https://static.javatpoint.com/cpp/images/cpp-if-else1.png" alt="Cpp If else 1">
+				<hr>
+				<h2 class="h2">C++ If Example</h2>
+				<div class="codeblock">
+					<div class="dp-highlighter">
+						<div class="bar">
+							<div class="tools">
+								<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+							</div>
+						</div>
+						<ol start="1" class="dp-cpp">
+							<li class="alt">
+								<span>
+									<span class="preprocessor">#include&nbsp;&lt;iostream&gt;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="keyword">using</span>
+									<span>&nbsp;</span>
+									<span class="keyword">namespace</span>
+									<span>&nbsp;std;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="datatypes">int</span>
+									<span>&nbsp;main&nbsp;()&nbsp;{&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;<span class="datatypes">int</span>
+									<span>&nbsp;num&nbsp;=&nbsp;10;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>
+									<span>&nbsp;(num&nbsp;%&nbsp;2&nbsp;==&nbsp;0)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"It&nbsp;is&nbsp;even&nbsp;number"</span>
+									<span>;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>
+									<span>&nbsp;0;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>}&nbsp;&nbsp;</span>
+							</li>
+						</ol>
+					</div>
+					<textarea name="code" class="Cpp" style="display: none;">#include &lt;iostream&gt;
+												using namespace std;
+
+												int main () {
+												   int num = 10;
+												            if (num % 2 == 0)
+												            {
+												                cout&lt;&lt;"It is even number";
+												            }
+												   return 0;
+												}
+					</textarea>
+				</div>
+				<p>Output:/p&gt;
+				</p>
+				<div class="codeblock3">
+					<pre>It is even number
+</pre>
+				</div>
+				<hr>
+				<h2 class="h2">C++ IF-else Statement</h2>
+				<p>The C++ if-else statement also tests the condition. It executes if block if condition is true otherwise else
+										        block is executed.</p>
+				<div class="codeblock">
+					<div class="dp-highlighter">
+						<div class="bar">
+							<div class="tools">
+								<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+							</div>
+						</div>
+						<ol start="1" class="dp-cpp">
+							<li class="alt">
+								<span>
+									<span class="keyword">if</span>
+									<span>(condition){&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="comment">//code&nbsp;if&nbsp;condition&nbsp;is&nbsp;true&nbsp;&nbsp;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>}<span class="keyword">else</span>
+									<span>{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="comment">//code&nbsp;if&nbsp;condition&nbsp;is&nbsp;false&nbsp;&nbsp;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+						</ol>
+					</div>
+					<textarea name="code" class="Cpp" style="display: none;">if(condition){
+												//code if condition is true
+												}else{
+												//code if condition is false
+												}
+					</textarea>
+				</div>
+				<img src="https://static.javatpoint.com/cpp/images/cpp-if-else2.png" alt="Cpp If else 2">
+				<hr>
+				<h2 class="h2">C++ If-else Example</h2>
+				<div class="codeblock">
+					<div class="dp-highlighter">
+						<div class="bar">
+							<div class="tools">
+								<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+							</div>
+						</div>
+						<ol start="1" class="dp-cpp">
+							<li class="alt">
+								<span>
+									<span class="preprocessor">#include&nbsp;&lt;iostream&gt;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="keyword">using</span>
+									<span>&nbsp;</span>
+									<span class="keyword">namespace</span>
+									<span>&nbsp;std;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>
+									<span class="datatypes">int</span>
+									<span>&nbsp;main&nbsp;()&nbsp;{&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;<span class="datatypes">int</span>
+									<span>&nbsp;num&nbsp;=&nbsp;11;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>
+									<span>&nbsp;(num&nbsp;%&nbsp;2&nbsp;==&nbsp;0)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"It&nbsp;is&nbsp;even&nbsp;number"</span>
+									<span>;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"It&nbsp;is&nbsp;odd&nbsp;number"</span>
+									<span>;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>
+									<span>&nbsp;0;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>}&nbsp;&nbsp;</span>
+							</li>
+						</ol>
+					</div>
+					<textarea name="code" class="Cpp" style="display: none;">#include &lt;iostream&gt;
+												using namespace std;
+												int main () {
+												   int num = 11;
+												            if (num % 2 == 0)
+												            {
+												                cout&lt;&lt;"It is even number";
+												            }
+												            else
+												            {
+												                cout&lt;&lt;"It is odd number";
+												            }
+												   return 0;
+												}
+					</textarea>
+				</div>
+				<p>
+					<strong>Output:</strong>
+				</p>
+				<div class="codeblock3">
+					<pre>It is odd number
+</pre>
+				</div>
+				<hr>
+				<h2 class="h2">C++ If-else Example: with input from user</h2>
+				<div class="codeblock">
+					<div class="dp-highlighter">
+						<div class="bar">
+							<div class="tools">
+								<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+							</div>
+						</div>
+						<ol start="1" class="dp-cpp">
+							<li class="alt">
+								<span>
+									<span class="preprocessor">#include&nbsp;&lt;iostream&gt;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="keyword">using</span>
+									<span>&nbsp;</span>
+									<span class="keyword">namespace</span>
+									<span>&nbsp;std;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>
+									<span class="datatypes">int</span>
+									<span>&nbsp;main&nbsp;()&nbsp;{&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes">int</span>
+									<span>&nbsp;num;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"Enter&nbsp;a&nbsp;Number:&nbsp;"</span>
+									<span>;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;cin&gt;&gt;num;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>
+									<span>&nbsp;(num&nbsp;%&nbsp;2&nbsp;==&nbsp;0)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"It&nbsp;is&nbsp;even&nbsp;number"</span>
+									<span>&lt;&lt;endl;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"It&nbsp;is&nbsp;odd&nbsp;number"</span>
+									<span>&lt;&lt;endl;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>
+									<span>&nbsp;0;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>}&nbsp;&nbsp;</span>
+							</li>
+						</ol>
+					</div>
+					<textarea name="code" class="Cpp" style="display: none;">#include &lt;iostream&gt;
+												using namespace std;
+												int main () {
+												    int num;
+												    cout&lt;&lt;"Enter a Number: ";
+												    cin&gt;&gt;num;
+												            if (num % 2 == 0)
+												            {
+												                cout&lt;&lt;"It is even number"&lt;&lt;endl;
+												            }
+												            else
+												            {
+												                cout&lt;&lt;"It is odd number"&lt;&lt;endl;
+												            }
+												   return 0;
+												}
+					</textarea>
+				</div>
+				<p>
+					<strong>Output:</strong>
+				</p>
+				<div class="codeblock3">
+					<pre>Enter a number:11
+It is odd number
+</pre>
+				</div>
+				<p>
+					<strong>Output:</strong>
+				</p>
+				<div class="codeblock3">
+					<pre>Enter a number:12
+It is even number
+</pre>
+				</div>
+				<hr>
+				<h2 class="h2">C++ IF-else-if ladder Statement</h2>
+				<p>The C++ if-else-if ladder statement executes one condition from multiple statements.</p>
+				<div class="codeblock">
+					<div class="dp-highlighter">
+						<div class="bar">
+							<div class="tools">
+								<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+							</div>
+						</div>
+						<ol start="1" class="dp-cpp">
+							<li class="alt">
+								<span>
+									<span class="keyword">if</span>
+									<span>(condition1){&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="comment">//code&nbsp;to&nbsp;be&nbsp;executed&nbsp;if&nbsp;condition1&nbsp;is&nbsp;true&nbsp;&nbsp;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>}<span class="keyword">else</span>
+									<span>&nbsp;</span>
+									<span class="keyword">if</span>
+									<span>(condition2){&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="comment">//code&nbsp;to&nbsp;be&nbsp;executed&nbsp;if&nbsp;condition2&nbsp;is&nbsp;true&nbsp;&nbsp;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="keyword">else</span>
+									<span>&nbsp;</span>
+									<span class="keyword">if</span>
+									<span>(condition3){&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>
+									<span class="comment">//code&nbsp;to&nbsp;be&nbsp;executed&nbsp;if&nbsp;condition3&nbsp;is&nbsp;true&nbsp;&nbsp;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>...&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="keyword">else</span>
+									<span>{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>
+									<span class="comment">//code&nbsp;to&nbsp;be&nbsp;executed&nbsp;if&nbsp;all&nbsp;the&nbsp;conditions&nbsp;are&nbsp;false&nbsp;&nbsp;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+						</ol>
+					</div>
+					<textarea name="code" class="Cpp" style="display: none;">if(condition1){
+												//code to be executed if condition1 is true
+												}else if(condition2){
+												//code to be executed if condition2 is true
+												}
+												else if(condition3){
+												//code to be executed if condition3 is true
+												}
+												...
+												else{
+												//code to be executed if all the conditions are false
+												}
+					</textarea>
+				</div>
+				<img src="https://static.javatpoint.com/cpp/images/cpp-if-else3.png" alt="Cpp If else 3">
+				<hr>
+				<h2 class="h2">C++ If else-if Example</h2>
+				<div class="codeblock">
+					<div class="dp-highlighter">
+						<div class="bar">
+							<div class="tools">
+								<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+								<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+							</div>
+						</div>
+						<ol start="1" class="dp-cpp">
+							<li class="alt">
+								<span>
+									<span class="preprocessor">#include&nbsp;&lt;iostream&gt;</span>
+									<span>&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>
+									<span class="keyword">using</span>
+									<span>&nbsp;</span>
+									<span class="keyword">namespace</span>
+									<span>&nbsp;std;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>
+									<span class="datatypes">int</span>
+									<span>&nbsp;main&nbsp;()&nbsp;{&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes">int</span>
+									<span>&nbsp;num;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"Enter&nbsp;a&nbsp;number&nbsp;to&nbsp;check&nbsp;grade:"</span>
+									<span>;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin&gt;&gt;num;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>
+									<span>&nbsp;(num&nbsp;&lt;0&nbsp;||&nbsp;num&nbsp;&gt;100)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"wrong&nbsp;number"</span>
+									<span>;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>
+									<span>&nbsp;</span>
+									<span class="keyword">if</span>
+									<span>(num&nbsp;&gt;=&nbsp;0&nbsp;&amp;&amp;&nbsp;num&nbsp;&lt;&nbsp;50){&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"Fail"</span>
+									<span>;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>
+									<span>&nbsp;</span>
+									<span class="keyword">if</span>
+									<span>&nbsp;(num&nbsp;&gt;=&nbsp;50&nbsp;&amp;&amp;&nbsp;num&nbsp;&lt;&nbsp;60)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"D&nbsp;Grade"</span>
+									<span>;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>
+									<span>&nbsp;</span>
+									<span class="keyword">if</span>
+									<span>&nbsp;(num&nbsp;&gt;=&nbsp;60&nbsp;&amp;&amp;&nbsp;num&nbsp;&lt;&nbsp;70)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"C&nbsp;Grade"</span>
+									<span>;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>
+									<span>&nbsp;</span>
+									<span class="keyword">if</span>
+									<span>&nbsp;(num&nbsp;&gt;=&nbsp;70&nbsp;&amp;&amp;&nbsp;num&nbsp;&lt;&nbsp;80)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"B&nbsp;Grade"</span>
+									<span>;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>
+									<span>&nbsp;</span>
+									<span class="keyword">if</span>
+									<span>&nbsp;(num&nbsp;&gt;=&nbsp;80&nbsp;&amp;&amp;&nbsp;num&nbsp;&lt;&nbsp;90)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"A&nbsp;Grade"</span>
+									<span>;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>
+									<span>&nbsp;</span>
+									<span class="keyword">if</span>
+									<span>&nbsp;(num&nbsp;&gt;=&nbsp;90&nbsp;&amp;&amp;&nbsp;num&nbsp;&lt;=&nbsp;100)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;<span class="string">"A+&nbsp;Grade"</span>
+									<span>;&nbsp;&nbsp;</span>
+								</span>
+							</li>
+							<li class="alt">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+							<li class="">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</li>
+						</ol>
+					</div>
+					<textarea name="code" class="Cpp" style="display: none;">#include &lt;iostream&gt;
+												using namespace std;
+												int main () {
+												       int num;
+												       cout&lt;&lt;"Enter a number to check grade:";
+												       cin&gt;&gt;num;
+												            if (num &lt;0 || num &gt;100)
+												            {
+												                cout&lt;&lt;"wrong number";
+												            }
+												            else if(num &gt;= 0 &amp;&amp; num &lt; 50){
+												                cout&lt;&lt;"Fail";
+												            }
+												            else if (num &gt;= 50 &amp;&amp; num &lt; 60)
+												            {
+												                cout&lt;&lt;"D Grade";
+												            }
+												            else if (num &gt;= 60 &amp;&amp; num &lt; 70)
+												            {
+												                cout&lt;&lt;"C Grade";
+												            }
+												            else if (num &gt;= 70 &amp;&amp; num &lt; 80)
+												            {
+												                cout&lt;&lt;"B Grade";
+												            }
+												            else if (num &gt;= 80 &amp;&amp; num &lt; 90)
+												            {
+												                cout&lt;&lt;"A Grade";
+												            }
+												            else if (num &gt;= 90 &amp;&amp; num &lt;= 100)
+												            {
+												                cout&lt;&lt;"A+ Grade";
+												            }
+												    }
+
+					</textarea>
+				</div>
+				<p>
+					<strong>Output:</strong>
+				</p>
+				<div class="codeblock3">
+					<pre>Enter a number to check grade:66
+C Grade
+</pre>
+				</div>
+				<p>
+					<strong>Output:</strong>
+				</p>
+				<div class="codeblock3">
+					<pre>Enter a number to check grade:-2
+wrong number
+</pre>
+				</div>
+				<div class="contentLink"></div>
+			</div>
+		</div>
+	</div>
+	<div class="blogContent" id="blogContent">
+		<div class="m-5">
+			{% if courseBlogging is defined %}
+				{% for details in courseBlogging %}
+					<div class="blogInfo mb-5">
+						<div class="blogContent">
+							<div class="contentDesc">
+								{{details.contentDesc}}
+							</div>
+							<h6 class="pt-2">Author of this blog :
+								{{details.authorName}}</h6>
+						</div>
+
+						<div class="blogFile">
+							<div>
+								{% if details.fileType is same as("video/mp4") %}
+									<video width="100%%" height="200" controls>
+										<source src="/{{details.contentFile}}" type="video/mp4">
+									</video>
+
+								{% elseif details.fileType is same as("audio/mpeg") %}
+									<audio controls>
+										<source src="/{{details.contentFile}}" type="audio/mpeg">
+										Your browser does not support the audio element.
+									</audio>
+
+								{% else %}
+									<img src="{{details.contentFile}}" alt="" width="100%" height="200">
+
+								{% endif %}
+							</div>
+							<div>
+								<a href="{{details.contentLink}}">Use fulll link</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+
+	<div>
+		<div class="faqContent" id="faqContent"></div>
+	</div>
 {% endblock %}

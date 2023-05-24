@@ -1,43 +1,1955 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Courses{% endblock %}
+{% block title %}Java | Programming
+{% endblock %}
 
 {% block body %}
-  <h1>Welcome to the Java roadmap</h1>
+	<div class="subLinks">
+		<ul>
+			<li><a href="#subContent">Material</a></li>
+			<li><a href="#blogContent">Blogs</a></li>
+			<li><a href="#faqContent">FAQ</a></li>
+		</ul>
+	</div>
+	<div class = "blogContent" id = "blogContent">
+    <div class = "m-5 mb-1 w-75">
+      <h1>Welcome to the Java programming</h1>
+      <div class = "">
+        {% if decription is defined %}
+          {{ decription }}
+        {% endif %}
+      </div>
+    </div>
+    <div class = "m-5 mt-3 mb-1 w-75 pb-1">
+      {% if courseBlogging is defined %}
+        <h5 class = "text-primary p-1"><span class = "bi bi-pen"></span> Latest blog on Java language</h5>
+        {% for details in courseBlogging %}
+          <div class = "blogInfo mb-3 pb-2">
+            <div class = "blogContent">
+              <div class = "contentDesc">
+                {{details.contentDesc}}
+              </div>
+             <h6 class = "pt-2">Author of this blog : {{details.authorName}}</h6>
+            </div>
 
-  <div>
-    {% if decription is defined %}
-      {{ decription }}
-    {% endif %}
+            <div class = "blogFile">
+              <div>
+                {% if details.fileType is same as("video/mp4") %}
+                <video width="100%" height="200" controls>
+                  <source src="/{{details.contentFile}}" type="video/mp4">
+                </video>
+
+                {% elseif details.fileType is same as("audio/mpeg") %}
+                  <audio controls>
+                    <source src="/{{details.contentFile}}" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                  </audio>
+
+                {% else %}
+                  <img src="/{{details.contentFile}}" alt="" width = "300" height = "200">
+
+                {% endif %}
+              </div>
+              <div>
+                <a href="{{details.contentLink}}">Use fulll link</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
   </div>
+	<div class="subContent m-3 ms-5 w-75" id="subContent">
+		<div>
+			<div class="contentData">
+				<h5 class = "p-1"><span class = "bi bi-book"></span> You can find below basic and important notes</h5>
+				<dl>
+					<dt>What is Java?</dt>
+					<dd>Java is a programming language and a platform. Java is a high level, robust, object-oriented and secure programming language.
 
-  <div>
-    {% if courseBlogging is defined %}
-      {% for details in courseBlogging %}
-        <ul>
-          <li>{{details.contentDesc}}</li>
-          <li><a href="{{details.contentLink}}">Use fulll link</a></li>
-          <li>Author of this blog : {{details.authorName}}</li>
-          <li>
-            {% if details.fileType is same as("video/mp4") %}
-              <video width="30%" height="300%" controls>
-                <source src="/{{details.contentFile}}" type="video/mp4">
-              </video>
-            {% endif %}
+						        Java was developed by Sun Microsystems (which is now the subsidiary of Oracle) in the year 1995. James Gosling is known as the father of Java. Before Java,
+						        its name was Oak. Since Oak was already a registered company, so James Gosling and his team changed the name from Oak to Java.
+					</dd>
+					<dt>Features of Java</dt>
+					<dd>The primary objective of Java programming language creation was to make it portable, simple and secure programming language. Apart from this, there are also some excellent features which play an important role in the popularity of this language. The features of Java are also known as Java buzzwords.
 
-            {% if details.fileType is same as("audio/mpeg") %}
-              <audio controls>
-                <source src="/{{details.contentFile}}" type="audio/mpeg">
-                Your browser does not support the audio element.
-              </audio>
-            {% endif %}
+						        A list of the most important features of the Java language is given below.
+						<ul>
+							<li>Simple</li>
+							<li>Object-oriented</li>
+							<li>Platform Independent</li>
+							<li>Secured</li>
+							<li>Robust</li>
+							<li>Architecture-neutral</li>
+							<li>Portable</li>
+							<li>High-performance</li>
+							<li>Distributed</li>
+							<li>Multi-threaded</li>
+							<li>Dynamic</li>
+						</ul>
 
-            {# <img src="details.contentFile" alt="" width = "30%"> #}
 
-          </li>
+					</dd>
+					<dt>C++ vs Java</dt>
+					<dd>
+						<div style="overflow-x:auto">
+							<table class="alt table table-hover" border="1">
+								<tbody>
+									<tr>
+										<th>Comparison Index</th>
+										<th>C++</th>
+										<th>Java</th>
+									</tr>
+									<tr>
+										<td>
+											<strong>Platform-independent</strong>
+										</td>
+										<td>C++ is platform-dependent.</td>
+										<td>Java is platform-independent.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Mainly used for</strong>
+										</td>
+										<td>C++ is mainly used for system programming.</td>
+										<td>Java is mainly used for application programming. It is widely used in Windows-based, web-based, enterprise, and mobile applications.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Design Goal</strong>
+										</td>
+										<td>C++ was designed for systems and applications programming. It was an extension of the
+											<a href="c-programming-language-tutorial">C programming language</a>.</td>
+										<td>Java was designed and created as an interpreter for printing systems but later extended as a support network computing. It was designed to be easy to use and accessible to a broader audience.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Goto</strong>
+										</td>
+										<td>C++ supports the
+											<a href="cpp-goto-statement">goto</a>
+											statement.</td>
+										<td>Java doesn't support the goto statement.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Multiple inheritance</strong>
+										</td>
+										<td>C++ supports multiple inheritance.</td>
+										<td>Java doesn't support multiple inheritance through class. It can be achieved by using
+											<a href="interface-in-java">interfaces in java</a>.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Operator Overloading</strong>
+										</td>
+										<td>C++ supports
+											<a href="cpp-overloading">operator overloading</a>.</td>
+										<td>Java doesn't support operator overloading.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Pointers</strong>
+										</td>
+										<td>C++ supports
+											<a href="cpp-pointers">pointers</a>. You can write a pointer program in C++.</td>
+										<td>Java supports pointer internally. However, you can't write the pointer program in java. It means java has restricted pointer support in java.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Compiler and Interpreter</strong>
+										</td>
+										<td>C++ uses compiler only. C++ is compiled and run using the compiler which converts source code into machine code so, C++ is platform dependent.</td>
+										<td>Java uses both compiler and interpreter. Java source code is converted into bytecode at compilation time. The interpreter executes this bytecode at runtime and produces output. Java is interpreted that is why it is platform-independent.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Call by Value and Call by reference</strong>
+										</td>
+										<td>C++ supports both call by value and call by reference.</td>
+										<td>Java supports call by value only. There is no call by reference in java.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Structure and Union</strong>
+										</td>
+										<td>C++ supports structures and unions.</td>
+										<td>Java doesn't support structures and unions.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Thread Support</strong>
+										</td>
+										<td>C++ doesn't have built-in support for threads. It relies on third-party libraries for thread support.</td>
+										<td>Java has built-in
+											<a href="multithreading-in-java">thread</a>
+											support.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Documentation comment</strong>
+										</td>
+										<td>C++ doesn't support documentation comments.</td>
+										<td>Java supports documentation comment (/** ... */) to create documentation for java source code.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Virtual Keyword</strong>
+										</td>
+										<td>C++ supports virtual keyword so that we can decide whether or not to override a function.</td>
+										<td>Java has no virtual keyword. We can override all non-static methods by default. In other words, non-static methods are virtual by default.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>unsigned right shift &gt;&gt;&gt;</strong>
+										</td>
+										<td>C++ doesn't support &gt;&gt;&gt; operator.</td>
+										<td>Java supports unsigned right shift &gt;&gt;&gt; operator that fills zero at the top for the negative numbers. For positive numbers, it works same like &gt;&gt; operator.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Inheritance Tree</strong>
+										</td>
+										<td>C++ always creates a new inheritance tree.</td>
+										<td>Java always uses a single inheritance tree because all classes are the child of the Object class in Java. The Object class is the root of the
+											<a href="inheritance-in-java">inheritance</a>
+											tree in java.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Hardware</strong>
+										</td>
+										<td>C++ is nearer to hardware.</td>
+										<td>Java is not so interactive with hardware.</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Object-oriented</strong>
+										</td>
+										<td>C++ is an object-oriented language. However, in the C language, a single root hierarchy is not possible.</td>
+										<td>Java is also an
+											<a href="java-oops-concepts">object-oriented</a>
+											language. However, everything (except fundamental types) is an object in Java. It is a single root hierarchy as everything gets derived from java.lang.Object.
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</dd>
 
-        </ul>
-      {% endfor %}
-    {% endif %}
-  </div>
+					<dt>Java Variables</dt>
+					<dd>A variable is a container which holds the value while the Java program is executed. A variable is assigned with a data type.
+
+						        Variable is a name of memory location. There are three types of variables in java: local, instance and static.
+
+						        There are two types of data types in Java: primitive and non-primitive.
+					</dd>
+
+					<td>
+						<h1 class="h1">Operators in Java</h1>
+						<p>
+							<b>Operator</b>
+							in
+							<a href="java-tutorial">Java</a>
+							is a symbol that is used to perform operations. For example: +, -, *, / etc.</p>
+						<p></p>
+						<p>
+							There are many types of operators in Java which are given below:</p>
+						<ul class="points">
+							<li>Unary Operator,
+							</li>
+							<li>Arithmetic Operator,
+							</li>
+							<li>Shift Operator,
+							</li>
+							<li>Relational Operator,
+							</li>
+							<li>Bitwise Operator,
+							</li>
+							<li>Logical Operator,
+							</li>
+							<li>Ternary Operator and
+							</li>
+							<li>Assignment Operator.</li>
+						</ul>
+						<h2 class="h2">Java Operator Precedence</h2>
+						<table class="alt">
+							<tbody>
+								<tr>
+									<th>Operator Type</th>
+									<th>Category</th>
+									<th>Precedence</th>
+								</tr>
+								<tr>
+									<td rowspan="2">Unary</td>
+									<td>postfix</td>
+									<td>
+										<code>
+											<em>expr</em>++
+											<em>expr</em>--</code>
+									</td>
+								</tr>
+								<tr>
+									<td>prefix</td>
+									<td headers="precedence">
+										<code>++<em>expr</em>
+											--<em>expr</em>
+											+<em>expr</em>
+											-<em>expr</em>
+											~ !</code>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="2">Arithmetic</td>
+									<td>multiplicative</td>
+									<td headers="precedence">
+										<code>* / %</code>
+									</td>
+								</tr>
+								<tr>
+									<td>additive</td>
+									<td headers="precedence">
+										<code>+ -</code>
+									</td>
+								</tr>
+								<tr>
+									<td>Shift</td>
+									<td>shift</td>
+									<td headers="precedence">
+										<code>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</code>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="2">Relational</td>
+									<td>comparison</td>
+									<td headers="precedence">
+										<code>&lt; &gt; &lt;= &gt;= instanceof</code>
+									</td>
+								</tr>
+								<tr>
+									<td>equality</td>
+									<td headers="precedence">
+										<code>== !=</code>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="3">Bitwise</td>
+									<td>bitwise AND</td>
+									<td headers="precedence">
+										<code>&amp;</code>
+									</td>
+								</tr>
+								<tr>
+									<td>bitwise exclusive OR</td>
+									<td headers="precedence">
+										<code>^</code>
+									</td>
+								</tr>
+								<tr>
+									<td>bitwise inclusive OR</td>
+									<td headers="precedence">
+										<code>|</code>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="2">Logical</td>
+									<td>logical AND</td>
+									<td headers="precedence">
+										<code>&amp;&amp;</code>
+									</td>
+								</tr>
+								<tr>
+									<td>logical OR</td>
+									<td headers="precedence">
+										<code>||</code>
+									</td>
+								</tr>
+								<tr>
+									<td>Ternary</td>
+									<td>ternary</td>
+									<td headers="precedence">
+										<code>? :</code>
+									</td>
+								</tr>
+								<tr>
+									<td>Assignment</td>
+									<td>assignment</td>
+									<td headers="precedence">
+										<code>= += -= *= /= %= &amp;= ^= |= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;=</code>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<h3 class="h3">Java Unary Operator</h3>
+						<p>The Java unary operators require only one operand. Unary operators are used to perform various operations i.e.:</p>
+						<ul class="points">
+							<li>incrementing/decrementing a value by one</li>
+							<li>negating an expression</li>
+							<li>inverting the value of a boolean</li>
+						</ul>
+						<h3 class="h3">Java Unary Operator Example: ++ and --</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;x=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(x++);<span class="comment">//10&nbsp;(11)</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(++x);<span class="comment">//12</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(x--);<span class="comment">//12&nbsp;(11)</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(--x);<span class="comment">//10</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        int x=10;
+								        System.out.println(x++);//10 (11)
+								        System.out.println(++x);//12
+								        System.out.println(x--);//12 (11)
+								        System.out.println(--x);//10
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>10
+12
+12
+10
+</pre>
+						</div>
+						<h3 class="h3">Java Unary Operator Example 2: ++ and --</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;b=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a++&nbsp;+&nbsp;++a);<span class="comment">//10+12=22</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(b++&nbsp;+&nbsp;b++);<span class="comment">//10+11=21</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        int a=10;
+								        int b=10;
+								        System.out.println(a++ + ++a);//10+12=22
+								        System.out.println(b++ + b++);//10+11=21
+
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>22
+21
+        </pre>
+						</div>
+						<h3 class="h3">Java Unary Operator Example: ~ and !</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;b=-</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">boolean</span>
+											<span>&nbsp;c=</span>
+											<span class="keyword">true</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">boolean</span>
+											<span>&nbsp;d=</span>
+											<span class="keyword">false</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(~a);<span class="comment">//-11&nbsp;(minus&nbsp;of&nbsp;total&nbsp;positive&nbsp;value&nbsp;which&nbsp;starts&nbsp;from&nbsp;0)</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(~b);<span class="comment">//9&nbsp;(positive&nbsp;of&nbsp;total&nbsp;minus,&nbsp;positive&nbsp;starts&nbsp;from&nbsp;0)</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(!c);<span class="comment">//false&nbsp;(opposite&nbsp;of&nbsp;boolean&nbsp;value)</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(!d);<span class="comment">//true</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        int a=10;
+								        int b=-10;
+								        boolean c=true;
+								        boolean d=false;
+								        System.out.println(~a);//-11 (minus of total positive value which starts from 0)
+								        System.out.println(~b);//9 (positive of total minus, positive starts from 0)
+								        System.out.println(!c);//false (opposite of boolean value)
+								        System.out.println(!d);//true
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>-11
+9
+false
+true
+        </pre>
+						</div>
+						<h3 class="h3">Java Arithmetic Operators</h3>
+						<p>Java arithmetic operators are used to perform addition, subtraction, multiplication, and division. They act as basic mathematical operations.</p>
+						<h3 class="h3">Java Arithmetic Operator Example</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;b=</span>
+											<span class="number">5</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a+b);<span class="comment">//15</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(a-b);<span class="comment">//5</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a*b);<span class="comment">//50</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(a/b);<span class="comment">//2</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a%b);<span class="comment">//0</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        int a=10;
+								        int b=5;
+								        System.out.println(a+b);//15
+								        System.out.println(a-b);//5
+								        System.out.println(a*b);//50
+								        System.out.println(a/b);//2
+								        System.out.println(a%b);//0
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>15
+5
+50
+2
+0
+        </pre>
+						</div>
+						<h3 class="h3">Java Arithmetic Operator Example: Expression</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(<span class="number">10</span>
+											<span>*</span>
+											<span class="number">10</span>
+											<span>/</span>
+											<span class="number">5</span>
+											<span>+</span>
+											<span class="number">3</span>
+											<span>-</span>
+											<span class="number">1</span>
+											<span>*</span>
+											<span class="number">4</span>
+											<span>/</span>
+											<span class="number">2</span>
+											<span>);&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        System.out.println(10*10/5+3-1*4/2);
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>21
+        </pre>
+						</div>
+						<h3 class="h3">Java Left Shift Operator</h3>
+						<p>The Java left shift operator &lt;&lt; is used to shift all of the bits in a value to the left side of a specified number of times.</p>
+						<h3 class="h3">Java Left Shift Operator Example</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(<span class="number">10</span>
+											<span>&lt;&lt;</span>
+											<span class="number">2</span>
+											<span>);</span>
+											<span class="comment">//10*2^2=10*4=40</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(<span class="number">10</span>
+											<span>&lt;&lt;</span>
+											<span class="number">3</span>
+											<span>);</span>
+											<span class="comment">//10*2^3=10*8=80</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(<span class="number">20</span>
+											<span>&lt;&lt;</span>
+											<span class="number">2</span>
+											<span>);</span>
+											<span class="comment">//20*2^2=20*4=80</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(<span class="number">15</span>
+											<span>&lt;&lt;</span>
+											<span class="number">4</span>
+											<span>);</span>
+											<span class="comment">//15*2^4=15*16=240</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        System.out.println(10&lt;&lt;2);//10*2^2=10*4=40
+								        System.out.println(10&lt;&lt;3);//10*2^3=10*8=80
+								        System.out.println(20&lt;&lt;2);//20*2^2=20*4=80
+								        System.out.println(15&lt;&lt;4);//15*2^4=15*16=240
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>40
+80
+80
+240
+        </pre>
+						</div>
+						<h3 class="h3">Java Right Shift Operator</h3>
+						<p>The Java right shift operator &gt;&gt; is used to move the value of the left operand to right by the number of bits specified by the right operand.</p>
+						<h3 class="h3">Java Right Shift Operator Example</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(<span class="number">10</span>
+											<span>&gt;&gt;</span>
+											<span class="number">2</span>
+											<span>);</span>
+											<span class="comment">//10/2^2=10/4=2</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(<span class="number">20</span>
+											<span>&gt;&gt;</span>
+											<span class="number">2</span>
+											<span>);</span>
+											<span class="comment">//20/2^2=20/4=5</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(<span class="number">20</span>
+											<span>&gt;&gt;</span>
+											<span class="number">3</span>
+											<span>);</span>
+											<span class="comment">//20/2^3=20/8=2</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public OperatorExample{
+								        public static void main(String args[]){
+								        System.out.println(10&gt;&gt;2);//10/2^2=10/4=2
+								        System.out.println(20&gt;&gt;2);//20/2^2=20/4=5
+								        System.out.println(20&gt;&gt;3);//20/2^3=20/8=2
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>2
+5
+2
+        </pre>
+						</div>
+						<h3 class="h3">Java Shift Operator Example: &gt;&gt; vs &gt;&gt;&gt;</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//For&nbsp;positive&nbsp;number,&nbsp;&gt;&gt;&nbsp;and&nbsp;&gt;&gt;&gt;&nbsp;works&nbsp;same</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span class="number">20</span>
+											<span>&gt;&gt;</span>
+											<span class="number">2</span>
+											<span>);&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span class="number">20</span>
+											<span>&gt;&gt;&gt;</span>
+											<span class="number">2</span>
+											<span>);&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//For&nbsp;negative&nbsp;number,&nbsp;&gt;&gt;&gt;&nbsp;changes&nbsp;parity&nbsp;bit&nbsp;(MSB)&nbsp;to&nbsp;0</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(-<span class="number">20</span>
+											<span>&gt;&gt;</span>
+											<span class="number">2</span>
+											<span>);&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(-<span class="number">20</span>
+											<span>&gt;&gt;&gt;</span>
+											<span class="number">2</span>
+											<span>);&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								            //For positive number, &gt;&gt; and &gt;&gt;&gt; works same
+								            System.out.println(20&gt;&gt;2);
+								            System.out.println(20&gt;&gt;&gt;2);
+								            //For negative number, &gt;&gt;&gt; changes parity bit (MSB) to 0
+								            System.out.println(-20&gt;&gt;2);
+								            System.out.println(-20&gt;&gt;&gt;2);
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>5
+5
+-5
+1073741819
+        </pre>
+						</div>
+						<h3 class="h3">Java AND Operator Example: Logical &amp;&amp; and Bitwise &amp;</h3>
+						<p>The logical &amp;&amp; operator doesn't check the second condition if the first condition is false. It checks the second condition only if the first one is true.</p>
+						<p>The bitwise &amp; operator always checks both conditions whether first condition is true or false.</p>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;b=</span>
+											<span class="number">5</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;c=</span>
+											<span class="number">20</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(a&lt;b&amp;&amp;a&lt;c);<span class="comment">//false&nbsp;&amp;&amp;&nbsp;true&nbsp;=&nbsp;false</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a&lt;b&amp;a&lt;c);<span class="comment">//false&nbsp;&amp;&nbsp;true&nbsp;=&nbsp;false</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        int a=10;
+								        int b=5;
+								        int c=20;
+								        System.out.println(a&lt;b&amp;&amp;a&lt;c);//false &amp;&amp; true = false
+								        System.out.println(a&lt;b&amp;a&lt;c);//false &amp; true = false
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>false
+false
+        </pre>
+						</div>
+						<h3 class="h3">Java AND Operator Example: Logical &amp;&amp; vs Bitwise &amp;</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;b=</span>
+											<span class="number">5</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;c=</span>
+											<span class="number">20</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(a&lt;b&amp;&amp;a++&lt;c);<span class="comment">//false&nbsp;&amp;&amp;&nbsp;true&nbsp;=&nbsp;false</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a);<span class="comment">//10&nbsp;because&nbsp;second&nbsp;condition&nbsp;is&nbsp;not&nbsp;checked</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(a&lt;b&amp;a++&lt;c);<span class="comment">//false&nbsp;&amp;&amp;&nbsp;true&nbsp;=&nbsp;false</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a);<span class="comment">//11&nbsp;because&nbsp;second&nbsp;condition&nbsp;is&nbsp;checked</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        int a=10;
+								        int b=5;
+								        int c=20;
+								        System.out.println(a&lt;b&amp;&amp;a++&lt;c);//false &amp;&amp; true = false
+								        System.out.println(a);//10 because second condition is not checked
+								        System.out.println(a&lt;b&amp;a++&lt;c);//false &amp;&amp; true = false
+								        System.out.println(a);//11 because second condition is checked
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>false
+10
+false
+11
+        </pre>
+						</div>
+						<h3 class="h3">Java OR Operator Example: Logical || and Bitwise |</h3>
+						<p>The logical || operator doesn't check the second condition if the first condition is true. It checks the second condition only if the first one is false.</p>
+						<p>The bitwise | operator always checks both conditions whether first condition is true or false.</p>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;b=</span>
+											<span class="number">5</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;c=</span>
+											<span class="number">20</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(a&gt;b||a&lt;c);<span class="comment">//true&nbsp;||&nbsp;true&nbsp;=&nbsp;true</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a&gt;b|a&lt;c);<span class="comment">//true&nbsp;|&nbsp;true&nbsp;=&nbsp;true</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="comment">//||&nbsp;vs&nbsp;|</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a&gt;b||a++&lt;c);<span class="comment">//true&nbsp;||&nbsp;true&nbsp;=&nbsp;true</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(a);<span class="comment">//10&nbsp;because&nbsp;second&nbsp;condition&nbsp;is&nbsp;not&nbsp;checked</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a&gt;b|a++&lt;c);<span class="comment">//true&nbsp;|&nbsp;true&nbsp;=&nbsp;true</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(a);<span class="comment">//11&nbsp;because&nbsp;second&nbsp;condition&nbsp;is&nbsp;checked</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        int a=10;
+								        int b=5;
+								        int c=20;
+								        System.out.println(a&gt;b||a&lt;c);//true || true = true
+								        System.out.println(a&gt;b|a&lt;c);//true | true = true
+								        //|| vs |
+								        System.out.println(a&gt;b||a++&lt;c);//true || true = true
+								        System.out.println(a);//10 because second condition is not checked
+								        System.out.println(a&gt;b|a++&lt;c);//true | true = true
+								        System.out.println(a);//11 because second condition is checked
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>true
+true
+true
+10
+true
+11
+        </pre>
+						</div>
+						<h3 class="h3">Java Ternary Operator</h3>
+						<p>Java Ternary operator is used as one line replacement for if-then-else statement and used a lot in Java programming. It is the only conditional operator which takes three operands.</p>
+						<h3 class="h3">Java Ternary Operator Example</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;a=</span>
+											<span class="number">2</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;b=</span>
+											<span class="number">5</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;min=(a&lt;b)?a:b;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(min);&nbsp;&nbsp;</span>
+									</li>
+									<li class="alt">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        int a=2;
+								        int b=5;
+								        int min=(a&lt;b)?a:b;
+								        System.out.println(min);
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>2
+        </pre>
+						</div>
+						<p>Another Example:</p>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;b=</span>
+											<span class="number">5</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;min=(a&lt;b)?a:b;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(min);&nbsp;&nbsp;</span>
+									</li>
+									<li class="alt">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        int a=10;
+								        int b=5;
+								        int min=(a&lt;b)?a:b;
+								        System.out.println(min);
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+						<pre>5</pre>
+						</div>
+						<h3 class="h3">Java Assignment Operator</h3>
+						<p>Java assignment operator is one of the most common operators. It is used to assign the value on its right to the operand on its left.</p>
+						<h3 class="h3">Java Assignment Operator Example</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;b=</span>
+											<span class="number">20</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>a+=<span class="number">4</span>
+											<span>;</span>
+											<span class="comment">//a=a+4&nbsp;(a=10+4)</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>b-=<span class="number">4</span>
+											<span>;</span>
+											<span class="comment">//b=b-4&nbsp;(b=20-4)</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a);&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>System.out.println(b);&nbsp;&nbsp;</span>
+									</li>
+									<li class="alt">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        int a=10;
+								        int b=20;
+								        a+=4;//a=a+4 (a=10+4)
+								        b-=4;//b=b-4 (b=20-4)
+								        System.out.println(a);
+								        System.out.println(b);
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>14
+16
+        </pre>
+						</div>
+						<h3 class="h3">Java Assignment Operator Example</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String[]&nbsp;args){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">int</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>a+=<span class="number">3</span>
+											<span>;</span>
+											<span class="comment">//10+3</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a);&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>a-=<span class="number">4</span>
+											<span>;</span>
+											<span class="comment">//13-4</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a);&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>a*=<span class="number">2</span>
+											<span>;</span>
+											<span class="comment">//9*2</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a);&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>a/=<span class="number">2</span>
+											<span>;</span>
+											<span class="comment">//18/2</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a);&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String[] args){
+								        int a=10;
+								        a+=3;//10+3
+								        System.out.println(a);
+								        a-=4;//13-4
+								        System.out.println(a);
+								        a*=2;//9*2
+								        System.out.println(a);
+								        a/=2;//18/2
+								        System.out.println(a);
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>13
+9
+18
+9
+        </pre>
+						</div>
+						<h3 class="h3">Java Assignment Operator Example: Adding short</h3>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">short</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">short</span>
+											<span>&nbsp;b=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="comment">//a+=b;//a=a+b&nbsp;internally&nbsp;so&nbsp;fine</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>a=a+b;<span class="comment">//Compile&nbsp;time&nbsp;error&nbsp;because&nbsp;10+10=20&nbsp;now&nbsp;int</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>System.out.println(a);&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        short a=10;
+								        short b=10;
+								        //a+=b;//a=a+b internally so fine
+								        a=a+b;//Compile time error because 10+10=20 now int
+								        System.out.println(a);
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>Compile time error
+        </pre>
+						</div>
+						<p>After type cast:</p>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-j">
+									<li class="alt">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">class</span>
+											<span>&nbsp;OperatorExample{&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">public</span>
+											<span>&nbsp;</span>
+											<span class="keyword">static</span>
+											<span>&nbsp;</span>
+											<span class="keyword">void</span>
+											<span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="keyword">short</span>
+											<span>&nbsp;a=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="keyword">short</span>
+											<span>&nbsp;b=</span>
+											<span class="number">10</span>
+											<span>;&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>a=(<span class="keyword">short</span>
+											<span>)(a+b);</span>
+											<span class="comment">//20&nbsp;which&nbsp;is&nbsp;int&nbsp;now&nbsp;converted&nbsp;to&nbsp;short</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>System.out.println(a);&nbsp;&nbsp;</span>
+									</li>
+									<li class="alt">
+										<span>}}&nbsp;&nbsp;</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="java" style="display: none;">public class OperatorExample{
+								        public static void main(String args[]){
+								        short a=10;
+								        short b=10;
+								        a=(short)(a+b);//20 which is int now converted to short
+								        System.out.println(a);
+								        }}
+							</textarea>
+						</div>
+						<p>
+							<strong>Output:</strong>
+						</p>
+						<div class="codeblock3">
+							<pre>20</pre>
+						</div>
+					</td>
+
+				</dl>
+			</div>
+			<div class="contentLink"></div>
+		</div>
+	</div>
+
+	{# <div class="blogContent" id="blogContent">
+		<div class="m-5">
+			{% if courseBlogging is defined %}
+				{% for details in courseBlogging %}
+					<div class="blogInfo mb-5">
+						<div class="blogContent">
+							<div class="contentDesc">
+								{{details.contentDesc}}
+							</div>
+							<h6 class="pt-2">Author of this blog :
+								{{details.authorName}}</h6>
+						</div>
+
+						<div class="blogFile">
+							<div>
+								{% if details.fileType is same as("video/mp4") %}
+									<video width="100%%" height="200" controls>
+										<source src="/{{details.contentFile}}" type="video/mp4">
+									</video>
+
+								{% elseif details.fileType is same as("audio/mpeg") %}
+									<audio controls>
+										<source src="/{{details.contentFile}}" type="audio/mpeg">
+										Your browser does not support the audio element.
+									</audio>
+
+								{% else %}
+									<img src="{{details.contentFile}}" alt="" width="100%" height="200">
+
+								{% endif %}
+							</div>
+							<div>
+								<a href="{{details.contentLink}}">Use fulll link</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div> #}
+
+	<div>
+		<div class="faqContent" id="faqContent"></div>
+	</div>
 {% endblock %}

@@ -50,16 +50,26 @@ class CourseController extends AbstractController
     $session = $request->getSession();
     if($session->get('userLoggedIn')) {
       $fetchAllCourse = $this->courseRepo->findAll();
-      foreach($fetchAllCourse as $singleCourse) {
-        $uploadedCourses[] = $singleCourse;
+      if($fetchAllCourse) {
+        foreach($fetchAllCourse as $singleCourse) {
+          $uploadedCourses[] = $singleCourse;
+        }
+        return $this->render('course/index.html.twig', [
+          'uploadedCourses' => $uploadedCourses,
+          'loginUrl' => "logout",
+          'loginValue' => "Logout",
+          'regUrl' => "/profile",
+          'regValue' => $session->get('loggedName')
+        ]);
       }
-      return $this->render('course/index.html.twig', [
-        'uploadedCourses' => $uploadedCourses,
-        'loginUrl' => "logout",
-        'loginValue' => "Logout",
-        'regUrl' => "/profile",
-        'regValue' => $session->get('loggedName')
-      ]);
+      else {
+        return $this->render('course/index.html.twig', [
+          'loginUrl' => "logout",
+          'loginValue' => "Logout",
+          'regUrl' => "/profile",
+          'regValue' => $session->get('loggedName')
+        ]);
+      }
     }
     else {
       $session->invalidate();
@@ -235,7 +245,7 @@ class CourseController extends AbstractController
     }
   }
 
-  #[Route('/course/c#', name: 'app_cSharp')]
+  #[Route('/course/csharp', name: 'app_cSharp')]
   public function cSharp(Request $request): Response {
     $session = $request->getSession();
     if($session->get('userLoggedIn')) {

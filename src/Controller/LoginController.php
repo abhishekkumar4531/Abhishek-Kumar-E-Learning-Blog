@@ -65,7 +65,7 @@ class LoginController extends AbstractController
             ]);
           }
         }
-        else if($loginOption === "loginwithename") {
+        else if($loginOption === "loginwithname") {
           $userName = $loginData['user_value'];
           $userPassword = $loginData['user_password'];
           $fetchCredentials = $this->userRepo->findOneBy([ 'userName' => $userName ]);
@@ -77,7 +77,7 @@ class LoginController extends AbstractController
               $session->set('userLoggedIn', $userEmail);
               $session->set('loggedImage', $fetchCredentials->getUserImage());
               $session->set('loggedName', $fetchCredentials->getUserFirstName());
-              return $this->redirectToRoute('app_home');
+              return $this->redirectToRoute('app_course');
             }
             else {
               return $this->render('login/index.html.twig', [
@@ -109,11 +109,11 @@ class LoginController extends AbstractController
           //$fetchCredentials = $this->userRepo->findOneBy([ 'userEmail' => $userEmail ]);
           if($adminEmail === "abhikrjha45@gmail.com") {
             //$validatePassword = $fetchCredentials->getUserPassword();
-            if($adminPassword === "abhi45@AK") {
+            if($adminPassword === "admin45@EL") {
               $session = $request->getSession();
               $session->set('userLoggedIn', $adminEmail);
               $session->set('adminLoggedIn', TRUE);
-              $session->set('loggedName', "Abhishek");
+              $session->set('loggedName', "Admin");
               //$session->set('loggedImage', $fetchCredentials->getUserImage());
               //$session->set('loggedName', $fetchCredentials->getUserFirstName());
               return $this->redirectToRoute('app_profile');

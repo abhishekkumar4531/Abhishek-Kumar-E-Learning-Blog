@@ -1,25 +1,445 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}C | Language{% endblock %}
+{% block title %}TS | Programming{% endblock %}
 
 {% block body %}
-  <h1>Welcome to the C roadmap</h1>
+  <div class = "subLinks">
+    <ul>
+      <li><a href="#subContent">Material</a></li>
+      <li><a href="#blogContent">Blogs</a></li>
+      <li><a href="#faqContent">FAQ</a></li>
+    </ul>
+  </div>
+  <div class = "blogContent" id = "blogContent">
+    <div class = "m-5 mb-1 w-75">
+      <h1>Welcome to the TypeScript programming</h1>
+      <div class = "">
+        {% if decription is defined %}
+          {{ decription }}
+        {% endif %}
+      </div>
+    </div>
+    <div class = "m-5 mt-3 mb-1 w-75 pb-1">
+      {% if courseBlogging is defined %}
+        <h5 class = "text-primary p-1"><span class = "bi bi-pen"></span> Latest blog on TytpeScript language</h5>
+        {% for details in courseBlogging %}
+          <div class = "blogInfo mb-3 pb-2">
+            <div class = "blogContent">
+              <div class = "contentDesc">
+                {{details.contentDesc}}
+              </div>
+             <h6 class = "pt-2">Author of this blog : {{details.authorName}}</h6>
+            </div>
 
-  <div>
-    {% if decription is defined %}
-      {{ decription }}
-    {% endif %}
+            <div class = "blogFile">
+              <div>
+                {% if details.fileType is same as("video/mp4") %}
+                <video width="100%" height="200" controls>
+                  <source src="/{{details.contentFile}}" type="video/mp4">
+                </video>
+
+                {% elseif details.fileType is same as("audio/mpeg") %}
+                  <audio controls>
+                    <source src="/{{details.contentFile}}" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                  </audio>
+
+                {% else %}
+                  <img src="/{{details.contentFile}}" alt="" width = "300" height = "200">
+
+                {% endif %}
+              </div>
+              <div>
+                <a href="{{details.contentLink}}">Recommended link</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  <div class = "subContent m-3" id = "subContent">
+    <div>
+      <div class = "contentData m-3 ms-5 w-75">
+        <h5 class = "p-1"><span class = "bi bi-book"></span> You can find below basic and important notes</h5>
+        <div id="city">
+    <table>
+    <tbody><tr><td style="margin-top: 0px; margin-bottom: 0px;">
+
+    <h3 class = "text-primary">TypeScript Tutorial</h3>
+    <p>TypeScript tutorial provides basic and advanced concepts of TypeScript. Our TypeScript Tutorial is designed for beginners and professionals both.</p>
+    <p>TypeScript is an <strong>open-source</strong>, object-oriented programing language, which is developed and maintained by <strong>Microsoft</strong> under the <strong><em>Apache 2</em></strong> license. It was introduced by <strong>Anders Hejlsberg</strong>, a core member of the development team of C# language. TypeScript is a strongly typed <strong>superset of JavaScript</strong> which compiles to plain JavaScript. It is a language for application-scale JavaScript development, which can be executed on any <strong>browser</strong>, any <strong>Host</strong>, and any <strong>Operating System</strong>. TypeScript is not directly run on the browser. It needs a compiler to compile and generate in JavaScript file. TypeScript is the <strong><em>ES6 version</em></strong> of JavaScript with some additional features.</p>
+    <p>Our TypeScript tutorial includes all the topics which help to learn TypeScript. These are Introduction of TypeScript, Features of TypeScript, Components of TypeScript, TypeScript first program, TypeScript Types, TypeScript Variables, TypeScript Operators, TypeScript Decision-making, TypeScript Loops, Functions, Classes, Arrays, Namespace, Module, Ambient, and many more.</p>
+    <h3 class = "text-primary">What is TypeScript?</h3>
+    <p>TypeScript is an open-source pure object-oriented programing language. It is a strongly typed superset of JavaScript which compiles to plain JavaScript. It contains all elements of the JavaScript. It is a language designed for large-scale JavaScript application development, which can be executed on any browser, any Host, and any Operating System. The TypeScript is a language as well as a set of tools. TypeScript is the ES6 version of JavaScript with some additional features.</p>
+    <p>TypeScript cannot run directly on the browser. It needs a compiler to compile the file and generate it in JavaScript file, which can run directly on the browser. The TypeScript source file is in ".ts" extension. We can use any valid ".js" file by renaming it to ".ts" file. TypeScript uses TSC (TypeScript Compiler) compiler, which convert Typescript code (.ts file) to JavaScript (.js file).</p>
+    <h3 class = "text-primary">History of TypeScript</h3>
+    <p>In 2010, Anders Hejlsberg, a core member of the development team of C# language, started working on TypeScript at Microsoft. The first version of TypeScript was released to the public in the month of 1st October 2012 and was labeled as version 0.8. Now, it is maintained by Microsoft under the Apache 2 license. The latest version of Typescript is TypeScript 3.5, which was released to the public on May 2019.</p>
+    <h3 class = "text-primary">Why use TypeScript?</h3>
+    <p>We use TypeScript because of the following benefits.</p>
+    <ul class="points">
+    <li>TypeScript supports Static typing, Strongly type, Modules, Optional Parameters, etc.</li>
+    <li>TypeScript supports object-oriented programming features such as classes, interfaces, inheritance, generics, etc.</li>
+    <li>TypeScript is fast, simple, and most importantly, easy to learn.</li>
+    <li>TypeScript provides the error-checking feature at compilation time. It will compile the code, and if any error found, then it highlighted the mistakes before the script is run.</li>
+    <li>TypeScript supports all JavaScript libraries because it is the superset of JavaScript.</li>
+    <li>TypeScript support reusability because of the inheritance.</li>
+    <li>TypeScript make app development quick and easy as possible, and the tooling support of TypeScript gives us autocompletion, type checking, and source documentation.</li>
+    <li>TypeScript has a definition file with .d.ts extension to provide a definition for external JavaScript libraries.</li>
+    <li>TypeScript supports the latest JavaScript features, including ECMAScript 2015.</li>
+    <li>TypeScript gives all the benefits of ES6 plus more productivity.</li>
+    <li>Developers can save a lot of time with TypeScript.</li>
+    </ul>
+    <h3 class = "text-primary">Text Editors with TypeScript Support</h3>
+    <p>The TypeScript was initially supported only in Microsoft's Visual Studio platform. But today, there are a lot of text editors and IDEs available which either natively or through plugins have support for the TypeScript programming. Some of them are given below.</p>
+    <ol class="points">
+    <li>Visual Studio Code</li>
+    <li>Official Free Plugin for Sublime Text.</li>
+    <li>The latest version of WebStorm</li>
+    <li>It also supports in Vim, Atom, Emacs, and others.</li>
+    </ol>
+    </iframe></div></div></div></td></tr>
+    </tbody></table>
+</div>
+
+<div id="city">
+    <table>
+    <tbody><tr><td style="margin-top: 0px; margin-bottom: 0px;">
+
+    <h3 class = "text-primary">TypeScript Arrays</h3>
+    <p>An array is a homogenous collection of similar type of elements which have a contiguous memory location.</p>
+    <p>An array is a user-defined data type.</p>
+    <p>An array is a type of data structure where we store the elements of a similar data type. In an array, we can store only a fixed set of elements. We can also use it as an object.</p>
+    <p>The array is index-based storage, where the first element stored at index 0. The below structure helps to understand the structure of an array.</p>
+    <img src="https://static.javatpoint.com/tutorial/typescript/images/typescript-arrays.png" alt="TypeScript Arrays">
+    <h2 class="h2">Characteristics of an Array</h2>
+    <ol class="points">
+    <li>An array stores elements which have the same data type.</li>
+    <li>Array elements stored in contiguous memory locations.</li>
+    <li>The storage of 2-D array elements is rowed by row in a contiguous memory location.</li>
+    <li>Array name represents the address of the starting element.</li>
+    <li>The size of an array should be initialized at the declaration time. </li>
+    <li>Array size should be a constant expression and not a variable.</li>
+    <li>We can retrieve array elements by specifying the element's corresponding index value.</li>
+    </ol>
+    <h3 class = "text-primary">Advantage</h3>
+    <p><strong>Code Optimization:</strong> An array helps to make the code optimized, which increases the speed and performance of the program. It allows us to retrieve or sort the array data more efficiently.</p>
+    <p><strong>Random access:</strong> It provides the ability to access any data of an array in constant time (independent of its position and size). Thus, we can get any data of an array located at any index position directly.</p>
+    <h2 class="h3">Disadvantage</h2>
+    <p><strong>Size Limit:</strong> An array allows us to store only the fixed number of elements. Once the array is declared, we cannot alter its size. Hence, if we want to insert more element than declared, it is not possible.</p>
+    <h2 class="h2">Array declaration</h2>
+    <p>Just like JavaScript, TypeScript also supports arrays. There are two ways to declare an array:</p>
+    <p><strong>1. Using square brackets.</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;array_name[:datatype]&nbsp;=&nbsp;[val1,val2,valn..]&nbsp;&nbsp;</span></span></li></ol></div><textarea name="code" class="xml" style="display: none;">let array_name[:datatype] = [val1,val2,valn..]
+    </textarea></div>
+    <p><strong>Example:</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;fruits:&nbsp;string[]&nbsp;=&nbsp;['Apple',&nbsp;'Orange',&nbsp;'Banana'];&nbsp;&nbsp;</span></span></li></ol></div><textarea name="code" class="xml" style="display: none;">let fruits: string[] = ['Apple', 'Orange', 'Banana'];
+    </textarea></div>
+    <p><strong>2. Using a generic array type.</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;array_name:&nbsp;Array</span><span class="tag">&lt;</span><span class="tag-name">elementType</span><span class="tag">&gt;</span><span>&nbsp;=&nbsp;[val1,val2,valn..]&nbsp;&nbsp;</span></span></li></ol></div><textarea name="code" class="xml" style="display: none;">let array_name: Array&lt;elementType&gt; = [val1,val2,valn..]
+    </textarea></div>
+    <p><strong>Example:</strong><div id="0a312584-43a9-4dbf-9153-d806579ea4b2" data-section="0a312584-43a9-4dbf-9153-d806579ea4b2" class="_ap_apex_ad" data-xpath="#city > table:eq(0) > tbody:eq(0) > tr:eq(0) > td:eq(0) > p:eq(11)" data-section-id="" data-ap-network="adpTags" style="display: block; clear: both; text-align: center; margin: 10px auto 20px; width: 728px; height: 250px; overflow: hidden;" data-render-time="1684908175324" data-refresh-time="1684908175505" data-timeout="383"><div id="ADP_37780_728X250_0a312584-43a9-4dbf-9153-d806579ea4b2" style="text-align: center; margin: 0 auto;" data-google-query-id="CL29yoqkjf8CFZ7QcwEdk4sAhg">
+
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;fruits:&nbsp;Array</span><span class="tag">&lt;</span><span class="tag-name">string</span><span class="tag">&gt;</span><span>&nbsp;=&nbsp;['Apple',&nbsp;'Orange',&nbsp;'Banana'];&nbsp;&nbsp;</span></span></li></ol></div><textarea name="code" class="xml" style="display: none;">let fruits: Array&lt;string&gt; = ['Apple', 'Orange', 'Banana'];
+    </textarea></div>
+    <h2 class="h2">Types of the array in TypeScript</h2>
+    <p>There are two types of an array:</p>
+    <ol class="points">
+    <li>Single-Dimensional Array</li>
+    <li>Multi-Dimensional Array</li>
+    </ol>
+    <img src="https://static.javatpoint.com/tutorial/typescript/images/typescript-arrays-types.png" alt="TypeScript Arrays">
+    <h3 class="h3">Single-Dimensional Array</h3>
+    <p>A single-dimensional array is a type of linear array, which contains only one row for storing data. It has a single set of the square bracket ("[]"). We can access its elements either using row or column index.</p>
+    <p class="pq"><strong>Syntax</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;array_name[:datatype];&nbsp;&nbsp;&nbsp;</span></span></li></ol></div><textarea name="code" class="xml" style="display: none;">let array_name[:datatype];
+    </textarea></div>
+    <p class="pq"><strong>Initialization</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span class="attribute">array_name</span><span>&nbsp;=&nbsp;[val1,val2,valn..]&nbsp;&nbsp;</span></span></li></ol></div><textarea name="code" class="xml" style="display: none;">array_name = [val1,val2,valn..]
+    </textarea></div>
+    <p class="pq"><strong>Example</strong><div id="cbc9eb9e-0151-4718-9baa-a944dc9312a4" data-section="cbc9eb9e-0151-4718-9baa-a944dc9312a4" class="_ap_apex_ad" data-xpath="#city > table:eq(0) > tbody:eq(0) > tr:eq(0) > td:eq(0) > p:eq(16)" data-section-id="" data-ap-network="adpTags" data-render-time="1684908173792" style="display: block; clear: both; text-align: center; margin: 10px auto; width: 728px; height: 280px; overflow: hidden;" data-refresh-time="1684908177613" data-timeout="547"><div id="ADP_37780_728X280_cbc9eb9e-0151-4718-9baa-a944dc9312a4" style="text-align: center; margin: 0 auto;" data-google-query-id="CLayxoqkjf8CFVLlcwEd-ToHSQ">
+
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;arr:number[];&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="attribute">arr</span><span>&nbsp;=&nbsp;[1,&nbsp;2,&nbsp;3,&nbsp;4]&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>console.log("Array[0]:&nbsp;"&nbsp;+arr[0]);&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>console.log("Array[1]:&nbsp;"&nbsp;+arr[1]);&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="xml" style="display: none;">let arr:number[];
+    arr = [1, 2, 3, 4]
+    console.log("Array[0]: " +arr[0]);
+    console.log("Array[1]: " +arr[1]);
+    </textarea></div>
+    <p><strong>Output:</strong></p>
+    <div class="codeblock3"><pre>Array[0]: 1
+    Array[1]: 2
+    </pre></div>
+    <h3 class="h3">Multi-Dimensional Array</h3>
+    <p>A multi-dimensional array is an array which contains one or more arrays. In the multi-dimensional array, data is stored in a row and column-based index (also known as matrix form). A two-dimensional array (2-D array) is the simplest form of a multi-dimensional array.</p>
+    <img src="https://static.javatpoint.com/tutorial/typescript/images/typescript-arrays2.png" alt="TypeScript Arrays">
+    <p class="pq"><strong>Syntax</strong><div id="e9416380-485c-4c6d-b7ac-e97dadf337e3" data-section="e9416380-485c-4c6d-b7ac-e97dadf337e3" class="_ap_apex_ad" data-xpath="#city > table:eq(0) > tbody:eq(0) > tr:eq(0) > td:eq(0) > p:eq(19)" data-section-id="" data-ap-network="adpTags" style="display: block; clear: both; text-align: center; margin: 10px auto; width: 727px; height: 90px; overflow: hidden;" data-render-time="1684908179257" data-refresh-time="1684908179408" data-timeout="670"><div id="ADP_37780_728X90_e9416380-485c-4c6d-b7ac-e97dadf337e3" style="text-align: center; margin: 0 auto;" data-google-query-id="CJ_quoykjf8CFWGY5godHOUAag">
+
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;arr_name:datatype[][]&nbsp;=&nbsp;[&nbsp;[a1,a2,a3],&nbsp;[b1,b2,b3]&nbsp;];&nbsp;&nbsp;</span></span></li></ol></div><textarea name="code" class="xml" style="display: none;">let arr_name:datatype[][] = [ [a1,a2,a3], [b1,b2,b3] ];
+    </textarea></div>
+    <p class="pq"><strong>Initialization</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;arr_name:datatype[initial_array_index][referenced_array_index]&nbsp;=&nbsp;[&nbsp;[val1,val2,val&nbsp;3],&nbsp;[v1,v2,v3]];&nbsp;&nbsp;</span></span></li></ol></div><textarea name="code" class="xml" style="display: none;">let arr_name:datatype[initial_array_index][referenced_array_index] = [ [val1,val2,val 3], [v1,v2,v3]];
+    </textarea></div>
+    <p class="pq"><strong>Example</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>var&nbsp;mArray:number[][]&nbsp;=&nbsp;[[1,2,3],[5,6,7]]&nbsp;;&nbsp;&nbsp;</span></span></li><li class=""><span>console.log(mArray[0][0]);&nbsp;&nbsp;</span></li><li class="alt"><span>console.log(mArray[0][1]);&nbsp;&nbsp;</span></li><li class=""><span>console.log(mArray[0][2]);&nbsp;&nbsp;</span></li><li class="alt"><span>console.log();&nbsp;&nbsp;</span></li><li class=""><span>console.log(mArray[1][0]);&nbsp;&nbsp;</span></li><li class="alt"><span>console.log(mArray[1][1]);&nbsp;&nbsp;</span></li><li class=""><span>console.log(mArray[1][2]);&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="xml" style="display: none;">var mArray:number[][] = [[1,2,3],[5,6,7]] ;
+    console.log(mArray[0][0]);
+    console.log(mArray[0][1]);
+    console.log(mArray[0][2]);
+    console.log();
+    console.log(mArray[1][0]);
+    console.log(mArray[1][1]);
+    console.log(mArray[1][2]);
+    </textarea></div>
+    <p><strong>Output:</strong></p>
+    <div class="codeblock3"><pre>1
+    2
+    3
+
+    5
+    6
+    7
+    </pre></div>
+    <hr>
+    <h2 class="h2">Array Object</h2>
+    <p>Array objects allow us to store multiple values in a single variable. We can create an array by using the Array object. The Array constructor is used to pass the following arguments for array creation.</p>
+    <ul class="points">
+    <li>A numeric value which represents the size of an array or</li>
+    <li>A list of comma-separated values.</li>
+    </ul>
+    <p class="pq"><strong>Syntax</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;arr_name:datatype[]&nbsp;=&nbsp;new&nbsp;Array(values);&nbsp;&nbsp;</span></span></li></ol></div><textarea name="code" class="xml" style="display: none;">let arr_name:datatype[] = new Array(values);
+    </textarea></div>
+    <p class="pq"><strong>Example</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>//array&nbsp;by&nbsp;using&nbsp;the&nbsp;Array&nbsp;object.&nbsp;&nbsp;</span></span></li><li class=""><span>let&nbsp;arr:string[]&nbsp;=&nbsp;new&nbsp;Array("JavaTpoint","2200","Java","Abhishek");&nbsp;&nbsp;</span></li><li class="alt"><span>for(var&nbsp;<span class="attribute">i</span><span>&nbsp;=&nbsp;</span><span class="attribute-value">0</span><span>;i</span><span class="tag">&lt;</span><span class="tag-name">arr.length</span><span>;i++)&nbsp;{&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;console.log(arr[i]);&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="xml" style="display: none;">//array by using the Array object.
+    let arr:string[] = new Array("JavaTpoint","2200","Java","Abhishek");
+    for(var i = 0;i&lt;arr.length;i++) {
+       console.log(arr[i]);
+    }
+    </textarea></div>
+    <p><strong>Output:</strong></p>
+    <div class="codeblock3"><pre>eLearning
+    2200
+    Java
+    Abhishek
+    </pre></div>
+    <h3 class="h3">Array Traversal by using a for...in loop</h3>
+    <p class="pq"><strong>Example</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;i:any;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>let&nbsp;arr:string[]&nbsp;=&nbsp;["JavaTpoint",&nbsp;"2300",&nbsp;"Java",&nbsp;"Abhishek"];&nbsp;&nbsp;</span></li><li class="alt"><span>for(i&nbsp;in&nbsp;arr)&nbsp;{&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;console.log(arr[i])&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="xml" style="display: none;">let i:any;
+    let arr:string[] = ["JavaTpoint", "2300", "Java", "Abhishek"];
+    for(i in arr) {
+       console.log(arr[i])
+    }
+    </textarea></div>
+    <p><strong>Output:</strong><div id="26aba3e6-5491-4b7c-9d3c-fd3ec7ea1b89" data-section="26aba3e6-5491-4b7c-9d3c-fd3ec7ea1b89" class="_ap_apex_ad" data-xpath="#city > table:eq(0) > tbody:eq(0) > tr:eq(0) > td:eq(0) > p:eq(28)" data-section-id="" data-ap-network="adpTags" data-render-time="1684908173775" style="display: block; clear: both; text-align: center; margin: 10px auto; width: 728px; height: 280px; overflow: hidden;"><div id="ADP_37780_728X280_26aba3e6-5491-4b7c-9d3c-fd3ec7ea1b89" style="text-align: center; margin: 0 auto;" data-google-query-id="CLKyxoqkjf8CFVLlcwEd-ToHSQ">
+
+    <div class="codeblock3"><pre>eLearning
+    2300
+    Java
+    Abhishek
+    </pre></div>
+    <h3 class="h3">Passing Arrays to Functions</h3>
+    <p>We can pass arrays to functions by specifying the array name without an index.</p>
+    <p class="pq"><strong>Example</strong></p>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;arr:string[]&nbsp;=&nbsp;new&nbsp;Array("JavaTpoint",&nbsp;"2300",&nbsp;"Java",&nbsp;"Abhishek");&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>//Passing&nbsp;arrays&nbsp;in&nbsp;function&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;display(arr_values:string[])&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;for(let&nbsp;<span class="attribute">i</span><span>&nbsp;=&nbsp;</span><span class="attribute-value">0</span><span>;i</span><span class="tag">&lt;</span><span class="tag-name">arr_values.length</span><span>;i++)&nbsp;{&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(arr[i]);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>//Calling&nbsp;arrays&nbsp;in&nbsp;function&nbsp;&nbsp;</span></li><li class="alt"><span>display(arr);&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="xml" style="display: none;">let arr:string[] = new Array("JavaTpoint", "2300", "Java", "Abhishek");
+    //Passing arrays in function
+    function display(arr_values:string[]) {
+       for(let i = 0;i&lt;arr_values.length;i++) {
+          console.log(arr[i]);
+       }
+    }
+    //Calling arrays in function
+    display(arr);
+    </textarea></div>
+    <p><strong>Output:</strong></p>
+    <div class="codeblock3"><pre>eLearning
+    2300
+    Java
+    Abhishek
+    </pre></div>
+    <hr>
+    <div id="2ed526cc-260e-4aec-a38b-8347b52024c0" data-section="2ed526cc-260e-4aec-a38b-8347b52024c0" class="_ap_apex_ad" data-xpath="#city > table:eq(0) > tbody:eq(0) > tr:eq(0) > td:eq(0) > h2:eq(6)" data-section-id="" data-ap-network="adpTags" data-render-time="1684908173779" style="display: block; clear: both; text-align: center; margin: 10px auto; width: 728px; height: 280px; overflow: hidden;"><div id="ADP_37780_728X280_2ed526cc-260e-4aec-a38b-8347b52024c0" style="text-align: center; margin: 0 auto;" data-google-query-id="CLOyxoqkjf8CFVLlcwEd-ToHSQ">
+
+    <p>The spread operator is used to initialize arrays and objects from another array or object. We can also use it for object de-structuring. It is a part of the ES 6 version.</p>
+    <p class="pq"><strong>Example</strong><div id="e6b752e6-50ac-4a29-ba37-21a6ae901ff4" data-section="e6b752e6-50ac-4a29-ba37-21a6ae901ff4" class="_ap_apex_ad" data-xpath="#city > table:eq(0) > tbody:eq(0) > tr:eq(0) > td:eq(0) > p:eq(33)" data-section-id="" data-ap-network="adpTags" data-render-time="1684908173800" style="display: block; clear: both; text-align: center; margin: 10px auto; width: 0px; height: 0px; overflow: hidden;"><div id="ADP_37780_728X280_e6b752e6-50ac-4a29-ba37-21a6ae901ff4" style="text-align: center; margin: 0 auto;" data-google-query-id="CJDQwYqkjf8CFVLlcwEd-ToHSQ">
+    <script type="text/javascript">
+    window.adpushup.adpTags.que.push(function(){
+    window.adpushup.adpTags.display("ADP_37780_728X280_e6b752e6-50ac-4a29-ba37-21a6ae901ff4");
+    });
+    </script>
+    <div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a></div></div><ol start="1" class="dp-xml"><li class="alt"><span><span>let&nbsp;</span><span class="attribute">arr1</span><span>&nbsp;=&nbsp;[&nbsp;1,&nbsp;2,&nbsp;3];&nbsp;&nbsp;</span></span></li><li class=""><span>let&nbsp;<span class="attribute">arr2</span><span>&nbsp;=&nbsp;[&nbsp;4,&nbsp;5,&nbsp;6];&nbsp;&nbsp;</span></span></li><li class="alt"><span>//Create&nbsp;new&nbsp;array&nbsp;from&nbsp;existing&nbsp;array&nbsp;&nbsp;</span></li><li class=""><span>let&nbsp;<span class="attribute">copyArray</span><span>&nbsp;=&nbsp;[...arr1];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>console.log("CopiedArray:&nbsp;"&nbsp;+copyArray);&nbsp;&nbsp;</span></li><li class=""><span>//Create&nbsp;new&nbsp;array&nbsp;from&nbsp;existing&nbsp;array&nbsp;with&nbsp;more&nbsp;elements&nbsp;&nbsp;</span></li><li class="alt"><span>let&nbsp;<span class="attribute">newArray</span><span>&nbsp;=&nbsp;[...arr1,&nbsp;7,&nbsp;8];&nbsp;&nbsp;</span></span></li><li class=""><span>console.log("NewArray:&nbsp;"&nbsp;+newArray);&nbsp;&nbsp;</span></li><li class="alt"><span>//Create&nbsp;array&nbsp;by&nbsp;merging&nbsp;two&nbsp;arrays&nbsp;&nbsp;</span></li><li class=""><span>let&nbsp;<span class="attribute">mergedArray</span><span>&nbsp;=&nbsp;[...arr1,&nbsp;...arr2];&nbsp;&nbsp;</span></span></li><li class="alt"><span>console.log("MergedArray:&nbsp;"&nbsp;+mergedArray);&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="xml" style="display: none;">let arr1 = [ 1, 2, 3];
+    let arr2 = [ 4, 5, 6];
+    //Create new array from existing array
+    let copyArray = [...arr1];
+    console.log("CopiedArray: " +copyArray);
+    //Create new array from existing array with more elements
+    let newArray = [...arr1, 7, 8];
+    console.log("NewArray: " +newArray);
+    //Create array by merging two arrays
+    let mergedArray = [...arr1, ...arr2];
+    console.log("MergedArray: " +mergedArray);
+    </textarea></div>
+    <p><strong>Output:</strong></p>
+    <div class="codeblock3"><pre>CopiedArray: 1,2,3
+    NewArray: 1,2,3,7,8
+    MergedArray: 1,2,3,4,5,6
+    </pre></div>
+    <hr>
+    <div id="e9d9184b-4ea3-4d74-8afc-c04d139f1301" data-section="e9d9184b-4ea3-4d74-8afc-c04d139f1301" class="_ap_apex_ad" data-xpath="#city > table:eq(0) > tbody:eq(0) > tr:eq(0) > td:eq(0) > h2:eq(7)" data-section-id="" data-ap-network="adpTags" data-render-time="1684908173806" style="display: block; clear: both; text-align: center; margin: 10px auto; width: 0px; height: 0px; overflow: hidden;"><div id="ADP_37780_728X250_e9d9184b-4ea3-4d74-8afc-c04d139f1301" style="text-align: center; margin: 0 auto;" data-google-query-id="CJHQwYqkjf8CFVLlcwEd-ToHSQ">
+    <script type="text/javascript">
+    window.adpushup.adpTags.que.push(function(){
+    window.adpushup.adpTags.display("ADP_37780_728X250_e9d9184b-4ea3-4d74-8afc-c04d139f1301");
+    });
+    </script>
+    <p>The list of array methods with their description is given below.</p>
+    <table class="alt">
+    <tbody><tr>
+    <th>SN</th>
+    <th>Method</th>
+    <th>Description</th>
+    </tr>
+    <tr>
+    <td>1.</td>
+    <td>concat()</td>
+    <td>It is used to joins two arrays and returns the combined result.</td>
+    </tr>
+    <tr>
+    <td>2.</td>
+    <td>copyWithin()</td>
+    <td>It copies a sequence of an element within the array.</td>
+    </tr>
+    <tr>
+    <td>3.</td>
+    <td>every()</td>
+    <td>It returns true if every element in the array satisfies the provided testing function.</td>
+    </tr>
+    <tr>
+    <td>4.</td>
+    <td>fill()</td>
+    <td>It fills an array with a static value from the specified start to end index.</td>
+    </tr>
+    <tr>
+    <td>5.</td>
+    <td>indexOf()</td>
+    <td>It returns the index of the matching element in the array, otherwise -1.</td>
+    </tr>
+    <tr>
+    <td>6.</td>
+    <td>includes()</td>
+    <td>It is used to check whether the array contains a certain element or not.</td>
+    </tr>
+    <tr>
+    <td>7.</td>
+    <td>Join()</td>
+    <td>It is used to joins all elements of an array into a string.</td>
+    </tr>
+    <tr>
+    <td>8.</td>
+    <td>lastIndexOf()</td>
+    <td>It returns the last index of an element in the array.</td>
+    </tr>
+    <tr>
+    <td>9.</td>
+    <td>Pop()</td>
+    <td>It is used to removes the last elements of the array.</td>
+    </tr>
+    <tr>
+    <td>10.</td>
+    <td>Push()</td>
+    <td>It is used to add new elements to the array.</td>
+    </tr>
+    <tr>
+    <td>11.</td>
+    <td>reverse()</td>
+    <td>It is used to reverse the order of an element in the array.</td>
+    </tr>
+    <tr>
+    <td>12.</td>
+    <td>Shift()</td>
+    <td>It is used to removes and returns the first element of an array.</td>
+    </tr>
+    <tr>
+    <td>13.</td>
+    <td>slice()</td>
+    <td>It returns the section fo an array in the new array.</td>
+    </tr>
+    <tr>
+    <td>14.</td>
+    <td>sort()</td>
+    <td>It is used to sort the elements of an array.</td>
+    </tr>
+    <tr>
+    <td>15.</td>
+    <td>splice()</td>
+    <td>It is used to add or remove the elements from an array.</td>
+    </tr>
+    <tr>
+    <td>16.</td>
+    <td>toString()</td>
+    <td>It returns the string representation of an array.</td>
+    </tr>
+    <tr>
+    <td>17.</td>
+    <td>unshift()</td>
+    <td>It is used to add one or more elements to the beginning of an array.</td>
+    </tr>
+    </tbody></table>
+
+
+    <br><br>
+
+    <br><br>
+    <script type="text/javascript">
+    window.adpushup.adpTags.que.push(function(){
+    window.adpushup.adpTags.display("ADP_37780_728X280_a92ca928-953f-41a8-ab82-6266a7b661be");
+    });
+    </script>
+    </div></div></td></tr>
+    </tbody></table>
+    </div>
+      </div>
+      <div class = "contentLink"></div>
+    </div>
   </div>
 
+  {# <div class = "blogContent" id = "blogContent">
+    <div class = "m-5">
+      {% if courseBlogging is defined %}
+        {% for details in courseBlogging %}
+          <div class = "blogInfo mb-5">
+            <div class = "blogContent">
+              <div class = "contentDesc">
+                {{details.contentDesc}}
+              </div>
+             <h6 class = "pt-2">Author of this blog : {{details.authorName}}</h6>
+            </div>
+
+            <div class = "blogFile">
+              <div>
+                {% if details.fileType is same as("video/mp4") %}
+                <video width="100%%" height="200" controls>
+                  <source src="/{{details.contentFile}}" type="video/mp4">
+                </video>
+
+                {% elseif details.fileType is same as("audio/mpeg") %}
+                  <audio controls>
+                    <source src="/{{details.contentFile}}" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                  </audio>
+
+                {% else %}
+                  <img src="{{details.contentFile}}" alt="" width = "100%" height = "200">
+
+                {% endif %}
+              </div>
+              <div>
+                <a href="{{details.contentLink}}">Use fulll link</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div> #}
+
   <div>
-    {% if courseBlogging is defined %}
-      {% for details in courseBlogging %}
-        <ul>
-          <li>{{details.contentDesc}}</li>
-          <li><a href="{{details.contentLink}}">Use fulll link</a></li>
-          <li>Author of this blog : {{details.authorName}}</li>
-        </ul>
-      {% endfor %}
-    {% endif %}
+    <div class = "faqContent" id = "faqContent"></div>
   </div>
 {% endblock %}

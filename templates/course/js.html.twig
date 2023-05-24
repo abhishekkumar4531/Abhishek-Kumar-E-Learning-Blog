@@ -1,25 +1,1316 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}C | Language{% endblock %}
+{% block title %}JS | Programming
+{% endblock %}
 
 {% block body %}
-  <h1>Welcome to the C roadmap</h1>
+	<div class="subLinks">
+		<ul>
+			<li><a href="#subContent">Material</a></li>
+			<li><a href="#blogContent">Blogs</a></li>
+			<li><a href="#faqContent">FAQ</a></li>
+		</ul>
+	</div>
+	<div class="blogContent" id="blogContent">
+		<div class="m-5 mb-1 w-75">
+			<h1>Welcome to the JavaScript programming</h1>
+			<div class="">
+				{% if decription is defined %}
+					{{ decription }}
+				{% endif %}
+			</div>
+		</div>
+		<div class="m-5 mt-3 mb-1 w-75 pb-1">
+			{% if courseBlogging is defined %}
+				<h5 class="text-primary p-1">
+					<span class="bi bi-pen"></span>
+					Latest blog on JavaScript language</h5>
+				{% for details in courseBlogging %}
+					<div class="blogInfo mb-3 pb-2">
+						<div class="blogContent">
+							<div class="contentDesc">
+								{{details.contentDesc}}
+							</div>
+							<h6 class="pt-2">Author of this blog :
+								{{details.authorName}}</h6>
+						</div>
 
-  <div>
-    {% if decription is defined %}
-      {{ decription }}
-    {% endif %}
-  </div>
+						<div class="blogFile">
+							<div>
+								{% if details.fileType is same as("video/mp4") %}
+									<video width="100%" height="200" controls>
+										<source src="/{{details.contentFile}}" type="video/mp4">
+									</video>
 
-  <div>
-    {% if courseBlogging is defined %}
-      {% for details in courseBlogging %}
-        <ul>
-          <li>{{details.contentDesc}}</li>
-          <li><a href="{{details.contentLink}}">Use fulll link</a></li>
-          <li>Author of this blog : {{details.authorName}}</li>
-        </ul>
-      {% endfor %}
-    {% endif %}
-  </div>
-{% endblock %}
+								{% elseif details.fileType is same as("audio/mpeg") %}
+									<audio controls>
+										<source src="/{{details.contentFile}}" type="audio/mpeg">
+										Your browser does not support the audio element.
+									</audio>
+
+								{% else %}
+									<img src="/{{details.contentFile}}" alt="" width="300" height="200">
+
+								{% endif %}
+							</div>
+							<div>
+								<a href="{{details.contentLink}}">Use fulll link</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+	<div class="subContent m-3 ms-5 w-75" id="subContent">
+		<div>
+			<div class="contentData">
+				<h5 class="p-1">
+					<span class="bi bi-book"></span>
+					You can find below basic and important notes</h5>
+				<div class="onlycontentinner">
+					<div id="city">
+						<table>
+
+							<h3 class="text-primary">Learn JavaScript Tutorial</h3>
+							<p>JavaScript is not a compiled language, but it is a translated language. The JavaScript Translator (embedded in the browser) is responsible for translating the JavaScript code for the web browser.</p>
+							<h3 class="text-primary">What is JavaScript</h3>
+							<p>JavaScript (js) is a light-weight object-oriented programming language which is used by several websites for scripting the webpages. It is an interpreted, full-fledged programming language that enables dynamic interactivity on websites when applied to an HTML document. It was introduced in the year 1995 for adding programs to the webpages in the Netscape Navigator browser. Since then, it has been adopted by all other graphical web browsers. With JavaScript, users can build modern web applications to interact directly without reloading the page every time. The traditional website uses js to provide several forms of interactivity and simplicity.</p>
+							<p>Although, JavaScript has no connectivity with Java programming language. The name was suggested and provided in the times when Java was gaining popularity in the market. In addition to web browsers, databases such as CouchDB and MongoDB uses JavaScript as their scripting and query language.</p>
+							<h3 class="text-primary">Features of JavaScript</h3>
+							<p>There are following features of JavaScript:</p>
+							<ol class="points">
+								<li>All popular web browsers support JavaScript as they provide built-in execution environments.</li>
+								<li>JavaScript follows the syntax and structure of the C programming language. Thus, it is a structured programming language.</li>
+								<li>JavaScript is a weakly typed language, where certain types are implicitly cast (depending on the operation).</li>
+								<li>JavaScript is an object-oriented programming language that uses prototypes rather than using classes for inheritance.</li>
+								<li>It is a light-weighted and interpreted language.</li>
+								<li>It is a case-sensitive language.</li>
+								<li>JavaScript is supportable in several operating systems including, Windows, macOS, etc.</li>
+								<li>It provides good control to the users over the web browsers.</li>
+							</ol>
+							<h3 class="text-primary">History of JavaScript</h3>
+							<p>In 1993,
+								<strong>Mosaic</strong>, the first popular web browser, came into existence. In the
+								<strong>year 1994</strong>,
+								<strong>Netscape</strong>
+								was founded by
+								<strong>Marc Andreessen</strong>. He realized that the web needed to become more dynamic. Thus, a 'glue language' was believed to be provided to HTML to make web designing easy for designers and part-time programmers. Consequently, in 1995, the company recruited
+								<strong>Brendan Eich</strong>
+								intending to implement and embed Scheme programming language to the browser. But, before Brendan could start, the company merged with
+								<strong>Sun Microsystems</strong>
+								for adding Java into its Navigator so that it could compete with Microsoft over the web technologies and platforms. Now, two languages were there: Java and the scripting language. Further, Netscape decided to give a similar name to the scripting language as Java's. It led to 'Javascript'. Finally, in May 1995, Marc Andreessen coined the first code of Javascript named '<strong>Mocha</strong>'. Later, the marketing team replaced the name with '<strong>LiveScript</strong>'. But, due to trademark reasons and certain other reasons, in December 1995, the language was finally renamed to 'JavaScript'. From then, JavaScript came into existence.</p>
+							<h2 class="h2">Application of JavaScript</h2>
+							<p>JavaScript is used to create interactive websites. It is mainly used for:</p>
+							<ul class="points">
+								<li>Client-side validation,</li>
+								<li>Dynamic drop-down menus,</li>
+								<li>Displaying date and time,</li>
+								<li>Displaying pop-up windows and dialog boxes (like an alert dialog box, confirm dialog box and prompt dialog box),</li>
+								<li>Displaying clocks etc.</li>
+							</ul>
+							<h3 class="h2">JavaScript Example</h3>
+							<div class="codeblock">
+								<div class="dp-highlighter">
+									<div class="bar">
+										<div class="tools">
+											<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+											<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+											<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+										</div>
+									</div>
+									<ol start="1" class="dp-xml">
+										<li class="alt">
+											<span>
+												<span class="tag">&lt;</span>
+												<span class="tag-name">script</span>
+												<span class="tag">&gt;</span>
+												<span>&nbsp;&nbsp;</span>
+											</span>
+										</li>
+										<li class="">
+											<span>document.write("Hello&nbsp;JavaScript&nbsp;by&nbsp;JavaScript");&nbsp;&nbsp;</span>
+										</li>
+										<li class="alt">
+											<span>
+												<span class="tag">&lt;/</span>
+												<span class="tag-name">script</span>
+												<span class="tag">&gt;</span>
+												<span>&nbsp;&nbsp;</span>
+											</span>
+										</li>
+									</ol>
+								</div>
+								<textarea name="code" class="xml" style="display: none;">&lt;script&gt;
+									    document.write("Hello JavaScript by JavaScript");
+									    &lt;/script&gt;
+								</textarea>
+							</div>
+							<span class="testit">
+								<a href="https://www.javatpoint.com/oprweb/test.jsp?filename=hellojs" target="_blank">Test it Now</a>
+							</span>
+							<p>A detailed explanation of first JavaScript example is given in next chapter.</p>
+							<hr>
+
+						</div>
+
+						<div class="onlycontentinner" style="height: auto !important;">
+							<div id="city">
+								<table>
+									<tbody>
+										<tr>
+											<td style="margin-top: 0px; margin-bottom: 0px;">
+												<div id="bottomnextup">
+													<a class="next" href="javascript-variable">next →</a>
+													<a class="next" href="external-javascript-file">← prev</a>
+												</div>
+												<h1 class="h1">JavaScript Comment</h1>
+												<div id="upr">
+													<ol>
+														<li><a href="#">JavaScript comments</a></li>
+														<li><a href="#">Advantage of javaScript comments</a></li>
+														<li><a href="#">Single-line and Multi-line comments</a></li>
+													</ol>
+												</div>
+												<p>The
+													<b>JavaScript comments</b>
+													are meaningful way to deliver message. It is used to add information about the code, warnings or suggestions so that end user can easily interpret the code.</p>
+												<h4 class="h4">Advantages of JavaScript comments</h4>
+												<p>There are mainly two advantages of JavaScript comments.</p>
+												<ol>
+													<li>
+														<b>To make code easy to understand</b>
+														It can be used to elaborate the code so that end user can easily understand the code.</li>
+													<li>
+														<b>To avoid the unnecessary code</b>
+														It can also be used to avoid the code being executed. Sometimes, we add the code to perform some action. But after sometime, there may be need to disable the code. In such case, it is better to use comments.</li>
+												</ol>
+												<hr>
+												<h2 class="h2">Types of JavaScript Comments</h2>
+												<p>There are two types of comments in JavaScript.</p>
+												<ol class="points">
+													<li>Single-line Comment</li>
+													<li>Multi-line Comment</li>
+												</ol>
+												<hr>
+												<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+												<h2 class="h2">JavaScript Single line Comment</h2>
+												<p>It is represented by double forward slashes (//). It can be used before and after the statement.</p>
+												<p>Let’s see the example of single-line comment i.e. added before the statement.</p>
+												<div class="codeblock">
+													<div class="dp-highlighter">
+														<div class="bar">
+															<div class="tools">
+																<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+																<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+																<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+															</div>
+														</div>
+														<ol start="1" class="dp-xml">
+															<li class="alt">
+																<span>
+																	<span class="tag">&lt;</span>
+																	<span class="tag-name">script</span>
+																	<span class="tag">&gt;</span>
+																	<span>&nbsp;&nbsp;</span>
+																</span>
+															</li>
+															<li class="">
+																<span>//&nbsp;It&nbsp;is&nbsp;single&nbsp;line&nbsp;comment&nbsp;&nbsp;</span>
+															</li>
+															<li class="alt">
+																<span>document.write("hello&nbsp;javascript");&nbsp;&nbsp;</span>
+															</li>
+															<li class="">
+																<span>
+																	<span class="tag">&lt;/</span>
+																	<span class="tag-name">script</span>
+																	<span class="tag">&gt;</span>
+																	<span>&nbsp;&nbsp;</span>
+																</span>
+															</li>
+														</ol>
+													</div>
+													<textarea name="code" class="xml" style="display: none;">&lt;script&gt;
+														    // It is single line comment
+														    document.write("hello javascript");
+														    &lt;/script&gt;
+													</textarea>
+												</div>
+												<span class="testit">
+													<a href="https://www.javatpoint.com/oprweb/test.jsp?filename=comment1js" target="_blank">Test it Now</a>
+												</span>
+												<p>Let’s see the example of single-line comment i.e. added after the statement.</p>
+												<div class="codeblock">
+													<div class="dp-highlighter">
+														<div class="bar">
+															<div class="tools">
+																<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+																<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+																<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+															</div>
+														</div>
+														<ol start="1" class="dp-xml">
+															<li class="alt">
+																<span>
+																	<span class="tag">&lt;</span>
+																	<span class="tag-name">script</span>
+																	<span class="tag">&gt;</span>
+																	<span>&nbsp;&nbsp;</span>
+																</span>
+															</li>
+															<li class="">
+																<span>var&nbsp;<span class="attribute">a</span>
+																	<span>=</span>
+																	<span class="attribute-value">10</span>
+																	<span>;&nbsp;&nbsp;</span>
+																</span>
+															</li>
+															<li class="alt">
+																<span>var&nbsp;<span class="attribute">b</span>
+																	<span>=</span>
+																	<span class="attribute-value">20</span>
+																	<span>;&nbsp;&nbsp;</span>
+																</span>
+															</li>
+															<li class="">
+																<span>var&nbsp;<span class="attribute">c</span>
+																	<span>=</span>
+																	<span class="attribute-value">a</span>
+																	<span>+b;//It&nbsp;adds&nbsp;values&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;variable&nbsp;&nbsp;</span>
+																</span>
+															</li>
+															<li class="alt">
+																<span>document.write(c);//prints&nbsp;sum&nbsp;of&nbsp;10&nbsp;and&nbsp;20&nbsp;&nbsp;</span>
+															</li>
+															<li class="">
+																<span>
+																	<span class="tag">&lt;/</span>
+																	<span class="tag-name">script</span>
+																	<span class="tag">&gt;</span>
+																	<span>&nbsp;&nbsp;</span>
+																</span>
+															</li>
+														</ol>
+													</div>
+													<textarea name="code" class="xml" style="display: none;">&lt;script&gt;
+														    var a=10;
+														    var b=20;
+														    var c=a+b;//It adds values of a and b variable
+														    document.write(c);//prints sum of 10 and 20
+														    &lt;/script&gt;
+													</textarea>
+												</div>
+												<span class="testit">
+													<a href="https://www.javatpoint.com/oprweb/test.jsp?filename=comment2js" target="_blank">Test it Now</a>
+												</span>
+												<hr>
+												<h2 class="h2">JavaScript Multi line Comment</h2>
+												<p>It can be used to add single as well as multi line comments. So, it is more convenient.</p>
+												<p>It is represented by forward slash with asterisk then asterisk with forward slash. For example:</p>
+												<div class="codeblock">
+													<div class="dp-highlighter">
+														<div class="bar">
+															<div class="tools">
+																<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+																<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+																<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+															</div>
+														</div>
+														<ol start="1" class="dp-xml">
+															<li class="alt">
+																<span>
+																	<span>/*&nbsp;your&nbsp;code&nbsp;here&nbsp;&nbsp;*/&nbsp;&nbsp;</span>
+																</span>
+															</li>
+														</ol>
+													</div>
+													<textarea name="code" class="xml" style="display: none;">/* your code here  */
+													</textarea>
+												</div>
+												<p>It can be used before, after and middle of the statement.</p>
+												<div class="codeblock">
+													<div class="dp-highlighter">
+														<div class="bar">
+															<div class="tools">
+																<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+																<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+																<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+															</div>
+														</div>
+														<ol start="1" class="dp-xml">
+															<li class="alt">
+																<span>
+																	<span class="tag">&lt;</span>
+																	<span class="tag-name">script</span>
+																	<span class="tag">&gt;</span>
+																	<span>&nbsp;&nbsp;</span>
+																</span>
+															</li>
+															<li class="">
+																<span>/*&nbsp;It&nbsp;is&nbsp;multi&nbsp;line&nbsp;comment.&nbsp;&nbsp;</span>
+															</li>
+															<li class="alt">
+																<span>It&nbsp;will&nbsp;not&nbsp;be&nbsp;displayed&nbsp;*/&nbsp;&nbsp;</span>
+															</li>
+															<li class="">
+																<span>document.write("example&nbsp;of&nbsp;javascript&nbsp;multiline&nbsp;comment");&nbsp;&nbsp;</span>
+															</li>
+															<li class="alt">
+																<span>
+																	<span class="tag">&lt;/</span>
+																	<span class="tag-name">script</span>
+																	<span class="tag">&gt;</span>
+																	<span>&nbsp;&nbsp;</span>
+																</span>
+															</li>
+														</ol>
+													</div>
+													<textarea name="code" class="xml" style="display: none;">&lt;script&gt;
+														    /* It is multi line comment.
+														    It will not be displayed */
+														    document.write("example of javascript multiline comment");
+														    &lt;/script&gt;
+													</textarea>
+												</div>
+												<span class="testit">
+													<a href="https://www.javatpoint.com/oprweb/test.jsp?filename=comment3js" target="_blank">Test it Now</a>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</div>
+							</fieldset>
+						</div>
+
+						<div id="city">
+							<table>
+								<tbody>
+									<tr>
+										<td style="margin-top: 0px; margin-bottom: 0px;">
+											<div id="bottomnextup">
+												<a class="next" href="javascript-if">next →</a>
+												<a class="next" href="javascript-data-types">← prev</a>
+											</div>
+											<h1 class="h1">JavaScript Operators</h1>
+											<p>JavaScript operators are symbols that are used to perform operations on operands. For example:</p>
+											<div class="codeblock">
+												<div class="dp-highlighter">
+													<div class="bar">
+														<div class="tools">
+															<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+															<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+															<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+														</div>
+													</div>
+													<ol start="1" class="dp-xml">
+														<li class="alt">
+															<span>
+																<span>var&nbsp;</span>
+																<span class="attribute">sum</span>
+																<span>=</span>
+																<span class="attribute-value">10</span>
+																<span>+20;&nbsp;&nbsp;</span>
+															</span>
+														</li>
+													</ol>
+												</div>
+												<textarea name="code" class="xml" style="display: none;">var sum=10+20;
+												</textarea>
+											</div>
+											<p>Here, + is the arithmetic operator and = is the assignment operator.</p>
+											<p>There are following types of operators in JavaScript.</p>
+											<ol>
+												<li>Arithmetic Operators</li>
+												<li>Comparison (Relational) Operators</li>
+												<li>Bitwise Operators</li>
+												<li>Logical Operators</li>
+												<li>Assignment Operators</li>
+												<li>Special Operators</li>
+											</ol>
+											<hr>
+											<h2 class="h2">JavaScript Arithmetic Operators</h2>
+											<p>Arithmetic operators are used to perform arithmetic operations on the operands. The following operators are known as JavaScript arithmetic operators.</p>
+											<table class="alt">
+												<tbody>
+													<tr>
+														<th>Operator</th>
+														<th>Description</th>
+														<th>Example</th>
+													</tr>
+													<tr>
+														<td>+</td>
+														<td>Addition</td>
+														<td>10+20 = 30</td>
+													</tr>
+													<tr>
+														<td>-</td>
+														<td>Subtraction</td>
+														<td>20-10 = 10</td>
+													</tr>
+													<tr>
+														<td>*</td>
+														<td>Multiplication</td>
+														<td>10*20 = 200</td>
+													</tr>
+													<tr>
+														<td>/</td>
+														<td>Division</td>
+														<td>
+															20/10 = 2</td>
+													</tr>
+													<tr>
+														<td>%</td>
+														<td>Modulus (Remainder)</td>
+														<td>20%10 = 0</td>
+													</tr>
+													<tr>
+														<td>++</td>
+														<td>Increment</td>
+														<td>var a=10; a++; Now a = 11</td>
+													</tr>
+													<tr>
+														<td>--</td>
+														<td>Decrement</td>
+														<td>var a=10; a--; Now a = 9</td>
+													</tr>
+												</tbody>
+											</table>
+											<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+											<h2 class="h2">JavaScript Comparison Operators</h2>
+											<p>The JavaScript comparison operator compares the two operands. The comparison operators are as follows:</p>
+											<table class="alt">
+												<tbody>
+													<tr>
+														<th>Operator</th>
+														<th>Description</th>
+														<th>Example</th>
+													</tr>
+													<tr>
+														<td>==</td>
+														<td>Is equal to</td>
+														<td>10==20 = false</td>
+													</tr>
+													<tr>
+														<td>===</td>
+														<td>Identical (equal and of same type)</td>
+														<td>10==20 = false</td>
+													</tr>
+													<tr>
+														<td>!=</td>
+														<td>Not equal to</td>
+														<td>10!=20 = true</td>
+													</tr>
+													<tr>
+														<td>!==</td>
+														<td>Not Identical</td>
+														<td>
+															20!==20 = false</td>
+													</tr>
+													<tr>
+														<td>&gt;</td>
+														<td>Greater than</td>
+														<td>20&gt;10 = true</td>
+													</tr>
+													<tr>
+														<td>&gt;=</td>
+														<td>Greater than or equal to</td>
+														<td>20&gt;=10 = true</td>
+													</tr>
+													<tr>
+														<td>&lt;</td>
+														<td>Less than</td>
+														<td>20&lt;10 = false</td>
+													</tr>
+													<tr>
+														<td>&lt;=</td>
+														<td>Less than or equal to</td>
+														<td>20&lt;=10 = false</td>
+													</tr>
+												</tbody>
+											</table>
+											<h2 class="h2">JavaScript Bitwise Operators</h2>
+											<p>The bitwise operators perform bitwise operations on operands. The bitwise operators are as follows:</p>
+											<table class="alt">
+												<tbody>
+													<tr>
+														<th>Operator</th>
+														<th>Description</th>
+														<th>Example</th>
+													</tr>
+													<tr>
+														<td>&amp;</td>
+														<td>Bitwise AND</td>
+														<td>(10==20 &amp; 20==33) = false</td>
+													</tr>
+													<tr>
+														<td>|</td>
+														<td>Bitwise OR</td>
+														<td>(10==20 | 20==33) = false</td>
+													</tr>
+													<tr>
+														<td>^</td>
+														<td>Bitwise XOR</td>
+														<td>(10==20 ^ 20==33) = false</td>
+													</tr>
+													<tr>
+														<td>~</td>
+														<td>Bitwise NOT</td>
+														<td>
+															(~10) = -10</td>
+													</tr>
+													<tr>
+														<td>&lt;&lt;</td>
+														<td>Bitwise Left Shift</td>
+														<td>(10&lt;&lt;2) = 40</td>
+													</tr>
+													<tr>
+														<td>&gt;&gt;</td>
+														<td>Bitwise Right Shift</td>
+														<td>(10&gt;&gt;2) = 2</td>
+													</tr>
+													<tr>
+														<td>&gt;&gt;&gt;</td>
+														<td>Bitwise Right Shift with Zero</td>
+														<td>(10&gt;&gt;&gt;2) = 2</td>
+													</tr>
+												</tbody>
+											</table>
+											<h2 class="h2">JavaScript Logical Operators</h2>
+											<p>The following operators are known as JavaScript logical operators.</p>
+											<table class="alt">
+												<tbody>
+													<tr>
+														<th>Operator</th>
+														<th>Description</th>
+														<th>Example</th>
+													</tr>
+													<tr>
+														<td>&amp;&amp;</td>
+														<td>Logical AND</td>
+														<td>(10==20 &amp;&amp; 20==33) = false</td>
+													</tr>
+													<tr>
+														<td>||</td>
+														<td>Logical OR</td>
+														<td>(10==20 || 20==33) = false</td>
+													</tr>
+													<tr>
+														<td>!</td>
+														<td>Logical Not</td>
+														<td>!(10==20) = true</td>
+													</tr>
+												</tbody>
+											</table>
+											<h2 class="h2">JavaScript Assignment Operators</h2>
+											<p>The following operators are known as JavaScript assignment operators.</p>
+											<table class="alt">
+												<tbody>
+													<tr>
+														<th>Operator</th>
+														<th>Description</th>
+														<th>Example</th>
+													</tr>
+													<tr>
+														<td>=</td>
+														<td>Assign</td>
+														<td>10+10 = 20</td>
+													</tr>
+													<tr>
+														<td>+=</td>
+														<td>Add and assign</td>
+														<td>var a=10; a+=20; Now a = 30</td>
+													</tr>
+													<tr>
+														<td>-=</td>
+														<td>Subtract and assign</td>
+														<td>var a=20; a-=10; Now a = 10</td>
+													</tr>
+													<tr>
+														<td>*=</td>
+														<td>Multiply and assign</td>
+														<td>var a=10; a*=20; Now a = 200</td>
+													</tr>
+													<tr>
+														<td>/=</td>
+														<td>Divide and assign</td>
+														<td>var a=10; a/=2; Now a = 5</td>
+													</tr>
+													<tr>
+														<td>%=</td>
+														<td>Modulus and assign</td>
+														<td>var a=10; a%=2; Now a = 0</td>
+													</tr>
+												</tbody>
+											</table>
+											<h2 class="h2">JavaScript Special Operators</h2>
+											<p>The following operators are known as JavaScript special operators.</p>
+											<table class="alt">
+												<tbody>
+													<tr>
+														<th>Operator</th>
+														<th>Description</th>
+													</tr>
+													<tr>
+														<td>(?:)</td>
+														<td>Conditional Operator returns value based on the condition. It is like if-else.</td>
+													</tr>
+													<tr>
+														<td>,</td>
+														<td>Comma Operator allows multiple expressions to be evaluated as single statement.</td>
+													</tr>
+													<tr>
+														<td>delete</td>
+														<td>Delete Operator deletes a property from the object.</td>
+													</tr>
+													<tr>
+														<td>in</td>
+														<td>In Operator checks if object has the given property</td>
+													</tr>
+													<tr>
+														<td>instanceof</td>
+														<td>checks if the object is an instance of given type</td>
+													</tr>
+													<tr>
+														<td>new</td>
+														<td>creates an instance (object)</td>
+													</tr>
+													<tr>
+														<td>typeof</td>
+														<td>checks the type of object.</td>
+													</tr>
+													<tr>
+														<td>void</td>
+														<td>it discards the expression's return value.</td>
+													</tr>
+													<tr>
+														<td>yield</td>
+														<td>checks what is returned in a generator by the generator's iterator.</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<br><br>
+
+											<br><br>
+											<div id="a92ca928-953f-41a8-ab82-6266a7b661be" data-section="a92ca928-953f-41a8-ab82-6266a7b661be" class="_ap_apex_ad" data-xpath="#city > table:eq(0) > tbody:eq(0) > tr:eq(0) > td:eq(0)" data-section-id="" data-ap-network="adpTags" data-render-time="1684905510795" style="display: block; clear: both; text-align: center; margin: 10px auto 30px; width: 728px; height: 188px; overflow: hidden;" data-refresh-time="1684905515342" data-timeout="596">
+												<div id="ADP_37780_728X280_a92ca928-953f-41a8-ab82-6266a7b661be" style="text-align: center; margin: 0 auto;" data-google-query-id="CO_j9pSajf8CFanGcwEdccQHNw"></iframe>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div id="city">
+		<table>
+			<tbody>
+				<tr>
+					<td style="margin-top: 0px; margin-bottom: 0px;">
+
+						<h1 class="h1">JavaScript Array</h1>
+						<p>
+							<strong>JavaScript array</strong>
+							is an object that represents a collection of similar type of elements.</p>
+						<p>There are 3 ways to construct array in JavaScript</p>
+						<ol class="points">
+							<li>By array literal</li>
+							<li>By creating instance of Array directly (using new keyword)</li>
+							<li>By using an Array constructor (using new keyword)</li>
+						</ol>
+						<h2 class="h2">1) JavaScript array literal</h2>
+						<p>The syntax of creating array using array literal is given below:</p>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-xml">
+									<li class="alt">
+										<span>
+											<span>var&nbsp;</span>
+											<span class="attribute">arrayname</span>
+											<span>=[value1,value2.....valueN];&nbsp;&nbsp;</span>
+										</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="xml" style="display: none;">var arrayname=[value1,value2.....valueN];
+							</textarea>
+						</div>
+						<p>As you can see, values are contained inside [ ] and separated by , (comma).</p>
+						<p>Let's see the simple example of creating and using array in JavaScript.</p>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-xml">
+									<li class="alt">
+										<span>
+											<span class="tag">&lt;</span>
+											<span class="tag-name">script</span>
+											<span class="tag">&gt;</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>var&nbsp;<span class="attribute">emp</span>
+											<span>=["Sonoo","Vimal","Ratan"];&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>for&nbsp;(<span class="attribute">i</span>
+											<span>=</span>
+											<span class="attribute-value">0</span>
+											<span>;i</span>
+											<span class="tag">&lt;</span>
+											<span class="tag-name">emp.length</span>
+											<span>;i++){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>document.write(emp[i]&nbsp;+&nbsp;"<span class="tag">&lt;</span>
+											<span class="tag-name">br</span>
+											<span class="tag">/&gt;</span>
+											<span>");&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>}&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="tag">&lt;/</span>
+											<span class="tag-name">script</span>
+											<span class="tag">&gt;</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="xml" style="display: none;">&lt;script&gt;
+								    var emp=["Sonoo","Vimal","Ratan"];
+								    for (i=0;i&lt;emp.length;i++){
+								    document.write(emp[i] + "&lt;br/&gt;");
+								    }
+								    &lt;/script&gt;
+							</textarea>
+						</div>
+						<span class="testit">
+							<a href="https://www.javatpoint.com/oprweb/test.jsp?filename=array1js" target="_blank">Test it Now</a>
+						</span>
+						<p>The .length property returns the length of an array.</p>
+						<p>
+							<strong>Output of the above example</strong>
+						</p>
+						<div class="codeblock3">
+							<pre><script>
+    var emp=["Sonoo","Vimal","Ratan"];
+    for (i=0;i<emp.length;i++){
+    document.write(emp[i] + "<br/>");
+    }
+    </script>Sonoo<br>Vimal<br>Ratan<br></pre>
+						</div>
+						<h2 class="h2">2) JavaScript Array directly (new keyword)</h2>
+						<p>The syntax of creating array directly is given below:</p>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-xml">
+									<li class="alt">
+										<span>
+											<span>var&nbsp;</span>
+											<span class="attribute">arrayname</span>
+											<span>=</span>
+											<span class="attribute-value">new</span>
+											<span>&nbsp;Array();&nbsp;&nbsp;</span>
+										</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="xml" style="display: none;">var arrayname=new Array();
+							</textarea>
+						</div>
+						<p>Here,
+							<strong>new keyword</strong>
+							is used to create instance of array.</p>
+						<p>Let's see the example of creating array directly.</p>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-xml">
+									<li class="alt">
+										<span>
+											<span class="tag">&lt;</span>
+											<span class="tag-name">script</span>
+											<span class="tag">&gt;</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>var&nbsp;i;&nbsp;&nbsp;</span>
+									</li>
+									<li class="alt">
+										<span>var&nbsp;<span class="attribute">emp</span>
+											<span>&nbsp;=&nbsp;</span>
+											<span class="attribute-value">new</span>
+											<span>&nbsp;Array();&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>emp[0]&nbsp;=&nbsp;"Arun";&nbsp;&nbsp;</span>
+									</li>
+									<li class="alt">
+										<span>emp[1]&nbsp;=&nbsp;"Varun";&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>emp[2]&nbsp;=&nbsp;"John";&nbsp;&nbsp;</span>
+									</li>
+									<li class="alt">
+										<span>&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>for&nbsp;(<span class="attribute">i</span>
+											<span>=</span>
+											<span class="attribute-value">0</span>
+											<span>;i</span>
+											<span class="tag">&lt;</span>
+											<span class="tag-name">emp.length</span>
+											<span>;i++){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>document.write(emp[i]&nbsp;+&nbsp;"<span class="tag">&lt;</span>
+											<span class="tag-name">br</span>
+											<span class="tag">&gt;</span>
+											<span>");&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>}&nbsp;&nbsp;</span>
+									</li>
+									<li class="alt">
+										<span>
+											<span class="tag">&lt;/</span>
+											<span class="tag-name">script</span>
+											<span class="tag">&gt;</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="xml" style="display: none;">&lt;script&gt;
+								    var i;
+								    var emp = new Array();
+								    emp[0] = "Arun";
+								    emp[1] = "Varun";
+								    emp[2] = "John";
+
+								    for (i=0;i&lt;emp.length;i++){
+								    document.write(emp[i] + "&lt;br&gt;");
+								    }
+								    &lt;/script&gt;
+							</textarea>
+						</div>
+						<span class="testit">
+							<a href="https://www.javatpoint.com/oprweb/test.jsp?filename=array2js" target="_blank">Test it Now</a>
+						</span>
+						<p>
+							<strong>Output of the above example</strong>
+						</p>
+						<div class="codeblock3">
+							<pre><script>
+    var i;
+    var emp = new Array();
+    emp[0] = "Arun";
+    emp[1] = "Varun";
+    emp[2] = "John";
+
+    for (i=0;i<emp.length;i++){
+    document.write(emp[i] + "<br>");
+    }
+    </script>Arun<br>Varun<br>John<br></pre>
+						</div>
+						<h2 class="h2">3) JavaScript array constructor (new keyword)</h2>
+						<p>Here, you need to create instance of array by passing arguments in constructor so that we don't have to provide value explicitly.<div id="0a312584-43a9-4dbf-9153-d806579ea4b2" data-section="0a312584-43a9-4dbf-9153-d806579ea4b2" class="_ap_apex_ad" data-xpath="#city > table:eq(0) > tbody:eq(0) > tr:eq(0) > td:eq(0) > p:eq(11)" data-section-id="" data-ap-network="adpTags" style="display: block; clear: both; text-align: center; margin: 10px auto 20px; width: 0px; height: 0px; overflow: hidden;" data-render-time="1684905904536" data-refresh-time="1684905904696" data-timeout="325">
+								<div id="ADP_37780_728X250_0a312584-43a9-4dbf-9153-d806579ea4b2" style="text-align: center; margin: 0 auto;" data-google-query-id="CLvdlNCbjf8CFTzbcwEdZPwDHA">
+									<script type="text/javascript">
+										window.adpushup.adpTags.que.push(function () {
+window.adpushup.adpTags.display("ADP_37780_728X250_0a312584-43a9-4dbf-9153-d806579ea4b2");
+});
+									</script>
+									<div id="google_ads_iframe_/103512698,22511567001/22921927624_0__container__" style="border: 0pt none; width: 728px; height: 0px;"></div>
+								</div>
+							</div>
+						</p>
+						<p>The example of creating object by array constructor is given below.</p>
+						<div class="codeblock">
+							<div class="dp-highlighter">
+								<div class="bar">
+									<div class="tools">
+										<a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;"></a>
+										<a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;"></a>
+									</div>
+								</div>
+								<ol start="1" class="dp-xml">
+									<li class="alt">
+										<span>
+											<span class="tag">&lt;</span>
+											<span class="tag-name">script</span>
+											<span class="tag">&gt;</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>var&nbsp;<span class="attribute">emp</span>
+											<span>=</span>
+											<span class="attribute-value">new</span>
+											<span>&nbsp;Array("Jai","Vijay","Smith");&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>for&nbsp;(<span class="attribute">i</span>
+											<span>=</span>
+											<span class="attribute-value">0</span>
+											<span>;i</span>
+											<span class="tag">&lt;</span>
+											<span class="tag-name">emp.length</span>
+											<span>;i++){&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="">
+										<span>document.write(emp[i]&nbsp;+&nbsp;"<span class="tag">&lt;</span>
+											<span class="tag-name">br</span>
+											<span class="tag">&gt;</span>
+											<span>");&nbsp;&nbsp;</span>
+										</span>
+									</li>
+									<li class="alt">
+										<span>}&nbsp;&nbsp;</span>
+									</li>
+									<li class="">
+										<span>
+											<span class="tag">&lt;/</span>
+											<span class="tag-name">script</span>
+											<span class="tag">&gt;</span>
+											<span>&nbsp;&nbsp;</span>
+										</span>
+									</li>
+								</ol>
+							</div>
+							<textarea name="code" class="xml" style="display: none;">&lt;script&gt;
+								    var emp=new Array("Jai","Vijay","Smith");
+								    for (i=0;i&lt;emp.length;i++){
+								    document.write(emp[i] + "&lt;br&gt;");
+								    }
+								    &lt;/script&gt;
+							</textarea>
+						</div>
+						<span class="testit">
+							<a href="https://www.javatpoint.com/oprweb/test.jsp?filename=array3js" target="_blank">Test it Now</a>
+						</span>
+						<p>
+							<strong>Output of the above example</strong>
+						</p>
+						<div class="codeblock3">
+							<pre><script>
+    var emp=new Array("Jai","Vijay","Smith");
+    for (i=0;i<emp.length;i++){
+    document.write(emp[i] + "<br>");
+    }
+    </script>Jai<br>Vijay<br>Smith<br></pre>
+						</div>
+						<hr>
+						<h2 class="h2">JavaScript Array Methods</h2>
+						<p>Let's see the list of JavaScript array methods with their description.</p>
+						<table class="alt">
+							<tbody>
+								<tr>
+									<th>Methods</th>
+									<th>Description</th>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-concat-method">concat()</a>
+									</td>
+									<td>It returns a new array object that contains two or more merged arrays.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-copywithin-method">copywithin()</a>
+									</td>
+									<td>It copies the part of the given array with its own elements and returns the modified array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-entries-method">entries()</a>
+									</td>
+									<td>It creates an iterator object and a loop that iterates over each key/value pair.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-every-method">every()</a>
+									</td>
+									<td>It determines whether all the elements of an array are satisfying the provided function conditions.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-flat-method">flat()</a>
+									</td>
+									<td>It creates a new array carrying sub-array elements concatenated recursively till the specified depth.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-flatmap-method">flatMap()</a>
+									</td>
+									<td>It maps all array elements via mapping function, then flattens the result into a new array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-fill-method">fill()</a>
+									</td>
+									<td>It fills elements into an array with static values.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-from-method">from()</a>
+									</td>
+									<td>It creates a new array carrying the exact copy of another array element.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-filter-method">filter()</a>
+									</td>
+									<td>It returns the new array containing the elements that pass the provided function conditions.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-find-method">find()</a>
+									</td>
+									<td>It returns the value of the first element in the given array that satisfies the specified condition.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-findindex-method">findIndex()</a>
+									</td>
+									<td>It returns the index value of the first element in the given array that satisfies the specified condition.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-foreach-method">forEach()</a>
+									</td>
+									<td>It invokes the provided function once for each element of an array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-includes-method">includes()</a>
+									</td>
+									<td>It checks whether the given array contains the specified element.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-indexof-method">indexOf()</a>
+									</td>
+									<td>It searches the specified element in the given array and returns the index of the first match.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-isarray-method">isArray()</a>
+									</td>
+									<td>It tests if the passed value ia an array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-join-method">join()</a>
+									</td>
+									<td>It joins the elements of an array as a string.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-keys-method">keys()</a>
+									</td>
+									<td>It creates an iterator object that contains only the keys of the array, then loops through these keys.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-lastindexof-method">lastIndexOf()</a>
+									</td>
+									<td>It searches the specified element in the given array and returns the index of the last match.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-map-method">map()</a>
+									</td>
+									<td>It calls the specified function for every array element and returns the new array</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-of-method">of()</a>
+									</td>
+									<td>It creates a new array from a variable number of arguments, holding any type of argument.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-pop-method">pop()</a>
+									</td>
+									<td>It removes and returns the last element of an array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-push-method">push()</a>
+									</td>
+									<td>It adds one or more elements to the end of an array.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-reverse-method">reverse()</a>
+									</td>
+									<td>It reverses the elements of given array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-reduce-method">reduce(function, initial)</a>
+									</td>
+									<td>It executes a provided function for each value from left to right and reduces the array to a single value.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-reduceright-method">reduceRight()</a>
+									</td>
+									<td>It executes a provided function for each value from right to left and reduces the array to a single value.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-some-method">some()</a>
+									</td>
+									<td>It determines if any element of the array passes the test of the implemented function.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-shift-method">shift()</a>
+									</td>
+									<td>It removes and returns the first element of an array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-slice-method">slice()</a>
+									</td>
+									<td>It returns a new array containing the copy of the part of the given array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-sort-method">sort()</a>
+									</td>
+									<td>It returns the element of the given array in a sorted order.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-splice-method">splice()</a>
+									</td>
+									<td>It add/remove elements to/from the given array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-tolocalestring-method">toLocaleString()</a>
+									</td>
+									<td>It returns a string containing all the elements of a specified array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-tostring-method">toString()</a>
+									</td>
+									<td>It converts the elements of a specified array into string form, without affecting the original array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-unshift-method">unshift()</a>
+									</td>
+									<td>It adds one or more elements in the beginning of the given array.</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="javascript-array-values-method">values()</a>
+									</td>
+									<td>It creates a new iterator object carrying values for each index in the array.</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr>
+					</td>
+				</tr>
+			</tbody>
+		</div>
+	</div>
+</div></td></tr></tbody></table></div></div><div class="contentLink"></div></div></div>
+</div>
+{# <div class = "blogContent" id = "blogContent">
+	    <div class = "m-5">
+	      {% if courseBlogging is defined %}
+	        {% for details in courseBlogging %}
+	          <div class = "blogInfo mb-5">
+	            <div class = "blogContent">
+	              <div class = "contentDesc">
+	                {{details.contentDesc}}
+	              </div>
+	             <h6 class = "pt-2">Author of this blog : {{details.authorName}}</h6>
+	            </div>
+
+	            <div class = "blogFile">
+	              <div>
+	                {% if details.fileType is same as("video/mp4") %}
+	                <video width="100%%" height="200" controls>
+	                  <source src="/{{details.contentFile}}" type="video/mp4">
+	                </video>
+
+	                {% elseif details.fileType is same as("audio/mpeg") %}
+	                  <audio controls>
+	                    <source src="/{{details.contentFile}}" type="audio/mpeg">
+	                      Your browser does not support the audio element.
+	                  </audio>
+
+	                {% else %}
+	                  <img src="{{details.contentFile}}" alt="" width = "100%" height = "200">
+
+	                {% endif %}
+	              </div>
+	              <div>
+	                <a href="{{details.contentLink}}">Use fulll link</a>
+	              </div>
+	            </div>
+	          </div>
+	        {% endfor %}
+	      {% endif %}
+	    </div>
+	  </div> #}<div><div class="faqContent" id="faqContent"></div></div>{% endblock %}
